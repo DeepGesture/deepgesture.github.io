@@ -1,2 +1,2 @@
-# deepgesture.github.io
-DeepGesture
+# DeepGesture - Speech-Driven Periodic Gesture Generation for Semantic and Phonetic
+
