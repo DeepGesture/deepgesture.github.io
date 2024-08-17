@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta property="og:title" content="BunGesture: Diffusion Gesture Generation Model for Vietnamese language" />
+  <meta property="og:url" content="" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- <meta name="google-site-verification" content="c-OO9s8QGRGOjdJTz3dyfcYlgskfbLXnwRRAzQLcoWw" /> -->
+
+  <title>BunGesture - Diffusion Gesture Generation Model for Vietnamese language</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-62B92XNTBK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-62B92XNTBK');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="icon" href="static/figures/icon2.png">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="publication-header">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <!-- <div class="columns is-centered"> -->
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">BunGesture: Diffusion Gesture Generation Model for Vietnamese
+            language</h1>
+          <div class="is-size-3 publication-authors">
+            ACM ICMI 2024
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="publication-author-block">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://hmthanh.github.io/" target="_blank">Thanh
+                  Hoang-Minh</a>,</span>
+              <span class="author-block"><a href="https://en.hcmus.edu.vn/profile/assoc-prof-dr-ly-quoc-ngoc/"
+                  target="_blank">Ngoc Ly-Quoc</a></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Ho Chi Minh City, Vietnam,</span>
+              <span class="author-block">DSc of Computer Science, VNUHCM-University of Science</span>
+            </div>
+
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+
+                <!-- <span class="link-block">
+                <a href="None" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code: Coming Soon</span>
+              </a>
+              </span> -->
+
+                <span class="link-block">
+                  <a href="https://youtu.be/513EONcXOck" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+
+                <!-- </span> -->
+                <!-- Colab Link. -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+
+        <div class="column is-centered has-text-centered">
+          <img src="static/figures/teaser.png" alt="cars peace" />
+        </div>
+
+        <h2 class="subtitle has-text-centered">
+          </span> BunGesture synthesized stylized gestures conditioned on four different text prompts.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Gesture generation is a pivotal aspect of multimodal communication systems, enhancing the naturalness and
+              contextuality of human-machine interactions. While significant progress has been made in this field for
+              various languages, gesture generation tailored specifically for Vietnamese remains underexplored. This
+              paper introduces
+              , a novel diffusion-based gesture generation model designed for the Vietnamese language. Unlike
+              traditional approaches relying on English-centric models, bunGesture leverages Vietnamese-specific tools
+              and techniques.
+
+              Key to bunGesture is its adoption of diffusion-based gesture generation, integrating advanced Vietnamese
+              language models like PhoBERT and the VnCoreNLP toolkit. Additionally, bunGesture employs a fine-tuned
+              Vietnamese version of WaveLM, trained on a custom Vietnamese audio dataset.
+
+              This work emphasizes the importance of language-specific adaptations in gesture generation systems and
+              opens avenues for similar research in other languages.
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+
+        <div class="column is-centered has-text-centered">
+          <img src="static/figures/system_overview.png" alt="cars peace" width="600" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!--         <h2 class="title is-3">How does it work?</h2> -->
+          <div class="content has-text-justified">
+            <p>
+              BunGesture takes the audio and transcript of a speech as input,
+              synthesizing realistic, stylized full-body gestures that align with
+              the speech content rhythmically and semantically. It allows using
+              a short piece of text, namely a <i>text prompt</i>, a video clip, namely a
+              <i>video prompt</i>, or a motion sequence, namely a <i>motion prompt</i>, to
+              describe a desired style. The gestures are then generated to embody
+              the style as much as possible. And furthermore, our system can be
+              extended to achieve style control of individual body parts through
+              noise combination.
+            </p>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              We conduct an extensive set of experiments
+              to evaluate our framework. Our system outperforms all baselines
+              both qualitatively and quantitatively, as evidenced by FGD, SRGR,
+              SC, and SRA metrics, and user study results.
+          </div>
+        </div>
+        <!--/ Abstract. -->
+      </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Control With MultiModal Prompts</h2>
+          <div class="content has-text-justified">
+            <p>
+              Our system accepts text,
+              motion, and video prompts as style descriptors
+              and successfully generates realistic gestures with
+              reasonable styles, as required by the corresponding prompts.
+              Some of the results are as follows.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="column is-centered has-text-centered">
+        <h3 class="title is-4">Text Prompt</h3>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="column is-centered has-text-centered">
+            <p><b>Text Prompt: “the person is <font color="red">angry</font>.”</b></p>
+
+            <video poster="" id="tree" width=300>
+              <source src="static/figures/text_prompt/angry.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <p><b> Text Prompt: “the person is <font color="red">happy</font> and <font color="red">excited</font>.”</b>
+            </p>
+
+            <video poster="" id="tree" controls width=300>
+              <source src="static/figures/text_prompt/happy.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <p><b> Text Prompt: “the person is <font color="red">sad</font>.”</b></p>
+
+            <video poster="" id="tree" controls width=300>
+              <source src="static/figures/text_prompt/sad.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <p><b> Text Prompt: “a person is <font color="red">holding a cup of coffee in the right hand</font>.”</b>
+            </p>
+
+            <video poster="" id="tree" controls width=300>
+              <source src="static/figures/text_prompt/hold.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <p><b> Text Prompt: “the person is <font color="red">playing the guitar</font>.”</b></p>
+
+            <video poster="" id="tree" controls width=300>
+              <source src="static/figures/text_prompt/guitar.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <p><b> Text Prompt: “standing like a <font color="red">boxer</font>.”</b></p>
+
+            <video poster="" id="tree" controls width=300>
+              <source src="static/figures/text_prompt/boxer.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="column is-centered has-text-centered">
+        <h3 class="title is-4">Motion Prompt</h3>
+        <p><b> (The left video is the motion prompt, and the right video shows the results.)</b></p>
+
+        <div id="results-carousel" class="carousel results-carousel">
+
+          <div class="column is-centered has-text-centered">
+            <video poster="" id="tree" muted controls width=250>
+              <source src="static/figures/motion_prompt/motion_prompt.mp4" type="video/mp4">
+            </video>
+            <video poster="" id="tree" controls width=300>
+              <source src="static/figures/motion_prompt/neutral.mp4" type="video/mp4">
+            </video>
+            <p><b>Motion Prompt: “<font color="red">high right hand</font> and <font color="red">low left hand</font>
+                .”</b></p>
+            </br>
+          </div>
+
+          <div class="column is-centered has-text-centered">
+            <video poster="" id="tree" muted controls width=250>
+              <source src="static/figures/motion_prompt/sit_prompt.mp4" type="video/mp4">
+            </video>
+            <video poster="" id="tree" controls width=300>
+              <source src="static/figures/motion_prompt/sit.mp4" type="video/mp4">
+            </video>
+            <p><b>Motion Prompt: “<font color="red">sitting</font>.”</b></p>
+            </br>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Body Part-Level Style Control</h2>
+          <div class="content has-text-justified">
+            <p>
+              Our system allows fine-grained styles control on individual body parts by using noise
+              combination. We employ different prompts to control the styles
+              of various body parts. The resulting motions produce these styles
+              while maintaining a natural coordination among the body parts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+
+
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="column is-centered has-text-centered">
+            <img src="static/figures/sub_body/1.png" alt="cars peace" width="250" />
+            <video poster="" id="tree" controls width=500>
+              <source src="static/figures/sub_body/video_01.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <img src="static/figures/sub_body/2.png" alt="cars peace" width="250" />
+            <video poster="" id="tree" controls width=500>
+              <source src="static/figures/sub_body/video_02.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <img src="static/figures/sub_body/3.png" alt="cars peace" width="250" />
+            <video poster="" id="tree" controls width=500>
+              <source src="static/figures/sub_body/video_03.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-centered has-text-centered">
+            <img src="static/figures/sub_body/4.png" alt="cars peace" width="250" />
+            <video poster="" id="tree" controls width=500>
+              <source src="static/figures/sub_body/video_04.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+
+
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="column is-centered has-text-centered">
+          <p><b>(The highlighted yellow text is the guidance added by LLM for actions.)</b></p>
+          <div id="results-carousel" class="carousel results-carousel">
+
+            <div class="column is-centered has-text-centered">
+              <video poster="" id="tree" controls width=800>
+                <source src="static/figures/chatgpt/gpt1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-centered has-text-centered">
+              <video poster="" id="tree" controls width=800>
+                <source src="static/figures/chatgpt/gpt2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-centered has-text-centered">
+              <video poster="" id="tree" controls width=800>
+                <source src="static/figures/chatgpt/gpt3.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+@article{
+  Thanh2024BunGesture,
+  author = {Thanh, Ngoc},
+  title = {BunGesture: Diffusion Gesture Generation Model for Vietnamese language},
+  journal = {ACM Trans. Graph.},
+  issue_date = {August 2024},
+  numpages = {18},
+  doi = {},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  keywords = {co-speech gesture synthesis, vietnamese, multi-modality, diffusion models}
+}
+</code></pre>
+    </div>
+  </section>
+
+
+
+
+  <footer class="footer">
+    <!--  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+      href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+      <i class="fas fa-file-pdf"></i>
+    </a>
+    <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <i class="fab fa-github"></i>
+    </a>
+  </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you want
+            to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them
+            appropriately.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+
+
+  <script type="text/javascript">
+    var sc_project = 12351448;
+    var sc_invisible = 1;
+    var sc_security = "c676de4f"; 
+  </script>
+  <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript>
+    <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+          class="statcounter" src="https://c.statcounter.com/12351448/0/c676de4f/1/" alt="Web Analytics"></a></div>
+  </noscript>
+  <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
