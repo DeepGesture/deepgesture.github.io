@@ -59,12 +59,12 @@ Nghiên cứu Người Dùng. Để hiểu về hiệu suất thị giác thực
 
 Giả sử rằng âm thanh trung tính không ảnh hưởng đến phong cách của cử chỉ, chúng ta có thể tạo ra các cử chỉ được phong cách hóa với một bài nói trung tính bằng cách đặt $\gamma=1$ và $s$ trong \autoref{eq:denoise}. Chúng tôi chọn hai đoạn hội thoại trong tập kiểm thử với âm thanh trung tính để tạo ra sáu cử chỉ được phong cách hóa tương ứng. \autoref{fig:emotiondataset} minh họa cử chỉ được tạo ra $\hat{x}_{t}$ của các phong cách đầu vào $s$ khác nhau với cùng một âm thanh trung tính được thị giác hóa bằng phương pháp tSNE.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{images/emotion_dataset.jpg}
-    \caption[Biểu đồ tSNE với các phong cách khác nhau]{Hiển thị tSNE của các cử chỉ với các phong cách khác nhau và bản đồ bóng của cử chỉ xương cơ với phong cách tương ứng. Ví dụ, với cử chỉ 'Old', hông và đầu gối của nó uốn cong hơn, và tay của nó cơ bản nằm ở đầu gối hoặc hông.}
-    \label{fig:emotiondataset}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.7\linewidth]{images/emotion_dataset.jpg}
+%    \caption[Biểu đồ tSNE với các phong cách khác nhau]{Hiển thị tSNE của các cử chỉ với các phong cách khác nhau và bản đồ bóng của cử chỉ xương cơ với phong cách tương ứng. Ví dụ, với cử chỉ 'Old', hông và đầu gối của nó uốn cong hơn, và tay của nó cơ bản nằm ở đầu gối hoặc hông.}
+%    \label{fig:emotiondataset}
+%\end{figure}
 
 Chúng tôi cũng vẽ biểu đồ xương cơ được tạo ra bởi phong cách tương ứng trong hình, và có thể thấy rằng đối với phong cách 'Old', hông và đầu gối của nó uốn cong hơn, và tay của nó cơ bản nằm ở đầu gối hoặc hông; với phong cách 'Sad', đầu của nó đang nghiêng và tay nó ở một vị trí thấp hơn; với phong cách 'Relax', hông của nó đang chuyển lên phía trước và tư thế đứng của nó là thoải mái; với phong cách 'Angry', tay của nó di chuyển lên và xuống nhanh chóng. Lưu ý rằng mặc dù sự khác biệt giữa cử chỉ phong cách 'trung tính' và 'Happy' vẫn khá rõ ràng trong việc thị giác hóa phong cách của xương cơ, tức là với phong cách 'Happy', vị trí tay của nó là cao hơn và biên độ của nó lớn hơn, tuy nhiên tSNE của chúng gần như kết hợp với nhau. Trong phân tích của chúng tôi, điều này xảy ra vì bài nói trung tính gọi là vẫn chứa thông tin như cảm xúc và ngữ nghĩa mà có trong các đặc trưng WavLM. Sự cân bằng giữa phong cách từ âm thanh $a$ và từ phong cách $s$ có thể được kiểm soát thêm bằng cách chỉnh sửa cường độ phong cách $\gamma$.
 
@@ -90,12 +90,12 @@ Hơn nữa, chúng tôi muốn khám phá mối quan hệ giữa cường độ 
 
 % % Hình 6: 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{images/mos_score.jpg}
-    \caption[Kết quả trung bình của MOS]{Kết quả trung bình của MOS với khoảng tin cậy $95\%$ cho ba chiều. 'Ours-$\gamma$' chỉ ra cường độ kiểm soát phong cách $\gamma$ của mô hình của chúng tôi. Mô hình của chúng tôi vượt trội đáng kể so với ExampleGesture tổng thể và có thể chỉnh sửa cường độ của các phong cách. Tham số $\gamma$ tăng và hai điểm số còn lại sẽ giảm một cách hợp lý.}
-    \label{fig:mosscore}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=\linewidth]{images/mos_score.jpg}
+%    \caption[Kết quả trung bình của MOS]{Kết quả trung bình của MOS với khoảng tin cậy $95\%$ cho ba chiều. 'Ours-$\gamma$' chỉ ra cường độ kiểm soát phong cách $\gamma$ của mô hình của chúng tôi. Mô hình của chúng tôi vượt trội đáng kể so với ExampleGesture tổng thể và có thể chỉnh sửa cường độ của các phong cách. Tham số $\gamma$ tăng và hai điểm số còn lại sẽ giảm một cách hợp lý.}
+%    \label{fig:mosscore}
+%\end{figure}
 
 
 Kết quả cho thấy rằng mô hình của chúng tôi tương tự như ExampleGesture về mặt phù hợp giữa phong cách cử chỉ của kết quả ở $\gamma=1$, và độ giống con người cũng như sự phù hợp với ngôn ngữ của chúng tôi vượt quá ExampleGesture. Trong khi đó, phong cách trở nên đáng kể hợp lý hơn khi $\gamma$ tăng, nhưng điểm của hai chiều khác giảm. Điều này cũng là hiển nhiên, tức là nếu cường độ của phong cách 'Old' quá cao, tay ít được nâng lên và toàn bộ chuỗi chuyển động có biên độ nhỏ, vì vậy nó trông ít giống con người hơn và ít phù hợp với ngôn ngữ nói. Chúng tôi cũng thấy rằng kết quả của việc tạo ra kiểm soát phong cách (\autoref{fig:mosscore}) đã giảm so với kết quả của việc trực tiếp tạo ra phong cách tương ứng với ngôn ngữ nói (\autoref{fig:mosscore}). Chúng tôi tin rằng việc kiểm soát một phong cách nói để tạo ra một phong cách của cử chỉ khác là một nhiệm vụ "khó khăn và xung đột" bởi vì phong cách nói và phong cách của cử chỉ vẫn liên quan và kết hợp với nhau.
