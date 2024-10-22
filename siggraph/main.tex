@@ -1,0 +1,81 @@
+\documentclass[sigconf]{acmart}
+
+\input{sections/_preamble.tex}
+\input{sections/_template_args.tex}
+
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{BunGesture : Diffusion Gesture Generation Model for Vietnamese language}
+
+
+%%
+%% Authors.
+\input{sections/0_authors.tex}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\input{sections/0_abstract.tex}
+
+%%
+%% Article info.
+\input{sections/0_article_info.tex}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{co-speech gesture synthesis, gesture generation, character animation, diffusion model, neural generative model, vietnamese}
+
+
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+\begin{teaserfigure}
+  \includegraphics[width=\textwidth]{figures/architecture_diffusion.png}
+  \caption{Gesture results automatically synthesized by our system for a beat-rich TED talk clip. The red words represent beats, and the red arrows indicate the movements of corresponding beat gestures.}
+  \Description{Enjoying the baseball game from the third-base
+  seats. Ichiro Suzuki preparing to bat.}
+  \label{fig:teaser}
+\end{teaserfigure}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+%%
+%% Sections.
+\input{sections/1_introduction}
+\input{sections/2_related_work}
+\input{sections/3_system_overview}
+\input{sections/4_data_preparation}
+\input{sections/5_gesture_generation}
+\input{sections/6_co-speech_gesture_inference}
+\input{sections/7_results}
+\input{sections/8_conclusion}
+
+%%
+%% Acknowledgments.
+\input{sections/x_ack.tex}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{reference}
+
+%%
+%% Appendix.
+\input{sections/9_appendix.tex}
+
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-sigconf.tex'.
