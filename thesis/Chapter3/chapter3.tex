@@ -28,8 +28,7 @@ Trước tiên chúng tôi trình bày chúng tôi trình bày tổng quan của
 \section{Tổng quan mô hình}
 \label{Overview}
 
-Mô hình của chúng tôi sẽ lấy dữ liệu đầu vào ở khung hình thứ $i$ và dự đoán khung hình thứ $i+1$. Dữ liệu của mỗi khung hình là một chuỗi $\tau$ Chúng tôi sẽ trình bày 
-% 
+Mô hình của chúng tôi sẽ lấy dữ liệu đầu vào ở khung hình thứ $i$ và dự đoán khung hình thứ $i+1$. Dữ liệu của mỗi khung hình là một chuỗi $\tau$ Chúng tôi sẽ trình bày
 
 \subsection{Kiến trúc khung xương của mô hình}
 \label{Skeleton}
@@ -65,12 +64,12 @@ Mỗi khung xương (skeleton) bao gồm $75$ khớp (joins) được đặt tê
 %\end{figure}
 
 
-\begin{figure}
-	\centering
-	\includegraphics[height=10cm]{images/MotionSeries.png}
-	\caption{Các tham số đã học.}
-	\label{fig:MotionSeries}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[height=10cm]{images/MotionSeries.png}
+%	\caption{Các tham số đã học.}
+%	\label{fig:MotionSeries}
+%\end{figure}
 
 Hệ thống của chúng tôi là một mô hình chuỗi thời gian dự đoán các biến trạng thái của nhân vật, quả bóng, v.v. trong khung hình tiếp theo $i + 1$ dựa trên các biến trong khung hình hiện tại $i$. Các đầu vào và đầu ra được thiết kế sao cho hệ thống của chúng tôi có thể tạo ra các tương tác gần gũi giữa nhân vật và một đối tượng, một môi trường và một nhân vật khác. Một số biến cho điều khiển và điều kiện là hướng ứng dụng: ở đây, chúng tôi chủ yếu mô tả trong thiết lập bóng rổ, mặc dù khái niệm này là chung và có thể áp dụng cho các chuyển động khác như các thao tác của đối tượng và tương tác với môi trường. Để đào tạo, các đặc trưng Cartesian trong đầu vào và đầu ra được chuyển đổi vào hệ tọa độ gốc của nhân vật tại khung hình $i$ và $i + 1$, tương ứng. Tất cả các đặc trưng sống trong một cửa sổ chuỗi thời gian dài 1 giây, trong đó dữ liệu của 13 điểm mẫu đồng đều (6 điểm trong tương lai và 6 điểm trong quá khứ trong cửa sổ 1 giây, và một điểm cho khung hình hiện tại) được thu thập. Cách các giá trị được trích xuất từ dữ liệu ghi hình chuyển động được giải thích trong Phụ lục A.1.
 
@@ -239,7 +238,7 @@ Hệ thống tự hồi quy cập nhật trạng thái pha của nhân vật cũ
 	\mathcal{P}_{t+\Delta t}^{\prime}=A_{t+\Delta t} \cdot I\left(R(\theta) \cdot \mathcal{P}_t, \mathcal{P}_{t+\Delta t}\right), \quad \theta=\Delta t \cdot 2 \pi \cdot F_{t+\Delta t}
 \end{equation}
 
-trong đó \(\Delta t\) là thời gian delta của khung hình, \(R\) là ma trận quay 2D, và \(I\) là nội suy tuyến tính hình cầu với trọng số 0.5 để cho phép pha trộn góc pha và độ lớn một cách riêng biệt. Việc cập nhật pha theo cách này buộc tần số tiến triển pha theo hướng mà mạng nơ-ron đã dự đoán. Tần số là một giá trị dương đồng nhất dễ dự đoán và giữ cho mạng di chuyển qua không gian pha theo một cách một chiều (xem Hình 6). Sơ đồ này ngăn chuyển động trở nên cứng nhắc hoặc bị kẹt theo thời gian, điều này là một vấn đề phổ biến được quan sát thấy đối với các bộ điều khiển nhân vật dựa trên dữ liệu.
+trong đó $\Delta t$ là thời gian delta của khung hình, $R$ là ma trận quay 2D, và \(I\) là nội suy tuyến tính hình cầu với trọng số 0.5 để cho phép pha trộn góc pha và độ lớn một cách riêng biệt. Việc cập nhật pha theo cách này buộc tần số tiến triển pha theo hướng mà mạng nơ-ron đã dự đoán. Tần số là một giá trị dương đồng nhất dễ dự đoán và giữ cho mạng di chuyển qua không gian pha theo một cách một chiều (xem Hình 6). Sơ đồ này ngăn chuyển động trở nên cứng nhắc hoặc bị kẹt theo thời gian, điều này là một vấn đề phổ biến được quan sát thấy đối với các bộ điều khiển nhân vật dựa trên dữ liệu.
 
 Mạng gating chuyên gia học cách pha trộn 8 bộ trọng số chuyên gia và bao gồm hai lớp ẩn có kích thước 128. Mạng tạo chuyển động sử dụng hai lớp ẩn có kích thước 512. Tỉ lệ dropout được đặt thành 0.3, kích thước lô là 32, và cả tốc độ học và suy giảm trọng số đều được khởi tạo là \(10^{-4}\). Chúng tôi sử dụng bộ tối ưu AdamWR [Loshchilov và Hutter 2019] với lịch trình giảm nhiệt cosin và đặt số lần khởi động lại là 10, hệ số khởi động lại là 2.0, và huấn luyện mô hình trong 150 epoch. Việc huấn luyện mỗi mô hình yêu cầu từ 12 đến 48 giờ. Mạng được triển khai trong PyTorch và tạo ra một tệp ONNX có thể được chạy trong Unity để suy diễn bằng cách sử dụng thư viện Barracuda của nó.
 
