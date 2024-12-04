@@ -1,20 +1,17 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="_gRGWOFDqU3hSQWJzQTY">
-    <mxGraphModel dx="233" dy="1262" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="1" shadow="0">
+    <mxGraphModel dx="405" dy="1382" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="vsRgP92jTyw3C7przkWq-53" value="Sampling (Denoise)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Segoe UI;" parent="1" vertex="1">
-          <mxGeometry x="429.5" y="-700" width="153" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="vsRgP92jTyw3C7przkWq-59" value="$$\sigma_t \cdot \mathbf{z}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#FF8000;" parent="1" vertex="1">
-          <mxGeometry x="575.5" y="-671" width="30" height="30" as="geometry" />
+          <mxGeometry x="585.5" y="-670" width="50" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="vsRgP92jTyw3C7przkWq-60" value="$$s_{\theta&#39;}(x)+$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#009900;" parent="1" vertex="1">
-          <mxGeometry x="508.5" y="-671" width="50" height="30" as="geometry" />
+        <mxCell id="vsRgP92jTyw3C7przkWq-60" value="$$ \nabla_\mathbf{x} \log p(\mathbf{x})+$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#009900;" parent="1" vertex="1">
+          <mxGeometry x="475.5" y="-670" width="110" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vsRgP92jTyw3C7przkWq-95" value="$$\mathbf{x}_{\text{sample}} = $$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#6600CC;" parent="1" vertex="1">
-          <mxGeometry x="449.5" y="-670" width="30" height="30" as="geometry" />
+          <mxGeometry x="400" y="-670" width="70" height="30" as="geometry" />
         </mxCell>
         <mxCell id="vsRgP92jTyw3C7przkWq-158" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">

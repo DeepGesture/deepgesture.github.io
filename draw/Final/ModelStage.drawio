@@ -1,4 +1,4 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.1 Chrome/128.0.6613.186 Electron/32.2.6 Safari/537.36" version="25.0.1">
   <diagram name="Page-1" id="_gRGWOFDqU3hSQWJzQTY">
     <mxGraphModel dx="1012" dy="1805" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="1" shadow="0">
       <root>
@@ -133,7 +133,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="0vuY_zB4OoL36OcjDB_b-42" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;$$G_{\theta}(\mathbf{x}_t, t, c)$$&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="0vuY_zB4OoL36OcjDB_b-42" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;$$f_{\theta}(\mathbf{x}_t, t, c)$$&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="560.92" y="-900" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="0vuY_zB4OoL36OcjDB_b-44" value="$$t \rightarrow 1$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -171,7 +171,7 @@
         <mxCell id="0vuY_zB4OoL36OcjDB_b-62" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;3. Denoise&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Segoe UI;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="549.9200000000001" y="-830" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0vuY_zB4OoL36OcjDB_b-63" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;$$G_{\theta}(\mathbf{x}_t, t, c_{\varnothing})$$&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="0vuY_zB4OoL36OcjDB_b-63" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;$$f_{\theta}(\mathbf{x}_t, t, c_{\varnothing})$$&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="559.9200000000001" y="-827" width="80" height="20.5" as="geometry" />
         </mxCell>
         <mxCell id="0vuY_zB4OoL36OcjDB_b-64" value="$$t \rightarrow 1$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -186,11 +186,11 @@
         <mxCell id="0vuY_zB4OoL36OcjDB_b-81" value="$$T \rightarrow 1$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="365" y="-750" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="0vuY_zB4OoL36OcjDB_b-82" value="$$c = [ s, e, a ]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="0vuY_zB4OoL36OcjDB_b-82" value="$$c = [ \mathbf{s}, \mathbf{e}, \mathbf{a} ,\mathbf{v}]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="472.3999999999999" y="-900" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="0vuY_zB4OoL36OcjDB_b-84" value="$$c_{\varnothing} = [ \varnothing, \varnothing, a ]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="459.9200000000001" y="-830" width="84.96" height="30" as="geometry" />
+        <mxCell id="0vuY_zB4OoL36OcjDB_b-84" value="$$c_{\varnothing} = [ \varnothing, \varnothing, \mathbf{a}, \mathbf{v} ]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="454.44000000000005" y="-830" width="84.96" height="30" as="geometry" />
         </mxCell>
         <mxCell id="0vuY_zB4OoL36OcjDB_b-87" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="0vuY_zB4OoL36OcjDB_b-62" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -231,7 +231,7 @@
         <mxCell id="0vuY_zB4OoL36OcjDB_b-100" value="&lt;b&gt;3.1. Dimension reduction&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Segoe UI;" parent="1" vertex="1">
           <mxGeometry x="120" y="-600" width="110" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0vuY_zB4OoL36OcjDB_b-104" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;$$G_{\theta}(\mathbf{x}_t, t, c)$$&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="0vuY_zB4OoL36OcjDB_b-104" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;$$f_{\theta}(\mathbf{x}_t, t, c)$$&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="158.99999999999994" y="-650" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="0vuY_zB4OoL36OcjDB_b-107" value="$$D \rightarrow 256$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
