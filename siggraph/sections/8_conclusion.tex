@@ -1,38 +1,27 @@
-
-
-%In this paper, we present a rhythm- and semantics-aware co-speech gesture synthesis system that can generate realistic gestures to accompany a speech.  For the rhythm, we utilize a segmentation pipeline that explicitly enforces beat alignment to ensure the temporal coherence between the speech and gestures. For the semantics, we successfully disentangle both low- and high-level neural embeddings of speech and motion based on linguistic theory. Then, we devise two neural interpreters to build correspondence between the hierarchical embeddings of the speech and the motion. To evaluate the rhythmic performance, we propose a new objective metric, PMB, to measure the percentage of matched beats. Our method outperforms state-of-the-art systems both objectively and subjectively, as indicated by the MAJE, MAD, FGD, PMB metrics, and human feedback. The cross-language synthesis experiment demonstrates the robustness of our system for rhythmic perception. In terms of application, We show our system's flexible and effective style editing ability that allows editing of several directorial styles of the generated gestures without manual annotation of the data. Lastly, we have systematically conducted detailed ablation studies that justify the design choices of our system.
-%
-%There is still room for improvement in our current research. 
-%First, our beat detection algorithm is not perfect. We have assumed that the gesture beats coincide with the verbal stresses, but in practice, it has been observed that gesture beats may not always correspond to stressed syllables \cite{mcclave1994gestural}. 
-%How to accurately model the complex gestural rhythm is an exciting topic for further exploration.
-%Second, our system can only capture semantics-related gestures repeatedly appearing in the dataset. Learning semantically meaningful gestures that are sparsely distributed in a dataset and allowing a user to control the gesture corresponding to specific semantics is still challenging.
-%Third, our system hypothesizes that each audio onset should correspond to a beat gesture. However, in reality, humans do not make a beat gesture at every point of verbal emphasis. We believe our framework can be easily augmented by employing another model to predict whether the character should gesture at a specific moment, as suggested by [Speech2Properties2Gestures], and replacing the corresponding lexeme with the silent lexeme.
-%Finally, we only consider the upper body gestures in this work. Generating full-body gestures that include locomotion, facial expressions, finger motions, and the temporal and semantic correspondence among them is a valuable topic for future exploration.
-
-
 \section{STRENGTHS AND LIMITATIONS}
 
-The DeepGesture model offers several significant advantages, contributing meaningfully to the development of more natural and flexible human-machine interaction systems. However, there remain some limitations that require future improvements for enhanced effectiveness.
+The proposed DeepGesture model introduces several key advantages that advance the development of more natural and expressive human-machine interaction systems. Nevertheless, certain limitations remain and represent important directions for future work.
 
 \textbf{Strengths:}
 
 \begin{itemize}
-	\item \textbf{High realism:} Based on the gesture generation results, the DeepGesture model produces gestures with a high degree of human-likeness. The generated gestures reflect the nuances and rhythm of speech, enabling the system to synchronize effectively with the emotional and semantic content of the speech.
+	\item \textbf{High realism:} DeepGesture generates gestures that exhibit strong human-likeness, closely mirroring the timing and rhythm of natural speech. The model effectively synchronizes gestures with both the emotional tone and semantic content of speech.
 	
-	\item \textbf{Good generalization ability:} Thanks to the denoising model's capability to cover low-probability data points, the model can infer gestures for situations and emotional states not present in the training dataset, demonstrating potential for deployment in diverse real-world contexts.
+	\item \textbf{Robust generalization:} Leveraging the denoising capabilities of diffusion models, DeepGesture can generate gestures for speech and emotional contexts not encountered during training, indicating strong potential for real-world deployment across varied domains.
 	
-	\item \textbf{Controllability over multiple attributes:} The diffusion model allows control over various emotional states and supports interpolation between different emotions.
+	\item \textbf{Multidimensional controllability:} The diffusion-based architecture supports flexible control over multiple attributes, including the interpolation and modulation of emotional states, enabling expressive and context-sensitive gesture synthesis.
 \end{itemize}
 
 \textbf{Limitations:}
 
 \begin{itemize}
-	\item The model currently lacks real-time inference capabilities and requires multiple steps to generate the final output.
+	\item \textbf{Lack of real-time inference:} The current implementation is not optimized for real-time execution and requires multi-step generation followed by offline rendering.
 	
-	\item The feature representation with $D=1141$ is processed as an image, which does not fully capture motion characteristics.
+	\item \textbf{Suboptimal motion representation:} The gesture feature representation with $D=1141$ dimensions is processed as a 2D image structure, which may not fully capture temporal motion dynamics and biomechanical features.
 	
-	\item Dependence on high-quality input data: The model requires clear and high-quality speech input to ensure accurate gesture generation. When the input speech is noisy or contains ambiguous emotional variations, the accuracy of the generated gestures may degrade.
+	\item \textbf{Sensitivity to input quality:} The model’s performance heavily depends on clean, high-quality speech input. In cases of noisy or emotionally ambiguous audio, the gesture output may be less accurate or less expressive.
 \end{itemize}
+
 
 \section{CONCLUSION}
 \label{sec:conclusion}
@@ -41,29 +30,35 @@ The DeepGesture model offers several significant advantages, contributing meanin
 
 \subsection{Achieved Results}
 
-This work has successfully developed and evaluated the gesture generation model DeepGesture, a system capable of producing highly natural gestures that convey a human-like impression. A notable highlight of the model is its precise synchronization between gestures and the emotional content of the input speech, with the ability to generalize beyond the training data. This means the diffusion-based model is not solely dependent on the learned gesture data but also demonstrates strong generalization capabilities, enabling it to generate gestures for low-probability speech and contextual inputs.
+This work presents DeepGesture, a gesture generation model that achieves high realism and naturalness through diffusion-based modeling. A primary contribution is its precise synchronization between generated gestures and the emotional content of speech, extending generalization beyond the training distribution. The model demonstrates the ability to produce context-aware gestures even in low-probability speech scenarios.
 
-Another significant aspect of this research is the expansion of input modalities. The paper does not limit itself to gestures, speech, and emotion labels but also integrates text-to-speech tools to convert speech into text. By incorporating textual features, the model can better capture the semantic aspects of gestures, providing additional context and enabling the system to produce more appropriate and context-aware gestures.
+Another major advancement lies in expanding input modalities. In addition to speech, gesture, and emotion labels, the model incorporates textual features obtained through automatic transcription. This multimodal approach enables the system to capture the semantic context of input speech more effectively and generate more appropriate gestures.
 
+\subsection{Future Work}
 
-\subsection{Future Research and Development Directions}
-
-Looking ahead, there are several promising directions to improve and expand the DeepGesture gesture generation model to better meet practical requirements and enhance the system’s applicability. Key directions include:
+Several promising directions can further improve DeepGesture and expand its applicability in real-world settings:
 
 \begin{itemize}
-	\item \textbf{Optimizing the model for real-time inference:} Currently, the model requires speech sequences to be segmented, and the generated results must be imported into Unity for rendering. The paper aims to develop real-time systems in the future to enable interactive applications and enhance the model's practicality.
+	\item \textbf{Real-time inference optimization:} Future efforts will focus on transforming DeepGesture into a real-time gesture generation system by reducing dependencies on offline rendering tools (e.g., Unity) and optimizing latency for interactive applications.
 	
-	\item \textbf{Optimizing the sampling process and reducing sampling steps:} At present, the gesture generation process requires a relatively high number of sampling steps, which impacts the system’s speed and efficiency. Optimizing the process to reduce sampling steps without degrading gesture quality would enable faster responses suitable for real-time applications.
+	\item \textbf{Efficient sampling:} The current diffusion process involves many sampling steps. Reducing these without compromising generation quality remains an important area for improving system responsiveness.
 	
-	\item \textbf{Integrating and experimenting with new embedding techniques:} Using novel embedding methods to diversify the input information may help the model better understand and reflect the context and emotions of speech. This development path would also enhance the system’s ability to generate semantically appropriate gestures across different languages.
+	\item \textbf{Advanced embeddings:} Incorporating richer embedding techniques-potentially combining speech, text, prosody, and affective signals-could further enhance gesture appropriateness across different languages and cultural contexts.
 	
-	\item \textbf{Expanding to new languages:} Currently, the model primarily operates with English speech data. Extending the model to support gesture generation for various languages and cultures would be a significant advancement, making the system more diverse and widely applicable.
+	\item \textbf{Multilingual generalization:} Extending the model to support multiple languages will broaden its applicability and ensure culturally appropriate gesture behavior.
 	
-	\item \textbf{Combining with the DeepPhase model \cite{starke2022deepphase} to enable real-time gesture generation:} The paper aims to integrate DeepGesture with the DeepPhase model to develop systems capable of real-time gesture responses, suitable for natural interaction scenarios such as human-machine dialogue and voice-controlled systems. The goal is to learn phase-related motion features to extract motion characteristics more effectively, instead of treating features as image-like representations as done in the current model.
+	\item \textbf{Integration with phase-aware models:} A future integration with the DeepPhase model~\cite{starke2022deepphase} is planned to improve the representation of temporal dynamics and support real-time applications via phase-informed motion generation.
 	
-	\item \textbf{Improving objective evaluation with automatic metrics:} To reduce reliance on subjective evaluations, it is necessary to develop and incorporate reliable automatic evaluation methods, enabling the model to self-assess and adjust based on objective indicators.
+	\item \textbf{Improved automatic metrics:} To reduce reliance on subjective human evaluation, ongoing work aims to design robust automatic evaluation metrics that better reflect human perception and can serve as internal feedback mechanisms during training and inference.
 \end{itemize}
-%
+
+\subsection{Closing Remarks}
+
+Through experimental validation and qualitative analysis, the DeepGesture model -- extending DiffuseStyleGesture-demonstrates the ability to generate realistic gestures for both in -- distribution and out-of-distribution speech, including synthetic voices such as that of Steve Jobs (see \autoref{appendix3}). This highlights the promise of diffusion-based approaches in modeling complex, expressive, and low-frequency gesture behaviors.
+
+Additionally, we contribute open-source code, including rendering pipelines and data processing tools built on Unity, available on GitHub. These resources provide a solid foundation for future development and reproducibility. The integration of text alongside speech and emotion into the gesture generation pipeline marks an important step toward building fully multimodal agents, capable of more intuitive and human-like interactions in diverse application domains.
+
+
 %\subsection{Thesis Contributions}
 %\label{sec:contribution}
 %
@@ -85,9 +80,3 @@ Looking ahead, there are several promising directions to improve and expand the 
 %	\item \textbf{Outlining future development directions:} Based on the diffusion model and a deep understanding of the gesture generation process, we proposes integrating phase-based gesture generation models with advanced processing and feature extraction algorithms to optimize the quality and contextual alignment of generated gestures. This development direction opens up opportunities for significant improvements in gesture interaction with complex contextual elements such as facial expressions, prosody, and emotional dynamics, laying the groundwork for advancements in human-machine communication and related fields.
 %\end{itemize}
 %
-
-\subsection{Closing Remarks}
-
-Through experiments and analysis of the generation results, the DeepGesture model developed in this work—an extension of the DiffuseStyleGesture model—demonstrates the ability to generate realistic gestures for both in-distribution and out-of-distribution voices, including a synthesized voice of Steve Jobs presented in the Appendix. This proves the potential of diffusion models for generating gestures in low-probability data contexts.
-
-Furthermore, we contributes modified source code on GitHub, including rendering and data processing pipelines based on Unity, providing a solid foundation for future research and improvements to the DeepGesture model. The integration of textual input into the gesture generation process also represents a breakthrough, paving the way for applications in domains requiring more natural and effective human-computer interaction.

@@ -286,7 +286,7 @@ $c_{\varnothing} = [\mathbf{s}, \mathbf{e}_{2}, \mathbf{a}, \mathbf{v}]$:
 	\end{enumerate}
 \end{algorithm}
 
-\autoref{alg:trainingDeepGesture} trains the DeepGesture model by first computing the required values and hyper-parameters—$\gamma$, $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, $\sqrt{\bar{\alpha}_t}$, and $\boldsymbol{\epsilon}_t$—for every timestep $t$ (1 … $T$).  
+\autoref{alg:trainingDeepGesture} trains the DeepGesture model by first computing the required values and hyper-parameters -- 	$\gamma$, $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, $\sqrt{\bar{\alpha}_t}$, and $\boldsymbol{\epsilon}_t$ -- for every timestep $t$ (1 … $T$).  
 The initial label $\mathbf{x}_0$, representing the ground-truth gesture, is drawn from the normalized data distribution.  
 Random Bernoulli masks $c_1$ and $c_2$ emulate different conditions (gesture, emotion, speech, or text), with one mask possibly lacking emotion information.  
 Noise is then added to create the noisy gesture $\mathbf{x}_t$.  
@@ -305,7 +305,7 @@ This cycle repeats until the model converges, yielding the optimal parameters $\
 \end{figure}
 
 To generate gestures of arbitrary length, the original sequence is segmented into clips of length $M$.
-During training, the seed gesture can be chosen by randomly selecting a gesture from the dataset or by averaging the clipped segments—here, the mean rotation angles are used.  
+During training, the seed gesture can be chosen by randomly selecting a gesture from the dataset or by averaging the clipped segments-here, the mean rotation angles are used.  
 Generated frames are processed sequentially, with the last $N=8$ frames taken as the seed for the next iteration.  
 For each clip, the gesture $\bx_{t}$ is denoised via $\hat{\bx}_{0} = G_{\theta'}(\bx_{t}, t, c)$; noise is re-added to obtain $\bx_{t-1}$, and the procedure repeats until $t=1$, yielding $\bx_{0}$.
 

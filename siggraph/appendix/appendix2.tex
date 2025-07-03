@@ -1,8 +1,9 @@
+\appendix
 \section{BVH Data Processing Pipeline}
 \label{appendix:BVHData}
 
 \subsection{Skeleton Structure of a Character}
-\label{appendix:BVHData:skeleton}
+\label{appendix:BVHSkeleton}
 
 Some skeleton joint names from the $75$ motion skeletons include:
 
@@ -39,7 +40,7 @@ Some skeleton joint names from the $75$ motion skeletons include:
 \end{figure}
 
 \subsection{Structure of a BVH File}
-\label{appendix:BVHData:BVHStructure}
+\label{appendix:BVHStructure}
 
 A BVH (Biovision Hierarchy) file is a data format that contains information about the skeleton structure and motion data of bones in a skeletal system. A BVH file consists of two main parts: the skeleton hierarchy declaration and the bone motion data.
 
@@ -121,7 +122,7 @@ To compute the motion coordinates of a character, the following operation is app
 
 
 \subsection{Conversion from Euler Angles to Quaternions}
-\label{appendix:BVHData:QuaternionConvert}
+\label{appendix:BVHQuaternion}
 
 To avoid Gimbal lock, Euler angle data must be converted into quaternion representation. Each bone's rotation from Euler angles in the ZYX order is represented as a quaternion $q = (q_w, q_x, q_y, q_z)$, with components calculated as follows:
 

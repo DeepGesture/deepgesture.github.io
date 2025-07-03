@@ -27,7 +27,7 @@ In stage {1. Data Preprocessing} (\autoref{fig:CommonStage}), gesture, speech, a
 
 For \textbf{text data}: we use the $\texttt{nltk}$ library for tokenization and $\texttt{contractions}$ to normalize contracted words.
 
-One contribution of we is to convert the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \cite{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, we use $\texttt{gensim}$ to generate word2vec embeddings.
+One of our contributions is converting the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \cite{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, we use $\texttt{gensim}$ to generate word2vec embeddings.
 
 \textbf{Gesture data} consists of BVH (BioVision Motion Capture) files captured via motion capture systems. BVH files include two components: Hierarchy and Motion. Specifically:
 
@@ -37,7 +37,7 @@ One contribution of we is to convert the speech data available in ZeroEGGS using
 	\item \texttt{MOTION}: a sequence of frames, each containing motion data representing changes of all $75$ bones as defined by the \texttt{CHANNELS} in the \texttt{HIERARCHY}.
 \end{itemize}
 
-The model in we converts Euler rotation angles to quaternion rotation angles, where a quaternion is a 4-dimensional vector.
+Our model converts Euler rotation angles to quaternion rotation angles, where a quaternion is a 4-dimensional vector.
 
 \begin{equation} \label{eq:gesturevector}
 	\mathbf{g} = \Big[ \mathbf{p}_{\text{root}},  \mathbf{r}_{\text{root}},
@@ -63,7 +63,7 @@ Here, each $\mathbf{g} \in \mathbb{R}^{1141}$ includes:
 		\item $\mathbf{d}_{\text{gaze}} \in \mathbb{R}^3$: gaze direction
 \end{itemize}}
 
-The original gesture sequences in Euler angles are converted to radians, then converted from Euler to Quaternion as detailed in \autoref{appendix:BVHData:QuaternionConvert}.
+The original gesture sequences in Euler angles are converted to radians, then converted from Euler to Quaternion as detailed in \autoref{appendix:BVHQuaternion}.
 
 \textbf{Speech data}: $\mathbf{a}_{\text{raw}} \in \mathbb{R}^{ \text{length } }$ is raw speech sampled at 16000 Hz, trimmed into segments $\mathbf{a} \in \mathbb{R}^{64000}$ corresponding to 4 seconds. The paper uses \texttt{ffmpeg-normalize} to normalize volume to a level lower than the original.
 
@@ -93,7 +93,7 @@ The training process is implemented in the open-source repository: \hyperlink{ht
 
 To visualize the gesture generation process from model output, we use Unity in stage \textit{7. Rendering} (\autoref{fig:CommonStage}), extending code from the DeepPhase model \cite{starke2022deepphase}. The generated output is in BVH (BioVision Motion Capture) format. In Unity, the author adds C-Sharp scripts to render gestures based on coordinates and labels, with bone positions and rotations represented using quaternions.
 
-Rendering details are presented in \autoref{Appendix3}.
+Rendering details are presented in \autoref{appendix3}.
 
 The Unity project source code is available at: \hyperlink{https://github.com/DeepGesture/deepgesture-unity}{Github/DeepGesture-Unity}
 \footnote{\url{https://github.com/DeepGesture/deepgesture-unity}}.
