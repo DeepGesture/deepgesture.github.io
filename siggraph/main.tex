@@ -2,6 +2,8 @@
 
 \input{sections/_preamble.tex}
 \input{sections/_template_args.tex}
+\input{sections/_command.tex}
+\input{sections/_package.tex}
 
 
 %%
@@ -29,15 +31,16 @@
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{co-speech gesture synthesis, gesture generation, character animation, diffusion model, neural generative model, vietnamese}
+\keywords{co-speech gesture synthesis, gesture generation, character animation, diffusion model, neural generative model}
 
 
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
 %% page.
 \begin{teaserfigure}
-  \includegraphics[width=\textwidth]{figures/architecture_diffusion.png}
-  \caption{Gesture results automatically synthesized by our system for a beat-rich TED talk clip. The red words represent beats, and the red arrows indicate the movements of corresponding beat gestures.}
+	\centering
+  \includegraphics[width=\textwidth]{images/ListOfEmotion.png}
+  \caption{Gesture results automatically synthesized by our system for a beat-rich TED talk clip.}
   \Description{Enjoying the baseball game from the third-base
   seats. Ichiro Suzuki preparing to bat.}
   \label{fig:teaser}
@@ -52,12 +55,12 @@
 %% Sections.
 \input{sections/1_introduction}
 \input{sections/2_related_work}
-\input{sections/3_system_overview}
-\input{sections/4_data_preparation}
-\input{sections/5_gesture_generation}
-\input{sections/6_co-speech_gesture_inference}
-\input{sections/7_results}
-\input{sections/8_conclusion}
+%\input{sections/3_system_overview}
+%\input{sections/4_data_preparation}
+%\input{sections/5_gesture_generation}
+%\input{sections/6_co-speech_gesture_inference}
+%\input{sections/7_results}
+%\input{sections/8_conclusion}
 
 %%
 %% Acknowledgments.
