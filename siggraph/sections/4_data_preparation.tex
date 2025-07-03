@@ -18,16 +18,16 @@
 	\Description{Gesture sample of difference emotion}
 \end{figure}
 
-This thesis uses the ZeroEGGS dataset \cite{ghorbani2022zeroeggszeroshotexamplebasedgesture}, a motion capture dataset designed for research and development of gesture generation models. It includes 67 monologue clips performed by a female motion capture actor, with a total duration of 135 minutes. The monologues are annotated with 6 different emotions: $\texttt{Happy}$, $\texttt{Sad}$, $\texttt{Neutral}$, $\texttt{Old}$, $\texttt{Relaxed}$, and $\texttt{Angry}$, enabling simulation of various emotional states in gestures and body movements. ZeroEGGS provides a rich platform for studying the integration of speech and dynamic gestures, supporting the development of models capable of adapting gestures according to emotions and text semantics.
+This work uses the ZeroEGGS dataset \cite{ghorbani2022zeroeggszeroshotexamplebasedgesture}, a motion capture dataset designed for research and development of gesture generation models. It includes 67 monologue clips performed by a female motion capture actor, with a total duration of 135 minutes. The monologues are annotated with 6 different emotions: $\texttt{Happy}$, $\texttt{Sad}$, $\texttt{Neutral}$, $\texttt{Old}$, $\texttt{Relaxed}$, and $\texttt{Angry}$, enabling simulation of various emotional states in gestures and body movements. ZeroEGGS provides a rich platform for studying the integration of speech and dynamic gestures, supporting the development of models capable of adapting gestures according to emotions and text semantics.
 
 \subsection{Data Preprocessing}
 \label{sec:Preprocessing}
 
 In stage {1. Data Preprocessing} (\autoref{fig:CommonStage}), gesture, speech, and text data are read and processed to be represented as vectors or matrices containing information derived from raw data.
 
-For \textbf{text data}: the thesis uses the $\texttt{nltk}$ library for tokenization and $\texttt{contractions}$ to normalize contracted words.
+For \textbf{text data}: we uses the $\texttt{nltk}$ library for tokenization and $\texttt{contractions}$ to normalize contracted words.
 
-One contribution of the thesis is to convert the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \cite{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, the thesis uses $\texttt{gensim}$ to generate word2vec embeddings.
+One contribution of we is to convert the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \cite{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, we uses $\texttt{gensim}$ to generate word2vec embeddings.
 
 \textbf{Gesture data} consists of BVH (BioVision Motion Capture) files captured via motion capture systems. BVH files include two components: Hierarchy and Motion. Specifically:
 
@@ -37,7 +37,7 @@ One contribution of the thesis is to convert the speech data available in ZeroEG
 	\item \texttt{MOTION}: a sequence of frames, each containing motion data representing changes of all $75$ bones as defined by the \texttt{CHANNELS} in the \texttt{HIERARCHY}.
 \end{itemize}
 
-The model in the thesis converts Euler rotation angles to quaternion rotation angles, where a quaternion is a 4-dimensional vector.
+The model in we converts Euler rotation angles to quaternion rotation angles, where a quaternion is a 4-dimensional vector.
 
 \begin{equation} \label{eq:gesturevector}
 	\mathbf{g} = \Big[ \mathbf{p}_{\text{root}},  \mathbf{r}_{\text{root}},
@@ -91,7 +91,7 @@ The training process is implemented in the open-source repository: \hyperlink{ht
 \subsection{Rendering Process in Unity}
 \label{sec:Render}
 
-To visualize the gesture generation process from model output, the thesis uses Unity in stage \textit{7. Rendering} (\autoref{fig:CommonStage}), extending code from the DeepPhase model \cite{starke2022deepphase}. The generated output is in BVH (BioVision Motion Capture) format. In Unity, the author adds C-Sharp scripts to render gestures based on coordinates and labels, with bone positions and rotations represented using quaternions.
+To visualize the gesture generation process from model output, we uses Unity in stage \textit{7. Rendering} (\autoref{fig:CommonStage}), extending code from the DeepPhase model \cite{starke2022deepphase}. The generated output is in BVH (BioVision Motion Capture) format. In Unity, the author adds C-Sharp scripts to render gestures based on coordinates and labels, with bone positions and rotations represented using quaternions.
 
 Rendering details are presented in \autoref{Appendix3}.
 

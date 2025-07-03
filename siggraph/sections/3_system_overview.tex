@@ -46,10 +46,10 @@ In the \textit{Stage 2: Feature Processing} step (\autoref{fig:CommonStage}), th
 	\item \textbf{Text} $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$:  
 	As discussed in \autoref{subsec:TypicalMethod}, methods such as \textit{MDM} \cite{tevet2022human} and \textit{DiffuseStyleGesture+} \cite{yang2022DiffuseStyleGestureplus} use gesture-descriptive prompts, similar to those used in Midjourney, as input for the model. However, such prompts are mainly used to cluster gestures rather than align them semantically. 
 	
-	In contrast, this thesis treats text as a semantic feature that aligns specific segments of text with corresponding gesture segments for digital human generation. Therefore, the contribution in this stage is to use speech data that has already been preprocessed (see \autoref{sec:Preprocessing}) to obtain transcribed text. The FastText model \cite{bojanowski2017enriching} is used to embed this text into vectors, which are then temporally aligned with the number of gesture frames, resulting in a text matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. For segments without text, zero vectors are used; for segments with vocabulary, the corresponding embedding is assigned for each gesture frame.
+	In contrast, we treats text as a semantic feature that aligns specific segments of text with corresponding gesture segments for digital human generation. Therefore, the contribution in this stage is to use speech data that has already been preprocessed (see \autoref{sec:Preprocessing}) to obtain transcribed text. The FastText model \cite{bojanowski2017enriching} is used to embed this text into vectors, which are then temporally aligned with the number of gesture frames, resulting in a text matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. For segments without text, zero vectors are used; for segments with vocabulary, the corresponding embedding is assigned for each gesture frame.
 	
 	\item \textbf{Speech} $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$:  
-	All speech data in `.wav` format is downsampled to $16~\mathrm{kHz}$. The speech corresponding to the gesture segment (4 seconds) is extracted as a waveform vector $\mathbf{a} \in \mathbb{R}^{64000}$. Following DiffuseStyleGesture, this thesis uses the pre-trained WavLM Large model \cite{Chen_2022} to embed the raw waveform into a high-dimensional vector representing acoustic features. Linear interpolation is then applied to temporally align the latent features from WavLM at $20~\text{fps}$, resulting in the speech matrix $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$.
+	All speech data in `.wav` format is downsampled to $16~\mathrm{kHz}$. The speech corresponding to the gesture segment (4 seconds) is extracted as a waveform vector $\mathbf{a} \in \mathbb{R}^{64000}$. Following DiffuseStyleGesture, this work uses the pre-trained WavLM Large model \cite{Chen_2022} to embed the raw waveform into a high-dimensional vector representing acoustic features. Linear interpolation is then applied to temporally align the latent features from WavLM at $20~\text{fps}$, resulting in the speech matrix $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$.
 	
 	\item \textbf{Emotion} $\mathbf{e} \in \mathbb{R}^{6}$:  
 	Emotion is represented by one of six classes: $\texttt{Happy}$, $\texttt{Sad}$, $\texttt{Neutral}$, $\texttt{Old}$, $\texttt{Relaxed}$, and $\texttt{Angry}$.  
@@ -146,7 +146,7 @@ The attention mechanism is formulated as follows:
 	\operatorname{Attention}(\mathbf{Q}, \mathbf{K}, \mathbf{V}, \mathbf{Mask})=\operatorname{softmax}\left(\frac{\mathbf{Q} \mathbf{K}^{T}+\mathbf{Mask}}{\sqrt{C}}\right) \mathbf{V}
 \end{equation}
 
-In the Attention formula above, $\mathbf{Q}$ (Query), $\mathbf{K}$ (Key), and $\mathbf{V}$ (Value) are matrices obtained by passing the input through linear transformation matrices: $\mathbf{Q} = {X} \mathbf{W}_Q$, $\mathbf{K} = {X} \mathbf{W}_K$, $\mathbf{V} = {X} \mathbf{W}_V$. The input $X$ is a matrix representing a sequence of $M$ frames, where each frame is a concatenated vector composed of various feature vectors, including seed gestures, text, speech, emotion, and the gesture $\bx_t$ that the thesis aims to denoise. The term $\sqrt{C}$ is a normalization \textbf{c}onstant that accounts for the dimensionality of the matrices. 
+In the Attention formula above, $\mathbf{Q}$ (Query), $\mathbf{K}$ (Key), and $\mathbf{V}$ (Value) are matrices obtained by passing the input through linear transformation matrices: $\mathbf{Q} = {X} \mathbf{W}_Q$, $\mathbf{K} = {X} \mathbf{W}_K$, $\mathbf{V} = {X} \mathbf{W}_V$. The input $X$ is a matrix representing a sequence of $M$ frames, where each frame is a concatenated vector composed of various feature vectors, including seed gestures, text, speech, emotion, and the gesture $\bx_t$ that we aims to denoise. The term $\sqrt{C}$ is a normalization \textbf{c}onstant that accounts for the dimensionality of the matrices. 
 
 The Local-Cross Attention mechanism is controlled to focus only on local motion features of gestures and features in neighboring frames.
 
@@ -203,7 +203,7 @@ After Cross-Local Attention, the model is forwarded through a linear layer, as i
 \end{figure}
 
 Following MDM \cite{tevet2022human}, the vector $\mathbf{z}_{tk}$ is the first token that encodes information for the entire frame sequence, analogous to the $\texttt{CLS}$ token in BERT \cite{devlin2019bertpretrainingdeepbidirectional}, which summarizes an entire text segment.
-Here, the thesis uses $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\autoref{eq:ConditionConcat}), as the first token representing global features for the whole sequence of $M$ frames.
+Here, we uses $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\autoref{eq:ConditionConcat}), as the first token representing global features for the whole sequence of $M$ frames.
 
 \begin{equation}
 	\mathbf{X}_{0} = \operatorname{Transformer\ Encoder}\bigl(\operatorname{concat}(\mathbf{z}_{tk} \;\|\; \mathbf{h}^{1:M}_{t})\bigr)
@@ -228,7 +228,7 @@ The final rendering step is presented in \autoref{sec:Render}.
 
 The preceding steps enable the model to learn gesture generation. To incorporate emotions across different contexts, each emotion is parameterized and varied so that the predictions faithfully express the designated affect.
 
-Analogous to conditional denoising models \cite{ho2022classifier, tevet2022human}, the thesis uses the condition vector
+Analogous to conditional denoising models \cite{ho2022classifier, tevet2022human}, we uses the condition vector
 $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$,  
 where $\mathbf{s}$ is the seed gesture, $\mathbf{e}$ the emotion, $\mathbf{a}$ the associated speech, and $\mathbf{v}$ the text.
 The conditional diffusion model injects $c$ at every timestep $t$ in the denoising network $\text{G}_\theta(\bx_{t}, t, c)$, with

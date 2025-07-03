@@ -42,7 +42,7 @@ With the success of large language models in text processing and the advancement
 
 \subsubsection{Skeleton Structure of Gestures}
 
-In this thesis, a gesture is defined as the movement of a character's entire body over time, as shown in \autoref{fig:Skeleton}, captured frame by frame. In computer graphics, character motion is represented as bone-specific movements, including hands, legs, head, spine, etc. The full character skeleton structure is presented in Appendix \autoref{appendix:BVHData:skeleton}.
+A gesture is defined as the movement of a character's entire body over time, as shown in \autoref{fig:Skeleton}, captured frame by frame. In computer graphics, character motion is represented as bone-specific movements, including hands, legs, head, spine, etc. The full character skeleton structure is presented in Appendix \autoref{appendix:BVHData:skeleton}.
 
 Motion data is captured via motion capture systems using cameras and specialized sensors. The output is typically stored in BVH (Biovision Hierarchy) files.
 
@@ -54,12 +54,12 @@ Gesture motion data, as illustrated in \autoref{fig:Skeleton}, or the \texttt{MO
 
 The output of gesture generation is a sequence of bone rotations per frame. The generated gestures are evaluated based on naturalness, human-likeness, and contextual appropriateness.
 
-In this thesis, the skeleton’s position and rotation data are preprocessed into a feature vector $\mathbf{g} \in \mathbb{R}^{D}$ with $D = 1141$. The learning data becomes $\bx \in \mathbb{R}^{M \times D}$. The preprocessing pipeline is detailed in \autoref{appendix:BVHData}.
+The skeleton's position and rotation data are preprocessed into a feature vector $\mathbf{g} \in \mathbb{R}^{D}$ with $D = 1141$. The learning data becomes $\bx \in \mathbb{R}^{M \times D}$. The preprocessing pipeline is detailed in \autoref{appendix:BVHData}.
 
 \subsection{Problem Statement}
 \label{sec:ProblemStatement}
 
-The ultimate goal is to produce a sequence of gestures that reflect the motion of the skeleton frame by frame. This can be approached via classification, clustering, or regression. In this thesis, gesture generation is framed as a regression problem: given an input gesture sequence, predict the next sequence.
+The ultimate goal is to produce a sequence of gestures that reflect the motion of the skeleton frame by frame. This can be approached via classification, clustering, or regression. Gesture generation is approached in this work as a regression-based prediction problem, wherein the next sequence is generated conditioned on the current gesture input.
 
 \begin{figure}[h]
 	\centering
@@ -69,7 +69,7 @@ The ultimate goal is to produce a sequence of gestures that reflect the motion o
 	\label{fig:GestureSeries}
 \end{figure}
 
-Each gesture sequence is labeled with an emotion. A key novelty of this thesis is pairing the gesture sequence with both the original speech and the corresponding text (transcribed from the speech).
+Each gesture sequence is labeled with an emotion. A key novelty of our approach is pairing the gesture sequence with both the original speech and the corresponding text (transcribed from the speech).
 
 The objective is to build a model that predicts $M$ future frames from the given inputs: seed gesture $\mathbf{s} \in \mathbb{R}^{1:N \times D}$, speech $\mathbf{a}$, text $\mathbf{v}$, and emotion $\mathbf{e}$.
 
@@ -127,11 +127,11 @@ There are several challenges in building a model that can learn human-like conve
 \begin{itemize}
 	\item From existing datasets, speech is transcribed into text and used as additional semantic features for training.
 	
-	\item Based on the DiffuseStyleGesture model, the thesis extends the conditional denoising process to include text features.
+	\item Based on the DiffuseStyleGesture model, we extends the conditional denoising process to include text features.
 	
-	\item The thesis uses Unity for rendering, data extraction, and visualization of gesture generation results.
+	\item In this work, we uses Unity for rendering, data extraction, and visualization of gesture generation results.
 	
-	\item The thesis develops a rendering pipeline and demonstrates the system with Unity.
+	\item A rendering pipeline is designed and implemented in this paper, with the system demonstrated using Unity.
 \end{itemize}
 
 
