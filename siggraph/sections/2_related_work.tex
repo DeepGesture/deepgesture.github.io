@@ -34,9 +34,9 @@
 %    \label{fig:system_overview}
 %\end{figure*}
 
-\begin{figure*}[H]
+\begin{figure*}[t]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/CommonStage.png}
+	\includegraphics[width=\linewidth]{images/CommonStage.png}
 	\caption{Common stages in gesture generation models.}
 	\Description{}
 	\label{fig:CommonStage}
@@ -59,16 +59,14 @@ As shown in linguistic studies \cite{kipp2005gesture}, \cite{neff2008gesture}, \
 
 \subsubsection{Rule-Based Methods}
 
-
-\textbf{General Principle}: These methods rely on clearly defined rules, which are manually crafted to determine how the system processes inputs to produce outputs.
+These methods rely on clearly defined rules, which are manually crafted to determine how the system processes inputs to produce outputs.
 
 \textbf{Methods}: Representative rule-based methods include the \textit{Robot behavior toolkit} \cite{huang2012robot} and \textit{Animated conversation} \cite{cassell1994animated}. These approaches typically map speech to gesture units using handcrafted rules. Rule-based systems allow for straightforward control over model outputs and provide good interpretability.  
 However, the cost of manually designing these rules is prohibitive for complex applications requiring the processing of large-scale data.
 
 \subsubsection{Statistical Methods}
 
-
-\textbf{General Principle}: These methods rely on data analysis, learning patterns from datasets, and using probabilistic models or mathematical functions for prediction. The approach involves optimizing model parameters to fit the data.
+These methods rely on data analysis, learning patterns from datasets, and using probabilistic models or mathematical functions for prediction. The approach involves optimizing model parameters to fit the data.
 
 
 \textbf{Methods}: Like rule-based methods, data-driven methods also map speech features to corresponding gestures. However, instead of manual rules, they employ automatic learning based on statistical data analysis.
@@ -77,12 +75,11 @@ Representative statistical approaches include \textit{Gesture controllers} \cite
 
 \subsubsection{Deep Learning Methods}
 
-
-\textbf{General Principle of Deep Learning Methods}: These methods utilize multi-layer perceptrons (MLPs) to automatically extract features from raw data and learn complex data representations through parameter optimization.
+These methods utilize multi-layer perceptrons (MLPs) to automatically extract features from raw data and learn complex data representations through parameter optimization.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/GeneralOverview}
+	\includegraphics[width=\linewidth]{images/GeneralOverview}
 	\caption{Overview of different generative models.}
 	\label{fig:GeneralOverview}
 \end{figure}
@@ -116,9 +113,7 @@ As illustrated in \autoref{fig:GeneralOverview}, deep learning-based gesture gen
 \textbf{Implicit Generative Models}
 \label{sec:ImplicitGenerativeModels}
 
-
-
-\textbf{Principle}: Implicit generative models learn the data distribution without explicitly modeling the probability density function $p(\bx)$. Instead of directly computing $p(\bx)$, the model learns a mapping $G_{\theta}: \mathcal{Z} \to \mathcal{X}$ by matching the distributions between real and generated data $\mathbf{x} = G_\theta(\mathbf{z}), \quad \mathbf{z} \sim p_z(\mathbf{z})$. Here, $\mathcal{Z}$ denotes the input noise space, typically with a simple distribution \(p_{z}\) (e.g., Gaussian, Uniform), and \(\mathcal{X}\) is the space of real data, which in this case is gesture sequences \(\mathbf{x}\).
+Implicit generative models learn the data distribution without explicitly modeling the probability density function $p(\bx)$. Instead of directly computing $p(\bx)$, the model learns a mapping $G_{\theta}: \mathcal{Z} \to \mathcal{X}$ by matching the distributions between real and generated data $\mathbf{x} = G_\theta(\mathbf{z}), \quad \mathbf{z} \sim p_z(\mathbf{z})$. Here, $\mathcal{Z}$ denotes the input noise space, typically with a simple distribution \(p_{z}\) (e.g., Gaussian, Uniform), and \(\mathcal{X}\) is the space of real data, which in this case is gesture sequences \(\mathbf{x}\).
 
 In gesture generation, to incorporate conditions such as speech or text labels, implicit generative models often introduce a condition $\mathbf{c}$ representing the context of the task, resulting in the conditional generation: $\mathbf{x} = G_\theta(\mathbf{z}, \mathbf{c})$. This context may include speech, text, speaker ID, style, emotion, or initial gestures.
 
@@ -138,43 +133,45 @@ A typical example is the generative adversarial network (GAN) and Diffusion mode
 	\item \textbf{Diffusion}: Diffusion models focus on generating new data from noisy inputs by progressively denoising toward the original data. Diffusion-based approaches will be presented in section \autoref{sec:diffusionbase}.
 \end{itemize}
 
-\subsubsection{Comparison of Gesture Generation Methods}
 
-
-\begin{table*}[t]
-	\small
-	\centering
-	\renewcommand{\arraystretch}{1.5}
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{|p{0.2\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}|p{0.2\textwidth}|}
-			\hline
-			\textbf{Representative Method} & \textbf{Advantages} & \textbf{Disadvantages} & \textbf{Method Type} \\ \hline
-			Robot behavior toolkit \cite{huang2012robot} & 
-			- Easy to understand and implement. \newline 
-			- Highly interpretable and controllable. \newline
-			- Effective for simple cases or small datasets. & 
-			- Does not generalize well to complex data. \newline 
-			- Labor-intensive rule construction. & 
-			Rule-based model \\ \hline
-			MLP \cite{kucherenko2020gesticulator}, RNN \cite{bhattacharya2021speech2affectivegestures}, \cite{liu2022learning}, \cite{hasegawa2018evaluation}, \cite{yoon2020speech}, CNN \cite{habibie2021learning}, Transformer \cite{bhattacharya2021text2gestures}  & 
-			- Able to estimate data probability density. \newline 
-			- Scalable and learns well from large datasets. & 
-			- Sensitive to noise. \newline 
-			- Performs poorly on low-frequency data. \newline
-			- Low diversity in generation. & 
-			Likelihood-based model \\ \hline
-			\textbf{DiffusionStyle-Gesture} \cite{yang2023diffusestylegesture}, MDM \cite{tevet2022human}, Motiondiffuse \cite{zhang2022motiondiffuse} &
-			- Generates high-quality data. \newline 
-			- Flexible and diverse outputs. \newline
-			- Covers low-density regions of data space. & 
-			- Requires complex configuration for optimal performance. \newline 
-			- Random noise leads to different outputs each time. \newline 
-			- Slow sampling process. & 
-			Implicit generative model \\ \hline
-		\end{tabular}
-	}
-	\caption{Comparison of advantages and disadvantages of different methods}
-	\label{table:CompareMethod}
-\end{table*}
+%
+%\subsubsection{Comparison of Gesture Generation Methods}
+%
+%
+%\begin{table*}[t]
+%	\small
+%	\centering
+%	\renewcommand{\arraystretch}{1.5}
+%	\resizebox{\textwidth}{!}{
+%		\begin{tabular}{|p{0.2\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}|p{0.2\textwidth}|}
+%			\hline
+%			\textbf{Representative Method} & \textbf{Advantages} & \textbf{Disadvantages} & \textbf{Method Type} \\ \hline
+%			Robot behavior toolkit \cite{huang2012robot} & 
+%			- Easy to understand and implement. \newline 
+%			- Highly interpretable and controllable. \newline
+%			- Effective for simple cases or small datasets. & 
+%			- Does not generalize well to complex data. \newline 
+%			- Labor-intensive rule construction. & 
+%			Rule-based model \\ \hline
+%			MLP \cite{kucherenko2020gesticulator}, RNN \cite{bhattacharya2021speech2affectivegestures}, \cite{liu2022learning}, \cite{hasegawa2018evaluation}, \cite{yoon2020speech}, CNN \cite{habibie2021learning}, Transformer \cite{bhattacharya2021text2gestures}  & 
+%			- Able to estimate data probability density. \newline 
+%			- Scalable and learns well from large datasets. & 
+%			- Sensitive to noise. \newline 
+%			- Performs poorly on low-frequency data. \newline
+%			- Low diversity in generation. & 
+%			Likelihood-based model \\ \hline
+%			\textbf{DiffusionStyle-Gesture} \cite{yang2023diffusestylegesture}, MDM \cite{tevet2022human}, Motiondiffuse \cite{zhang2022motiondiffuse} &
+%			- Generates high-quality data. \newline 
+%			- Flexible and diverse outputs. \newline
+%			- Covers low-density regions of data space. & 
+%			- Requires complex configuration for optimal performance. \newline 
+%			- Random noise leads to different outputs each time. \newline 
+%			- Slow sampling process. & 
+%			Implicit generative model \\ \hline
+%		\end{tabular}
+%	}
+%	\caption{Comparison of advantages and disadvantages of different methods}
+%	\label{table:CompareMethod}
+%\end{table*}
 
 
