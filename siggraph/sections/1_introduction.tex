@@ -1,4 +1,4 @@
-\section{Introduction}
+\section{INTRODUCTION}
 \label{sec:introduction}
 
 Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the result of various software systems. Therefore, the rendering of each pixel on the screen and the realistic simulation of images have been a focus of computer graphics scientists since the 1960s, particularly in the simulation of human figures or digital human.
@@ -8,9 +8,7 @@ Today, computer graphics technology can realistically simulate many complex obje
 Artificial intelligence (AI) has shown remarkable results in recent years, not only in research but also in practical applications, such as ChatGPT and Midjourney, showcasing vertical and horizontal growth in various fields. Although computer graphics can construct highly realistic human faces, gesture generation has traditionally relied on Motion Capture from sensors, posing significant challenges in building an AI system that learns from data. Generating realistic beat gestures is challenging because gestural beats and verbal stresses are not strictly synchronized, and it's complicating for end-to-end learning models to capture the complex relationship between speech and gestures.
 
 
-
-Modern AI systems can now generate human-like text and speech. However, one of the biggest obstacles in building digital humans is gesture generation. Therefore, the aim of this paper is to build an emotional and semantic-conditioned conversational gesture generation system using both text and speech as input.
-
+With the success of large language models in text processing and the advancement of Computer-generated imagery (CGI) computer graphics in producing nearly indistinguishable human faces, combined with the increasing ease and accuracy of human speech synthesis, gesture generation through AI has become one of the main bottlenecks in developing interactive digital human.
 
 
 \subsection{Problem Data}
@@ -39,6 +37,7 @@ Modern AI systems can now generate human-like text and speech. However, one of t
 	\includegraphics[height=8cm]{images/Skeleton.png}
 	\caption{\small Skeleton and joint names of single frame}
 	\label{fig:Skeleton}
+	\Description{\small Skeleton and joint names of single frame}
 \end{figure}
 
 \subsubsection{Skeleton Structure of Gestures}
@@ -47,11 +46,11 @@ In this thesis, a gesture is defined as the movement of a character's entire bod
 
 Motion data is captured via motion capture systems using cameras and specialized sensors. The output is typically stored in BVH (Biovision Hierarchy) files.
 
-A BVH file consists of two main parts: `HIERARCHY` and `MOTION`. The `HIERARCHY` section is structured as a tree containing the skeleton’s initial positions and names. The `MOTION` section contains the movement data for the entire skeleton frame-by-frame. Each BVH file includes frame rate (fps) and total frame count. Details are presented in Appendix \autoref{appendix:BVHData:BVHStructure}.
+A BVH file consists of two main parts: \texttt{HIERARCHY} and \texttt{MOTION}. The \texttt{HIERARCHY} section is structured as a tree containing the skeleton’s initial positions and names. The \texttt{MOTION} section contains the movement data for the entire skeleton frame-by-frame. Each BVH file includes frame rate (fps) and total frame count. Details are presented in Appendix \ref{appendix:BVHData:BVHStructure}.
 
 \subsubsection{Motion Structure of Gestures}
 
-Gesture motion data, as illustrated in \autoref{fig:MotionPastAndFuture}, or the `MOTION` section of a BVH file, contains position and rotation information per frame. Each frame is a skeleton of 75 bones: $\{ \textbf{b}_{1}, \textbf{b}_{2}, \cdots , \textbf{b}_{75} \}$, where each bone has position $\{ p_{x}, p_{y}, p_{z} \}$ and rotation $\{ r_{x}, r_{y}, r_{z} \}$.
+Gesture motion data, as illustrated in \autoref{fig:Skeleton}, or the \texttt{MOTION} section of a BVH file, contains position and rotation information per frame. Each frame is a skeleton of 75 bones: $\{ \textbf{b}_{1}, \textbf{b}_{2}, \cdots , \textbf{b}_{75} \}$, where each bone has position $\{ p_{x}, p_{y}, p_{z} \}$ and rotation $\{ r_{x}, r_{y}, r_{z} \}$.
 
 The output of gesture generation is a sequence of bone rotations per frame. The generated gestures are evaluated based on naturalness, human-likeness, and contextual appropriateness.
 
@@ -66,6 +65,7 @@ The ultimate goal is to produce a sequence of gestures that reflect the motion o
 	\centering
 	\href{https://www.youtube.com/watch?v=B6nv1kQmi-Q}{\includegraphics[width=\linewidth]{images/FeatureProcessing}}
 	\caption{A gesture sequence: the first $N$ frames are used as seed gesture $\mathbf{s}$, and the remaining $M$ frames are to be predicted}
+	\Description{A gesture sequence: the first $N$ frames are used as seed gesture $\mathbf{s}$, and the remaining $M$ frames are to be predicted}
 	\label{fig:GestureSeries}
 \end{figure}
 

@@ -1,5 +1,14 @@
-\section{Related Work}
+\begin{figure*}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{images/CommonStage.png}
+	\caption{Common stages in gesture generation models.}
+	\Description{Common stages in gesture generation models.}
+	\label{fig:CommonStage}
+\end{figure*}
+
+\section{RELATED WORK}
 \label{sec:related_work}
+
 
 
 %\subsubsection{Data-driven Human Motion Synthesis}
@@ -26,7 +35,7 @@
 
 %\begin{figure*}[h]
 %    \centering
-%    \includegraphics[width=0.8\textwidth]{images/OHGesture.png}
+%    \includegraphics[width=0.8\textwidth]{images/DeepGesture.png}
 %    \caption{
 %    Our system is composed of DeepGesture
 %    }
@@ -34,15 +43,8 @@
 %    \label{fig:system_overview}
 %\end{figure*}
 
-\begin{figure*}[t]
-	\centering
-	\includegraphics[width=\linewidth]{images/CommonStage.png}
-	\caption{Common stages in gesture generation models.}
-	\Description{}
-	\label{fig:CommonStage}
-\end{figure*}
 
-The gesture generation problem, like other machine learning tasks, has been studied and developed alongside both traditional and modern machine learning methods. These include rule-based and data-driven approaches. This thesis first presents the characteristics of gestures \autoref{sec:relationspeechandgesture}, serving as the foundation for learning the relationship between gestures, text, and speech. In section \autoref{sec:commonstage}, the thesis introduces the common stages across different gesture generation methods.
+Gesture generation, like other machine learning tasks, has been explored using both traditional rule-based methods and modern data-driven approaches. This thesis first examines the fundamental characteristics of gestures (\autoref{sec:relationspeechandgesture}) as a basis for modeling their relationship with text and speech. \autoref{fig:CommonStage} illustrates the common processing stages shared across various gesture generation techniques.
 
 
 \subsection{Gesture Characteristics}
@@ -77,10 +79,11 @@ Representative statistical approaches include \textit{Gesture controllers} \cite
 
 These methods utilize multi-layer perceptrons (MLPs) to automatically extract features from raw data and learn complex data representations through parameter optimization.
 
-\begin{figure}[h]
+\begin{figure}[b]
 	\centering
 	\includegraphics[width=\linewidth]{images/GeneralOverview}
 	\caption{Overview of different generative models.}
+	\Description{Overview of different generative models.}
 	\label{fig:GeneralOverview}
 \end{figure}
 
@@ -89,8 +92,7 @@ As illustrated in \autoref{fig:GeneralOverview}, deep learning-based gesture gen
 
 \textbf{Likelihood-Based Models}
 
-
-\textbf{General Principle of Likelihood-Based Models}: These models work by maximizing the likelihood of observed data given model parameters $\theta$. The objective is to find the optimal parameters $\theta'$ by modeling the probability $p(\mathbf{x})$ of the data, where $\mathbf{x}$ represents the gesture sequence.
+These models work by maximizing the likelihood of observed data given model parameters $\theta$. The objective is to find the optimal parameters $\theta'$ by modeling the probability $p(\mathbf{x})$ of the data, where $\mathbf{x}$ represents the gesture sequence.
 
 
 \textbf{Methods}: The application of deep learning to gesture generation has evolved alongside the development of deep learning models, including RNNs, LSTMs, and Transformers. Representative likelihood-based methods include:

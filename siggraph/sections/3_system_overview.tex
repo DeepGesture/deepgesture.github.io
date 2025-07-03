@@ -1,4 +1,4 @@
-\section{System Overview}
+\section{PROPOSAL METHOD}
 \label{sec:system_overview}
 
 
@@ -6,15 +6,14 @@
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\linewidth]{images/AllStage}
-	\caption{Overview of the OHGesture model}
+	\caption{Overview of the DeepGesture model}
+	\Description{Overview of the DeepGesture model}
 	\label{fig:TrainingAndSampling}
 \end{figure}
 
-The proposed model \textbf{OHGesture} (\textbf{O}pen \textbf{H}uman \textbf{Gesture} Generation) in this thesis is based on the \textbf{DiffuseStyleGesture} model \cite{yang2023diffusestylegesture}, which applies the Diffusion model \cite{ho2020denoising} with conditional guidance \cite{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
+The proposed model \textbf{DeepGesture} is based on the \textbf{DiffuseStyleGesture} model \cite{yang2023diffusestylegesture}, which applies the Diffusion model \cite{ho2020denoising} with conditional guidance \cite{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
 
 The similarities and differences of applying the diffusion model to the gesture generation task compared to image generation are as follows:
-
-\vspace{10pt}
 
 \textbf{Similarities}
 \begin{itemize}
@@ -36,7 +35,7 @@ The similarities and differences of applying the diffusion model to the gesture 
 
 Here, $\bx_0$ is a sequence of $M$ gesture frames $\mathbf{x} \in \mathbb{R}^{1:M \times D}$ ($D = 1141$), with condition $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$ including seed gesture $\mathbf{s}$, emotion $\mathbf{e}$, speech $\mathbf{a}$ corresponding to the gesture, and text $\mathbf{v}$.
 
-The model's objective is to learn parameters $\theta$ of the generative function $G_{\theta}$ with inputs being the noisy gesture matrix $\bx_t \in \mathbb{R}^{1:M \times D}$, timestep $t$, and condition $c$. An overview of the proposed \textbf{OHGesture} model is illustrated in \autoref{fig:TrainingAndSampling}. As with standard diffusion models, it includes two processes: the diffusion process $q$ and the denoising process $p_{\theta}$ with weights $\theta$. The \textit{1. Preprocessing} stage will be presented in \autoref{sec:Preprocessing}.
+The model's objective is to learn parameters $\theta$ of the generative function $G_{\theta}$ with inputs being the noisy gesture matrix $\bx_t \in \mathbb{R}^{1:M \times D}$, timestep $t$, and condition $c$. An overview of the proposed \textbf{DeepGesture} model is illustrated in \autoref{fig:TrainingAndSampling}. As with standard diffusion models, it includes two processes: the diffusion process $q$ and the denoising process $p_{\theta}$ with weights $\theta$. The \textit{1. Preprocessing} stage will be presented in \autoref{sec:Preprocessing}.
 
 
 \subsection{Feature Processing Stage}
@@ -69,13 +68,15 @@ In the \textit{Stage 2: Feature Processing} step (\autoref{fig:CommonStage}), th
 In the \textit{Stage 3: Feature Extraction} step (\autoref{fig:CommonStage}), the goal is to convert the input matrices into latent vectors that capture the semantic content of each modality. This is done by passing the feature data through linear transformation layers or Multilayer Perceptrons (MLPs).
 
 
-
-\begin{figure}[H]
+\begin{figure*}[t]
 	\centering
-	\includegraphics[width=\linewidth]{images/OHGesture.png}
-	\caption{The Model Architecture in OHGesture}
-	\label{fig:OHGesture}
-\end{figure}
+	\includegraphics[width=\linewidth]{images/DeepGesture}
+	\caption{The Model Architecture in DeepGesture}
+	\Description{The Model Architecture in DeepGesture}
+	\Description{}
+	\label{fig:DeepGesture}
+\end{figure*}
+
 
 
 \begin{itemize}
@@ -98,7 +99,7 @@ In the \textit{Stage 3: Feature Extraction} step (\autoref{fig:CommonStage}), th
 
 In the \textit{Stage 4: Feature Encoding} step (\autoref{fig:CommonStage}), the objective is to reduce the dimensionality of the input data to a lower latent space, in order to alleviate computational overhead and avoid the explosion of processing complexity.
 
-The primary data used in the diffusion process is the gesture sequence $\bx_t \in \mathbb{R}^{1:M \times D}$. As illustrated in \autoref{fig:OHGesture}, the gesture sequence with size $M \times D$ is passed through a linear transformation layer $\operatorname{Linear}_{\theta}$ to produce the matrix $\mathbf{X} \in \mathbb{R}^{1:M \times 256}$. This dimensionality reduction of $\bx$ is performed prior to passing the gesture sequence through the Cross-Local Attention and Transformer Encoder layers, in order to compute correlations across multiple modalities.
+The primary data used in the diffusion process is the gesture sequence $\bx_t \in \mathbb{R}^{1:M \times D}$. As illustrated in \autoref{fig:DeepGesture}, the gesture sequence with size $M \times D$ is passed through a linear transformation layer $\operatorname{Linear}_{\theta}$ to produce the matrix $\mathbf{X} \in \mathbb{R}^{1:M \times 256}$. This dimensionality reduction of $\bx$ is performed prior to passing the gesture sequence through the Cross-Local Attention and Transformer Encoder layers, in order to compute correlations across multiple modalities.
 
 \subsection{Feature Fusion Stage}
 
@@ -116,7 +117,7 @@ The feature fusion process of $\mathbf{z}_{tk}$ is illustrated in \autoref{fig:F
 
 \subsubsection{Frame-wise Feature Integration}
 
-Next, $\mathbf{z}_{tk} \xrightarrow{\operatorname{replicate}} \mathbf{Z}$ is replicated $M$ times to match the dimensionality of $M$ frames, resulting in the matrix $\mathbf{Z} \in \mathbb{R}^{1:M \times 256}$, as shown in \autoref{fig:OHGesture}.
+Next, $\mathbf{z}_{tk} \xrightarrow{\operatorname{replicate}} \mathbf{Z}$ is replicated $M$ times to match the dimensionality of $M$ frames, resulting in the matrix $\mathbf{Z} \in \mathbb{R}^{1:M \times 256}$, as shown in \autoref{fig:DeepGesture}.
 
 The speech feature matrix $\mathbf{A}$ and the text feature matrix $\mathbf{V}$ are then added together to produce a matrix that combines both modalities. This combined matrix is then concatenated with the gesture feature matrix $\mathbf{X}$. Finally, the result is concatenated with matrix $\mathbf{Z}$ to obtain the full feature matrix $\mathbf{M}$.
 
@@ -149,10 +150,11 @@ In the Attention formula above, $\mathbf{Q}$ (Query), $\mathbf{K}$ (Key), and $\
 
 The Local-Cross Attention mechanism is controlled to focus only on local motion features of gestures and features in neighboring frames.
 
-\begin{figure}[H][width=\linewidth]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{images/CrossLocalAttention}
+	\includegraphics[width=1\linewidth]{images/CrossLocalAttention}
 	\caption{Attention Mechanism in Transformer Encoder and Cross-Local Attention}
+	\Description{Attention Mechanism in Transformer Encoder and Cross-Local Attention}
 	\label{fig:CrossLocalAttention}
 \end{figure}
 
@@ -176,7 +178,7 @@ The matrix $\mathbf{m}_{t} \in \mathbb{R}^{1:M \times 256}$ is then passed throu
 
 % (\operatorname{Query}) (\operatorname{Key}) (\operatorname{Value})
 Cross-local Attention is performed with $\mathbf{Q} = \mathbf{K} = \mathbf{V} = \mathbf{m}_{t}$.
-Following the idea of the Routing Transformer method \cite{roy2021efficient}, Cross-local Attention highlights the importance of constructing intermediate feature-vector representations before passing them through the Transformer Encoder layer, as shown in \autoref{fig:OHGesture}.
+Following the idea of the Routing Transformer method \cite{roy2021efficient}, Cross-local Attention highlights the importance of constructing intermediate feature-vector representations before passing them through the Transformer Encoder layer, as shown in \autoref{fig:DeepGesture}.
 The feature vectors are augmented with a relative position-encoding vector \textbf{RPE} (\textbf{R}elative \textbf{P}osition \textbf{E}ncoding) to preserve temporal ordering before entering the Cross-Local Attention layer.
 
 After Cross-Local Attention, the model is forwarded through a linear layer, as in \autoref{eq:CrossLocalAttention}, to align with the $M$ frames and obtain the matrix $\mathbf{h}_t \in \mathbb{R}^{1:M \times D}$.
@@ -187,8 +189,8 @@ After Cross-Local Attention, the model is forwarded through a linear layer, as i
 	\centering
 	\begin{subfigure}{0.42\linewidth}
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/FeatureConcatenate}
-		\caption{Feature concatenation for $\mathbf{z}_{tk}$}
+		\includegraphics[width=0.95\linewidth]{images/FeatureConcatenate}
+		\caption{Feature concatenation of $\mathbf{z}_{tk}$}
 		\label{fig:FeatureFusion}
 	\end{subfigure}
 	\hfill
@@ -216,7 +218,7 @@ The Transformer Encoder applies the same self-attention mechanism as in \autoref
 
 In stage \textit{6. Feature Decoding} (\autoref{fig:CommonStage}), once feature correlations are computed, the goal is to upsample the data back to its original dimensionality.
 
-As illustrated in \autoref{fig:OHGesture}, the latent matrix $\mathbf{X}_{0}$, after passing through the Transformer Encoder to capture correlations among heterogeneous data types, is fed into a linear projection layer
+As illustrated in \autoref{fig:DeepGesture}, the latent matrix $\mathbf{X}_{0}$, after passing through the Transformer Encoder to capture correlations among heterogeneous data types, is fed into a linear projection layer
 $\hat{\mathbf{x}}_{0} = \operatorname{Linear}_{\theta}(\mathbf{X}_{0})$
 to restore the latent matrix to its original size, yielding $\hat{\mathbf{x}}_{0} \in \mathbb{R}^{1:M \times D}$.
 
@@ -251,8 +253,8 @@ $c_{\varnothing} = [\mathbf{s}, \mathbf{e}_{2}, \mathbf{a}, \mathbf{v}]$:
 \subsection{Training Procedure}
 
 \begin{algorithm}[h]
-	\caption{Training in OHGesture}
-	\label{alg:trainingohgesture}
+	\caption{Training in DeepGesture}
+	\label{alg:trainingDeepGesture}
 	\setlength{\baselineskip}{10pt}
 	\begin{enumerate}
 		\item Pre-compute $\gamma$, $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, $\sqrt{\bar{\alpha}_t}$, and random noise $\boldsymbol{\epsilon}_t$ for each timestep $t: 1 \rightarrow T$. Define the noise schedule $\{\alpha_t \in (0,1)\}_{t=1}^T$.
@@ -282,7 +284,7 @@ $c_{\varnothing} = [\mathbf{s}, \mathbf{e}_{2}, \mathbf{a}, \mathbf{v}]$:
 	\end{enumerate}
 \end{algorithm}
 
-\autoref{alg:trainingohgesture} trains the OHGesture model by first computing the required values and hyper-parameters—$\gamma$, $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, $\sqrt{\bar{\alpha}_t}$, and $\boldsymbol{\epsilon}_t$—for every timestep $t$ (1 … $T$).  
+\autoref{alg:trainingDeepGesture} trains the DeepGesture model by first computing the required values and hyper-parameters—$\gamma$, $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, $\sqrt{\bar{\alpha}_t}$, and $\boldsymbol{\epsilon}_t$—for every timestep $t$ (1 … $T$).  
 The initial label $\mathbf{x}_0$, representing the ground-truth gesture, is drawn from the normalized data distribution.  
 Random Bernoulli masks $c_1$ and $c_2$ emulate different conditions (gesture, emotion, speech, or text), with one mask possibly lacking emotion information.  
 Noise is then added to create the noisy gesture $\mathbf{x}_t$.  
@@ -296,6 +298,7 @@ This cycle repeats until the model converges, yielding the optimal parameters $\
 	\centering
 	\includegraphics[width=\linewidth]{images/OnlineAndOffline}
 	\caption{Offline (Training) and Online (Inference) Phases}
+	\Description{Offline (Training) and Online (Inference) Phases}
 	\label{fig:OnlineAndOffline}
 \end{figure}
 
@@ -304,8 +307,8 @@ During training, the seed gesture can be chosen by randomly selecting a gesture 
 Generated frames are processed sequentially, with the last $N=8$ frames taken as the seed for the next iteration.  
 For each clip, the gesture $\bx_{t}$ is denoised via $\hat{\bx}_{0} = G_{\theta'}(\bx_{t}, t, c)$; noise is re-added to obtain $\bx_{t-1}$, and the procedure repeats until $t=1$, yielding $\bx_{0}$.
 
-\begin{algorithm}[H]
-	\caption{Sampling in OHGesture}
+\begin{algorithm}[h]
+	\caption{Sampling in DeepGesture}
 	\label{alg:sampling}
 	\setlength{\baselineskip}{10pt}
 	\begin{enumerate}
@@ -323,6 +326,8 @@ For each clip, the gesture $\bx_{t}$ is denoised via $\hat{\bx}_{0} = G_{\theta'
 		When $t = 1$, output the denoised gesture $\hat{\mathbf{x}}_0$.
 	\end{enumerate}
 \end{algorithm}
+
+
 \autoref{alg:sampling} starts by initializing the noisy gesture $\mathbf{x}_T$ from $\mathcal{N}(0, \mathbf{I})$.  
 The values $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, and $\sqrt{\bar{\alpha}_t}$ obtained during training, together with $\sigma_t$, are employed at each timestep (1 … $T$).  
 Each 4-second speech segment is represented by $\mathbf{a}$, and the seed gesture $\mathbf{s}$ is taken as the data mean or from the previously inferred segment.  
