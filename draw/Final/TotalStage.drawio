@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
   <diagram name="Page-1" id="_gRGWOFDqU3hSQWJzQTY">
-    <mxGraphModel dx="482" dy="1436" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="1" shadow="0">
+    <mxGraphModel dx="1012" dy="1805" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -58,6 +58,61 @@
         </mxCell>
         <mxCell id="3hiLGepuwi-zIb3yEwfn-1" value="&lt;b&gt;7. Kết xuất&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=SVN-Segoe UI;" parent="1" vertex="1">
           <mxGeometry x="720" y="-1010" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-1" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=7;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="300" y="-790" width="379.3" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="xUzlDY0JbddEg6sj9snX-3" target="xUzlDY0JbddEg6sj9snX-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-3" value="&lt;span&gt;1.&amp;nbsp;&lt;/span&gt;Pre-processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=SVN-Segoe UI;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="139.5" y="-770" width="70.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xUzlDY0JbddEg6sj9snX-5" target="xUzlDY0JbddEg6sj9snX-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-5" value="2. Feature Processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=SVN-Segoe UI;" vertex="1" parent="1">
+          <mxGeometry x="229.3" y="-770" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xUzlDY0JbddEg6sj9snX-7" target="xUzlDY0JbddEg6sj9snX-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-7" value="&lt;b&gt;3.&amp;nbsp;Feature Extraction&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=SVN-Segoe UI;" vertex="1" parent="1">
+          <mxGeometry x="319.27000000000004" y="-770" width="69.9" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="xUzlDY0JbddEg6sj9snX-9" target="xUzlDY0JbddEg6sj9snX-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-9" value="5. Feature Fusion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=SVN-Segoe UI;" vertex="1" parent="1">
+          <mxGeometry x="499.2199999999999" y="-770" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="xUzlDY0JbddEg6sj9snX-11" target="xUzlDY0JbddEg6sj9snX-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-11" value="&lt;b&gt;4.&amp;nbsp;Feature Encoding&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=SVN-Segoe UI;" vertex="1" parent="1">
+          <mxGeometry x="410" y="-770" width="68.75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="xUzlDY0JbddEg6sj9snX-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="689.3" y="-750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-13" value="&lt;b&gt;6. Feature Decoding&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=SVN-Segoe UI;" vertex="1" parent="1">
+          <mxGeometry x="589.2199999999999" y="-770" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-14" value="$$\text{Model}_\theta$$" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontFamily=Segoe UI;fontStyle=1;align=center;spacingLeft=14;fontColor=#333333;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="379.3" y="-800" width="181" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="xUzlDY0JbddEg6sj9snX-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="117.2999999999999" y="-750" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-16" value="Motion&lt;div&gt;Data&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8.25000000000017;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="-780" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xUzlDY0JbddEg6sj9snX-17" value="&lt;b&gt;7. Render&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=SVN-Segoe UI;" vertex="1" parent="1">
+          <mxGeometry x="690" y="-770" width="70" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
