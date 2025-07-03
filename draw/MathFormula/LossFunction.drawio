@@ -1,0 +1,49 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Page-1" id="oo-ZgDfyL9Ay4hEghHGP">
+    <mxGraphModel dx="5073" dy="2350" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-9" value="$$\mathcal{L}_{t}= \mathbb{E}_{\mathbf{x}_{0}, \epsilon_t \sim \mathcal{N}(0, I), t} \left[ \| \epsilon_t - f_\theta(\mathbf{x}_t, t) \|^2 \right]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1664" y="230" width="800" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-1" value="$$\mathcal{L}_t=E_{\mathbf{x}_{0} \sim q\left(\mathbf{x}_{0} \mid c\right), t \sim[1, T]}\left[\operatorname{HuberLoss}\left(\mathbf{x}_{0}-\hat{\mathbf{x}}_{0}\right)\right]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="440" width="980" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-2" value="$${\color{red}{\hat{\mathbf{x}}}}_{0 \gamma, \color{blue}{c}, \color{green}{c_{\varnothing}}}=\gamma \cdot f_{\theta} \left(\mathbf{x}_{t}, t, {\color{blue}{c}} \right)+(1-\gamma) \cdot f_{\theta} \left(\mathbf{x}_{t}, t, {\color{green}{c_{\varnothing}}} \right)$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1650" y="570" width="1070" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-3" value="$$c = [ \mathbf{s}, \mathbf{e}, \mathbf{a} , \mathbf{v}]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1670" y="710" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-4" value="$$c_{\varnothing} = [ \varnothing, \varnothing, \mathbf{a}, \mathbf{v} ]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1670" y="820" width="390" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-5" value="$$c=c_{1} = [ \mathbf{s}, \mathbf{e}_1, \mathbf{a} , \mathbf{v}]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1310" y="700" width="440" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-7" value="$$c_{\varnothing}=c_{2} = [ \mathbf{s}, \mathbf{e}_2, \mathbf{a} , \mathbf{v}]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1210" y="820" width="460" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-8" value="$$|\mathbf{x}_0 - \hat{\mathbf{x}}_0| \leq \delta$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1610" y="980" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-9" value="$$\mathcal{L}_{ \delta, \mathbf{x}_0, \hat{\mathbf{x}}_0} = \frac{1}{2} (\mathbf{x}_0 - \mathbf{x}_0)^2$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1120" y="970" width="600" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-10" value="$$|\mathbf{x}_0 - \hat{\mathbf{x}}_0|&amp;nbsp;&amp;gt; \delta$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1600" y="1120" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-11" value="$$\mathcal{L}_{ \delta, \mathbf{x}_0, \hat{\mathbf{x}}_0}&amp;nbsp;&amp;nbsp;=&amp;nbsp; \delta \cdot |\mathbf{x}_0&amp;nbsp;- \mathbf{x}_0| - \frac{1}{2} \delta^2$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1160" y="1100" width="650" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-12" value="$$c = [ \mathbf{S}, \mathbf{E}, \mathbf{A} , \mathbf{V}]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1510" y="1500" width="370" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="OKb-Foq_DmFvcSxfhRhN-13" value="$$c_{\varnothing} = [ \varnothing, \varnothing, \mathbf{A}, \mathbf{V} ]$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1510" y="1620" width="390" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

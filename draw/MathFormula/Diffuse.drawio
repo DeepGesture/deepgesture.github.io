@@ -1,0 +1,28 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Page-1" id="oo-ZgDfyL9Ay4hEghHGP">
+    <mxGraphModel dx="2712" dy="705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-9" value="$$\boldsymbol{\epsilon}_{1}, \boldsymbol{\epsilon}_{2}, \dots \boldsymbol{\epsilon}_{T} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="600" width="680" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-10" value="$$\mathbf{x}_2=\sqrt{\alpha_2} \cdot \mathbf{x}_{1}+\sqrt{1 - \alpha_2} \cdot \epsilon_2$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="200" width="680" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-1" value="$$\mathbf{x}_3=\sqrt{\alpha_3} \cdot \mathbf{x}_{2}+\sqrt{1 - \alpha_3} \cdot \epsilon_3$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="320" width="680" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-2" value="$$\mathbf{x}_{T} = \sqrt{\alpha_{T}} \cdot \mathbf{x}_{T-1}+\sqrt{1 - \alpha_{T}} \cdot \epsilon_{T}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="480" width="760" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-3" value="$$\cdots$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="400" width="680" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-4" value="$$\mathbf{x}_{1}=\sqrt{\alpha_1} \cdot \mathbf{x}_{0}+\sqrt{1 - \alpha_1} \cdot \epsilon_1$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="80" width="680" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

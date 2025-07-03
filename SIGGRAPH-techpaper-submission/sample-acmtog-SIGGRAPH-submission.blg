@@ -1,0 +1,77 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: sample-acmtog-SIGGRAPH-submission.aux
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+The style file: ACM-Reference-Format.bst
+Reallocating 'name_of_file' (item size: 1) to 20 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: sample-bibliography.bib
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Warning--empty author in CROSSBOW
+Warning--empty chapter and pages in Editor00
+Warning--page numbers missing in Editor00a
+Warning--empty author in Harvard-01
+Warning--empty author in 2004:ITE:1009386.1010128
+Warning--empty address in Knuth97
+Warning--articleno or eid field, but no numpages field, in Lee05
+Warning--page numbers missing in both pages and numpages fields in Lee05
+Warning--articleno or eid, but no pages or numpages field in Lee05
+Warning--unrecognized DOI value [99.9999/woot07-S422]
+Warning--unrecognized DOI value [99.9999/woot07-S422]
+Warning--articleno or eid field, but no numpages field, in rous08
+Warning--page numbers missing in both pages and numpages fields in rous08
+Warning--articleno or eid, but no pages or numpages field in rous08
+Warning--page numbers missing in both pages and numpages fields in SaeediJETC10
+Warning--unrecognized DOI value [99.9999/woot07-S422]
+Warning--unrecognized DOI value [99.9999/woot07-S422]
+Warning--empty year in CTANacmart
+Warning--using n.d. in CTANacmart
+You've used 42 entries,
+            6273 wiz_defined-function locations,
+            1990 strings with 27199 characters,
+and the built_in function-call counts, 40256 in all, are:
+= -- 5122
+> -- 962
+< -- 5
++ -- 315
+- -- 392
+* -- 2734
+:= -- 3860
+add.period$ -- 221
+call.type$ -- 42
+change.case$ -- 250
+chr.to.int$ -- 40
+cite$ -- 57
+duplicate$ -- 3751
+empty$ -- 2663
+format.name$ -- 411
+if$ -- 9600
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 92
+newline$ -- 413
+num.names$ -- 275
+pop$ -- 1312
+preamble$ -- 1
+purify$ -- 573
+quote$ -- 0
+skip$ -- 1354
+stack$ -- 0
+substring$ -- 3190
+swap$ -- 348
+text.length$ -- 91
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 990
+warning$ -- 19
+while$ -- 270
+width$ -- 0
+write$ -- 898
+(There were 19 warnings)

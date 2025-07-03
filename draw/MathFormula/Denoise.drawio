@@ -1,0 +1,22 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Page-1" id="oo-ZgDfyL9Ay4hEghHGP">
+    <mxGraphModel dx="2712" dy="705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Hc14VniwAsKdU2XrJptk-2" value="$$\mathbf{x}_{T-1} = \frac{1}{\sqrt{\alpha_{T}}} (\mathbf{x}_T - \sqrt{1- \alpha_T} \cdot \epsilon_T)$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="280" width="760" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-4" value="$$\mathbf{x}_{0} = \frac{1}{\sqrt{\alpha_{1}}} (\mathbf{x}_{1} - \sqrt{1- \alpha_1} \cdot \epsilon_1)$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="520" width="680" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Pj_6XQw75QI3Bnqtf5Jp-1" value="$$\cdots$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="480" width="680" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="I_n_NSZyH-_3zaTOoGVR-1" value="$$\mathbf{x}_{T} \in \mathcal{N}(0, 1)$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" vertex="1" parent="1">
+          <mxGeometry x="-1640" y="680" width="320" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

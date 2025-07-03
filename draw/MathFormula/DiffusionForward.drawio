@@ -1,0 +1,28 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Page-1" id="oo-ZgDfyL9Ay4hEghHGP">
+    <mxGraphModel dx="2712" dy="705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-1" value="$$\mathbf{x}_{t-1} = \frac{1}{\sqrt{\alpha_t}} \left( \mathbf{x}_t - \frac{1 - \alpha_t}{\sqrt{1 - \bar{\alpha}_t}} \hat{\epsilon}_{\theta&#39;}(\mathbf{x}_t, t) \right) + \sigma_t \mathbf{z}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="160" width="1040" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-2" value="$$f_{\theta}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1360" y="420" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-3" value="$$1 \rightarrow T$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1240" y="440" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-4" value="$$1 \leftarrow T$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1240" y="560" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-5" value="$$f_{\theta&#39;}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1360" y="500" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-7" value="$$T \rightarrow 1$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1040" y="460" width="140" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

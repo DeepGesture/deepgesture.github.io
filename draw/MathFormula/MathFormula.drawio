@@ -1,0 +1,34 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Page-1" id="oo-ZgDfyL9Ay4hEghHGP">
+    <mxGraphModel dx="2712" dy="705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-9" value="$$\mathbf{x}^{[1:M] \times D}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="700" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9rE4Dk9M4uEpvDqEaQSF-10" value="$$\mathbf{a}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="200" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-1" value="$$\mathbf{v}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="320" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-2" value="$$\mathbf{e}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="480" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-3" value="$$\hat{\mathbf{x}}^{[1:M] \times D}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="560" width="310" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Hc14VniwAsKdU2XrJptk-4" value="$$\mathbf{s}^{[1:N] \times D}$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" parent="1" vertex="1">
+          <mxGeometry x="-1640" y="80" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JUzNlLGXwknffQweQJPc-1" value="$$\mathbf{x}_0$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" vertex="1" parent="1">
+          <mxGeometry x="-1570" y="870" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JUzNlLGXwknffQweQJPc-2" value="$$\epsilon_t$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=42;" vertex="1" parent="1">
+          <mxGeometry x="-1330" y="880" width="80" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
