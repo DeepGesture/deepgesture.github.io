@@ -2,7 +2,7 @@
 \label{sec:related_work}
 
 
-Gesture generation, like other machine learning tasks, has been explored using both traditional rule-based methods and modern data-driven approaches. We first examines the fundamental characteristics of gestures (\autoref{sec:relationspeechandgesture}) as a basis for modeling their relationship with text and speech. \autoref{fig:CommonStage} illustrates the common processing stages shared across various gesture generation techniques.
+Gesture generation, like other machine learning tasks, has been explored using both traditional rule-based methods and modern data-driven approaches. We first examine the fundamental characteristics of gestures (\autoref{sec:relationspeechandgesture}) as a basis for modeling their relationship with text and speech. \autoref{fig:CommonStage} illustrates the common processing stages shared across various gesture generation techniques.
 
 
 \subsection{Gesture Characteristics}
@@ -104,8 +104,6 @@ A typical example is the generative adversarial network (GAN) and Diffusion mode
 
 As presented in \autoref{sec:Data}, gestures consist of sequences of 3D point coordinates. For each dataset, the number of bones per frame may vary.
 
-Deep learning approaches to gesture generation are implemented using various techniques. However, we generalizes the process into the following main stages, illustrated in \autoref{fig:CommonStage}:
-
 \begin{figure*}[htb]
 	\centering
 	\includegraphics[width=\linewidth]{images/CommonStage.png}
@@ -113,6 +111,8 @@ Deep learning approaches to gesture generation are implemented using various tec
 	\Description{Common stages in gesture generation models.}
 	\label{fig:CommonStage}
 \end{figure*}
+
+Deep learning approaches to gesture generation are implemented using various techniques. However, we generalize the process into the following main stages, illustrated in \autoref{fig:CommonStage}:
 
 
 \begin{enumerate}
@@ -133,6 +133,8 @@ Deep learning approaches to gesture generation are implemented using various tec
 
 
 \subsection{Diffusion-based Model for Gesture Generation}
+\label{sec:diffusionbase}
+
 
 \begin{itemize}
 	\item \textit{MotionDiffuse} \cite{zhang2022motiondiffuse} employs a conditional Diffusion model, with conditions based solely on text, excluding audio. Additionally, the model predicts noise rather than directly predicting the original gesture sequence. MotionDiffuse utilizes Self-Attention and Cross-Attention layers to model the correlation between textual features and gesture features during \textit{Stage 5. Feature Fusion} (\autoref{fig:CommonStage}).
@@ -150,12 +152,14 @@ Deep learning approaches to gesture generation are implemented using various tec
 	\item \textit{Freetalker} \cite{yang2024freetalker} trains a Diffusion model on multiple datasets to generate speaker-specific gestures conditioned on speech and text. Unlike Transformer-based methods, Freetalker employs an Attention-based Network to model the correlation between textual, auditory, and gesture features during \textit{Stage 5. Feature Fusion} (\autoref{fig:CommonStage}).
 \end{itemize}
 
+\vspace{-0.2cm}
 \subsubsection{Selected Diffusion-based Methods}
+
 
 \begin{itemize}
 	\item \textit{MDM} \cite{tevet2022human} applies conditional Diffusion to gesture generation, using CLIP (Contrastive Language–Image Pre-training) embeddings of descriptive text as conditions. MDM adopts a Transformer-based architecture to reconstruct original gesture data. Like other text-based Diffusion approaches, in \textit{Stage 3. Feature Extraction} (\autoref{fig:CommonStage}), the input text is randomly masked to hide certain segments, enabling the model to learn the importance of each part for various gestures. 
 	
-	In \textit{Stage 5. Feature Fusion} (\autoref{fig:CommonStage}), the text is prepended as a $\texttt{CLS}$ token to the gesture sequence before passing through the Transformer Encoder, where self-attention models the relationship between the text and each gesture frame. MDM predicts the original gesture data rather than noise.
+	In \textit{Stage 5. Feature Fusion} (\autoref{fig:CommonStage}), the text is prepended as a $\texttt{[CLS]}$ token to the gesture sequence before passing through the Transformer Encoder, where self-attention models the relationship between the text and each gesture frame. MDM predicts the original gesture data rather than noise.
 	
 	\item \textbf{DiffuseStyleGesture} \cite{yang2023diffusestylegesture} extends \textit{MDM} \cite{tevet2022human} by incorporating audio, initial gestures, and style as conditioning inputs. In \textit{Stage 1. Preprocessing} (\autoref{fig:CommonStage}), the model processes coordinate vectors to obtain feature vectors of dimension $D=1141$ per frame. In \textit{Stage 2. Feature Processing} (\autoref{fig:CommonStage}), DiffuseStyleGesture uses WavLM for audio embedding. In \textit{Stage 5. Feature Fusion} (\autoref{fig:CommonStage}), it improves upon MDM by applying Cross-Local Attention prior to the Transformer Encoder.
 \end{itemize}

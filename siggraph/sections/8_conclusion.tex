@@ -43,7 +43,7 @@ The DeepGesture model offers several significant advantages, contributing meanin
 
 This work has successfully developed and evaluated the gesture generation model DeepGesture, a system capable of producing highly natural gestures that convey a human-like impression. A notable highlight of the model is its precise synchronization between gestures and the emotional content of the input speech, with the ability to generalize beyond the training data. This means the diffusion-based model is not solely dependent on the learned gesture data but also demonstrates strong generalization capabilities, enabling it to generate gestures for low-probability speech and contextual inputs.
 
-Another significant aspect of this research is the expansion of input modalities. The thesis does not limit itself to gestures, speech, and emotion labels but also integrates text-to-speech tools to convert speech into text. By incorporating textual features, the model can better capture the semantic aspects of gestures, providing additional context and enabling the system to produce more appropriate and context-aware gestures.
+Another significant aspect of this research is the expansion of input modalities. The paper does not limit itself to gestures, speech, and emotion labels but also integrates text-to-speech tools to convert speech into text. By incorporating textual features, the model can better capture the semantic aspects of gestures, providing additional context and enabling the system to produce more appropriate and context-aware gestures.
 
 
 \subsection{Future Research and Development Directions}
@@ -51,7 +51,7 @@ Another significant aspect of this research is the expansion of input modalities
 Looking ahead, there are several promising directions to improve and expand the DeepGesture gesture generation model to better meet practical requirements and enhance the system’s applicability. Key directions include:
 
 \begin{itemize}
-	\item \textbf{Optimizing the model for real-time inference:} Currently, the model requires speech sequences to be segmented, and the generated results must be imported into Unity for rendering. The thesis aims to develop real-time systems in the future to enable interactive applications and enhance the model's practicality.
+	\item \textbf{Optimizing the model for real-time inference:} Currently, the model requires speech sequences to be segmented, and the generated results must be imported into Unity for rendering. The paper aims to develop real-time systems in the future to enable interactive applications and enhance the model's practicality.
 	
 	\item \textbf{Optimizing the sampling process and reducing sampling steps:} At present, the gesture generation process requires a relatively high number of sampling steps, which impacts the system’s speed and efficiency. Optimizing the process to reduce sampling steps without degrading gesture quality would enable faster responses suitable for real-time applications.
 	
@@ -59,7 +59,7 @@ Looking ahead, there are several promising directions to improve and expand the 
 	
 	\item \textbf{Expanding to new languages:} Currently, the model primarily operates with English speech data. Extending the model to support gesture generation for various languages and cultures would be a significant advancement, making the system more diverse and widely applicable.
 	
-	\item \textbf{Combining with the DeepPhase model \cite{starke2022deepphase} to enable real-time gesture generation:} The thesis aims to integrate DeepGesture with the DeepPhase model to develop systems capable of real-time gesture responses, suitable for natural interaction scenarios such as human-machine dialogue and voice-controlled systems. The goal is to learn phase-related motion features to extract motion characteristics more effectively, instead of treating features as image-like representations as done in the current model.
+	\item \textbf{Combining with the DeepPhase model \cite{starke2022deepphase} to enable real-time gesture generation:} The paper aims to integrate DeepGesture with the DeepPhase model to develop systems capable of real-time gesture responses, suitable for natural interaction scenarios such as human-machine dialogue and voice-controlled systems. The goal is to learn phase-related motion features to extract motion characteristics more effectively, instead of treating features as image-like representations as done in the current model.
 	
 	\item \textbf{Improving objective evaluation with automatic metrics:} To reduce reliance on subjective evaluations, it is necessary to develop and incorporate reliable automatic evaluation methods, enabling the model to self-assess and adjust based on objective indicators.
 \end{itemize}

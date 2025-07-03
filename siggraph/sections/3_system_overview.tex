@@ -1,7 +1,5 @@
-\section{PROPOSAL METHOD}
+\section{PROPOSED METHOD}
 \label{sec:system_overview}
-
-
 
 \begin{figure}[h]
 	\centering
@@ -11,14 +9,14 @@
 	\label{fig:TrainingAndSampling}
 \end{figure}
 
-The proposed model \textbf{DeepGesture} is based on the \textbf{DiffuseStyleGesture} model \cite{yang2023diffusestylegesture}, which applies the Diffusion model \cite{ho2020denoising} with conditional guidance \cite{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
+The proposed \textbf{DeepGesture} model is based on the \textbf{DiffuseStyleGesture} model \cite{yang2023diffusestylegesture}, which applies the Diffusion model \cite{ho2020denoising} with conditional guidance \cite{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
 
 The similarities and differences of applying the diffusion model to the gesture generation task compared to image generation are as follows:
 
 \textbf{Similarities}
 \begin{itemize}
-	\item Uses the Diffusion model (\autoref{sec:summary_diffusion}) on gesture data $\bx^{1:M \times D}$, with $M$ temporal frames and $D=1141$ representing motion coordinates per frame (analogous to image width and height).
-	\item Uses conditional Diffusion (\autoref{subsec:DiffusionCondition}) with $\bx_0$ objective (\autoref{subsec:X0Objective}).
+	\item Uses the Diffusion model on gesture data $\bx^{1:M \times D}$, with $M$ temporal frames and $D=1141$ representing motion coordinates per frame (analogous to image width and height).
+	\item Uses conditional Diffusion with $\bx_0$ objective.
 	\item In stages \textit{4. Feature Encoding} and \textit{6. Feature Decoding} in \autoref{fig:CommonStage}, the model uses a latent vector of dimension $256$.
 \end{itemize}
 
@@ -44,9 +42,9 @@ In the \textit{Stage 2: Feature Processing} step (\autoref{fig:CommonStage}), th
 
 \begin{itemize}
 	\item \textbf{Text} $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$:  
-	As discussed in \autoref{subsec:TypicalMethod}, methods such as \textit{MDM} \cite{tevet2022human} and \textit{DiffuseStyleGesture+} \cite{yang2022DiffuseStyleGestureplus} use gesture-descriptive prompts, similar to those used in Midjourney, as input for the model. However, such prompts are mainly used to cluster gestures rather than align them semantically. 
+	As discussed in \autoref{sec:diffusionbase}, methods such as \textit{MDM} \cite{tevet2022human} and \textit{DiffuseStyleGesture+} \cite{yang2022DiffuseStyleGestureplus} use gesture-descriptive prompts, similar to those used in Midjourney, as input for the model. However, such prompts are mainly used to cluster gestures rather than align them semantically. 
 	
-	In contrast, we treats text as a semantic feature that aligns specific segments of text with corresponding gesture segments for digital human generation. Therefore, the contribution in this stage is to use speech data that has already been preprocessed (see \autoref{sec:Preprocessing}) to obtain transcribed text. The FastText model \cite{bojanowski2017enriching} is used to embed this text into vectors, which are then temporally aligned with the number of gesture frames, resulting in a text matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. For segments without text, zero vectors are used; for segments with vocabulary, the corresponding embedding is assigned for each gesture frame.
+	In contrast, we treat text as a semantic feature that aligns specific segments of text with corresponding gesture segments for digital human generation. Therefore, the contribution in this stage is to use speech data that has already been preprocessed (see \autoref{sec:Preprocessing}) to obtain transcribed text. We use the FastText model \cite{bojanowski2017enriching} to embed this text into vectors, which are then temporally aligned with the number of gesture frames, resulting in a text matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. For segments without text, zero vectors are used; for segments with vocabulary, the corresponding embedding is assigned for each gesture frame.
 	
 	\item \textbf{Speech} $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$:  
 	All speech data in `.wav` format is downsampled to $16~\mathrm{kHz}$. The speech corresponding to the gesture segment (4 seconds) is extracted as a waveform vector $\mathbf{a} \in \mathbb{R}^{64000}$. Following DiffuseStyleGesture, this work uses the pre-trained WavLM Large model \cite{Chen_2022} to embed the raw waveform into a high-dimensional vector representing acoustic features. Linear interpolation is then applied to temporally align the latent features from WavLM at $20~\text{fps}$, resulting in the speech matrix $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$.
@@ -84,9 +82,9 @@ In the \textit{Stage 3: Feature Extraction} step (\autoref{fig:CommonStage}), th
 	
 	\item \textbf{Speech $\mathbf{A} \in \mathbb{R}^{1:M \times 64}$}: The speech feature matrix $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$ is passed through a linear layer to reduce its dimensionality to a 64-dimensional feature vector, resulting in the matrix $\mathbf{A} \in \mathbb{R}^{1:M \times 64}$.
 	
-	\item \textbf{Text $\mathbf{V} \in \mathbb{R}^{1:M \times 64}$}: After preprocessing described in \autoref{sec:Preprocessing}, the text is aligned to match the number of frames $M$, resulting in matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. It is then passed through a linear transformation to reduce feature dimensionality, yielding the final matrix $\mathbf{V} \in \mathbb{R}^{1:M \times 64}$, aligned with the speech matrix.
+	\item \textbf{Text $\mathbf{V} \in \mathbb{R}^{1:M \times 64}$}: After preprocessing described in \autoref{sec:Preprocessing}, the text is aligned to match the number of frames $M$, resulting in the matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. It is then passed through a linear transformation to reduce feature dimensionality, yielding the final matrix $\mathbf{V} \in \mathbb{R}^{1:M \times 64}$, aligned with the speech matrix.
 	
-	\item \textbf{Seed Gesture $\mathbf{S} \in \mathbb{R}^{192}$}: The seed gesture $\mathbf{s} \in \mathbb{R}^{1:N \times D}$ is processed through a linear transformation layer to obtain the vector $\mathbf{S} \in \mathbb{R}^{192}$. During training, $\mathbf{S}$ is also passed through a random masking layer to randomly mask segments of gesture frames in $N$ frames. This allows the model to learn how missing frames impact the final predicted gestures.
+	\item \textbf{Seed Gesture $\mathbf{S} \in \mathbb{R}^{192}$}: The seed gesture $\mathbf{s} \in \mathbb{R}^{1:N \times D}$ is processed through a linear transformation layer to obtain the vector $\mathbf{S} \in \mathbb{R}^{192}$. During training, $\mathbf{S}$ is also passed through a random masking layer to randomly mask segments of gesture frames in $N$ frames. This allows the model to learn how missing frames impact the final predicted gestures sequence.
 	
 	\item \textbf{Emotion $\mathbf{E} \in \mathbb{R}^{64}$}: The emotion vector $\mathbf{e} \in \mathbb{R}^{6}$ is passed through a linear transformation layer to produce the feature vector $\mathbf{E} \in \mathbb{R}^{64}$. This is designed to be concatenated with the seed gesture vector $\mathbf{S} \in \mathbb{R}^{192}$ to form a 256-dimensional latent vector.
 	
@@ -203,7 +201,7 @@ After Cross-Local Attention, the model is forwarded through a linear layer, as i
 \end{figure}
 
 Following MDM \cite{tevet2022human}, the vector $\mathbf{z}_{tk}$ is the first token that encodes information for the entire frame sequence, analogous to the $\texttt{CLS}$ token in BERT \cite{devlin2019bertpretrainingdeepbidirectional}, which summarizes an entire text segment.
-Here, we uses $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\autoref{eq:ConditionConcat}), as the first token representing global features for the whole sequence of $M$ frames.
+Here, we use $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\autoref{eq:ConditionConcat}), as the first token representing global features for the whole sequence of $M$ frames.
 
 \begin{equation}
 	\mathbf{X}_{0} = \operatorname{Transformer\ Encoder}\bigl(\operatorname{concat}(\mathbf{z}_{tk} \;\|\; \mathbf{h}^{1:M}_{t})\bigr)
@@ -213,6 +211,10 @@ Here, we uses $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\a
 The vectors $\mathbf{h}_t$ represent the sequence of $M$ frames. Similar to Reformer \cite{kitaev2020reformer}, before entering the Self-Attention layer of the Transformer Encoder, the model employs Relative Position Encoding (RPE) instead of absolute position encoding, improving efficiency on long sequences.
 Within the Transformer Encoder layer \cite{vaswani2017attention}, relationships among the data sequences are computed.
 The Transformer Encoder applies the same self-attention mechanism as in \autoref{eq:attention} but without the $\mathbf{Mask}$, enabling correlations across the entire sequence to be captured.
+
+
+
+
 
 \subsection{Feature Decoding Stage}
 
@@ -228,7 +230,7 @@ The final rendering step is presented in \autoref{sec:Render}.
 
 The preceding steps enable the model to learn gesture generation. To incorporate emotions across different contexts, each emotion is parameterized and varied so that the predictions faithfully express the designated affect.
 
-Analogous to conditional denoising models \cite{ho2022classifier, tevet2022human}, we uses the condition vector
+Analogous to conditional denoising models \cite{ho2022classifier, tevet2022human}, we use the condition vector
 $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$,  
 where $\mathbf{s}$ is the seed gesture, $\mathbf{e}$ the emotion, $\mathbf{a}$ the associated speech, and $\mathbf{v}$ the text.
 The conditional diffusion model injects $c$ at every timestep $t$ in the denoising network $\text{G}_\theta(\bx_{t}, t, c)$, with
@@ -315,7 +317,7 @@ For each clip, the gesture $\bx_{t}$ is denoised via $\hat{\bx}_{0} = G_{\theta'
 		\item Initialize with noise: $\mathbf{x}_T \sim \mathcal{N}(0, \mathbf{I})$.
 		\item Retrieve $\sqrt{\alpha_t}$, $\sqrt{1 - \alpha_t}$, and $\sqrt{\bar{\alpha}_t}$ from training; precompute $\sigma_t$ from $\alpha_t$ for each timestep $t: 1 \rightarrow T$.
 		\item Split each 4-second speech segment into $\mathbf{a} \in \mathbb{R}^{64000}$.  
-		The initial seed gesture $\mathbf{s}$ is the data mean and is later updated from the inferred gesture segment.  
+		The initial seed gesture $\mathbf{s}$ is the data mean and later updated from the inferred gesture segment.  
 		Select the desired emotion, obtain the transcript $\mathbf{v}$ from speech $\mathbf{a}$, and form the condition $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$.
 		\item For each timestep, take $t$ \textbf{sequentially} from $[T, \dots, 1]$.
 		\item Sample random noise $\mathbf{z} \sim \mathcal{N}(0, \mathbf{I})$.
@@ -332,5 +334,5 @@ For each clip, the gesture $\bx_{t}$ is denoised via $\hat{\bx}_{0} = G_{\theta'
 The values $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, and $\sqrt{\bar{\alpha}_t}$ obtained during training, together with $\sigma_t$, are employed at each timestep (1 … $T$).  
 Each 4-second speech segment is represented by $\mathbf{a}$, and the seed gesture $\mathbf{s}$ is taken as the data mean or from the previously inferred segment.  
 The desired emotion and the transcript form the condition $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$.  
-The algorithm proceeds sequentially from $T$ to 1: random noise $\mathbf{z}$ is generated, the model predicts $\hat{\mathbf{x}}_0^{(t)}$ from $\mathbf{x}_t$, $t$, and $c$, then $\hat{\mathbf{x}}_{t-1}^{(t)}$ is computed and updated with noise.  
+The algorithm proceeds sequentially from $T$ to 1: random noise $\mathbf{z}$ is generated, the model predicts $\hat{\mathbf{x}}_0^{(t)}$ from $\mathbf{x}_t$, $t$, and $c$, then $\hat{\mathbf{x}}_{t-1}^{(t)}$ is computed and perturbed with noise.  
 This loop continues until $t=1$, after which the algorithm outputs the final denoised gesture $\hat{\mathbf{x}}_0$.

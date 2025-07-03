@@ -14,7 +14,7 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{images/DifferenceEmotion}
-	\caption{Gesture sample of difference emotion}
+	\caption{Gesture samples of difference emotion}
 	\Description{Gesture sample of difference emotion}
 \end{figure}
 
@@ -25,9 +25,9 @@ This work uses the ZeroEGGS dataset \cite{ghorbani2022zeroeggszeroshotexamplebas
 
 In stage {1. Data Preprocessing} (\autoref{fig:CommonStage}), gesture, speech, and text data are read and processed to be represented as vectors or matrices containing information derived from raw data.
 
-For \textbf{text data}: we uses the $\texttt{nltk}$ library for tokenization and $\texttt{contractions}$ to normalize contracted words.
+For \textbf{text data}: we use the $\texttt{nltk}$ library for tokenization and $\texttt{contractions}$ to normalize contracted words.
 
-One contribution of we is to convert the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \cite{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, we uses $\texttt{gensim}$ to generate word2vec embeddings.
+One contribution of we is to convert the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \cite{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, we use $\texttt{gensim}$ to generate word2vec embeddings.
 
 \textbf{Gesture data} consists of BVH (BioVision Motion Capture) files captured via motion capture systems. BVH files include two components: Hierarchy and Motion. Specifically:
 
@@ -65,7 +65,7 @@ Here, each $\mathbf{g} \in \mathbb{R}^{1141}$ includes:
 
 The original gesture sequences in Euler angles are converted to radians, then converted from Euler to Quaternion as detailed in \autoref{appendix:BVHData:QuaternionConvert}.
 
-\textbf{Speech data}: $\mathbf{a}_{\text{raw}} \in \mathbb{R}^{ \text{length } }$ is raw speech sampled at 16000 Hz, trimmed into segments $\mathbf{a} \in \mathbb{R}^{64000}$ corresponding to 4 seconds. The thesis uses \texttt{ffmpeg-normalize} to normalize volume to a level lower than the original.
+\textbf{Speech data}: $\mathbf{a}_{\text{raw}} \in \mathbb{R}^{ \text{length } }$ is raw speech sampled at 16000 Hz, trimmed into segments $\mathbf{a} \in \mathbb{R}^{64000}$ corresponding to 4 seconds. The paper uses \texttt{ffmpeg-normalize} to normalize volume to a level lower than the original.
 
 \textbf{Emotion}: Emotion data is represented using a predefined one-hot encoded vector. During sampling, the filename encodes the target emotion.
 
@@ -91,7 +91,7 @@ The training process is implemented in the open-source repository: \hyperlink{ht
 \subsection{Rendering Process in Unity}
 \label{sec:Render}
 
-To visualize the gesture generation process from model output, we uses Unity in stage \textit{7. Rendering} (\autoref{fig:CommonStage}), extending code from the DeepPhase model \cite{starke2022deepphase}. The generated output is in BVH (BioVision Motion Capture) format. In Unity, the author adds C-Sharp scripts to render gestures based on coordinates and labels, with bone positions and rotations represented using quaternions.
+To visualize the gesture generation process from model output, we use Unity in stage \textit{7. Rendering} (\autoref{fig:CommonStage}), extending code from the DeepPhase model \cite{starke2022deepphase}. The generated output is in BVH (BioVision Motion Capture) format. In Unity, the author adds C-Sharp scripts to render gestures based on coordinates and labels, with bone positions and rotations represented using quaternions.
 
 Rendering details are presented in \autoref{Appendix3}.
 
