@@ -5,7 +5,7 @@
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{images/AllStage}
+	\includegraphics[width=\linewidth]{images/AllStage}
 	\caption{Overview of the OHGesture model}
 	\label{fig:TrainingAndSampling}
 \end{figure}
@@ -72,7 +72,7 @@ In the \textit{Stage 3: Feature Extraction} step (\autoref{fig:CommonStage}), th
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{images/OHGesture.png}
+	\includegraphics[width=\linewidth]{images/OHGesture.png}
 	\caption{The Model Architecture in OHGesture}
 	\label{fig:OHGesture}
 \end{figure}
@@ -149,7 +149,7 @@ In the Attention formula above, $\mathbf{Q}$ (Query), $\mathbf{K}$ (Key), and $\
 
 The Local-Cross Attention mechanism is controlled to focus only on local motion features of gestures and features in neighboring frames.
 
-\begin{figure}[H][width=\textwidth]
+\begin{figure}[H][width=\linewidth]
 	\centering
 	\includegraphics[width=1\textwidth]{images/CrossLocalAttention}
 	\caption{Attention Mechanism in Transformer Encoder and Cross-Local Attention}
@@ -185,14 +185,14 @@ After Cross-Local Attention, the model is forwarded through a linear layer, as i
 
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}{0.42\textwidth}
+	\begin{subfigure}{0.42\linewidth}
 		\centering
-		\includegraphics[width=0.9\textwidth]{images/FeatureConcatenate}
+		\includegraphics[width=0.9\linewidth]{images/FeatureConcatenate}
 		\caption{Feature concatenation for $\mathbf{z}_{tk}$}
 		\label{fig:FeatureFusion}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}{0.55\textwidth}
+	\begin{subfigure}{0.55\linewidth}
 		\centering
 		\includegraphics[width=0.85\textwidth]{images/FeatureFusion}
 		\caption{Frame-wise feature-fusion process}
