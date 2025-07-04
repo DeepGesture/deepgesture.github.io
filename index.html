@@ -39,6 +39,11 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
 </head>
 
 <body>
@@ -94,17 +99,18 @@
 
 
                 <span class="link-block">
-                <a href="https://github.com/DeepGesture/DeepGesture" target="_blank"
-                class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
+                  <a href="https://github.com/DeepGesture/DeepGesture" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
                 </span>
-                <span>Code</span>
-              </a>
-              </span>
 
                 <span class="link-block">
-                  <a href="https://www.youtube.com/watch?v=eZghfNGmZn8" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://www.youtube.com/watch?v=eZghfNGmZn8"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-youtube"></i>
                     </span>
@@ -229,15 +235,35 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Control With MultiModal Prompts</h2>
+          <h2 class="title is-3">Classifier-free Guidance of speech, text and emotion</h2>
           <div class="content has-text-justified">
-            <p>
-              Our system accepts text,
-              motion, and video prompts as style descriptors
-              and successfully generates realistic gestures with
-              reasonable styles, as required by the corresponding prompts.
-              Some of the results are as follows.
-            </p>
+            <h3><strong>Similarities</strong></h3>
+            <ul>
+              <li>Uses the Diffusion model on gesture data <span>\(\mathbf{x}^{1:M \times D}\)</span>, with
+                <span>\(M\)</span> temporal frames and <span>\(D = 1141\)</span> representing motion coordinates per
+                frame (analogous to image width and height).</li>
+              <li>Uses conditional Diffusion with <span>\(\mathbf{x}_0\)</span> objective.</li>
+              <li>In stages <em>4. Feature Encoding</em> and <em>6. Feature Decoding</em> in <a
+                  hrefWe use uses a latent vector of dimension
+                <span>\(256\)</span>.</li>
+            </ul>
+
+            <h3><strong>Differences</strong></h3>
+            <ul>
+              <li>Conditional gesture generation:
+                <ul>
+                  <li>Emotional condition: <span>\(c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]\)</span> and
+                    <span>\(c_{\varnothing} = [\varnothing, \varnothing, \mathbf{a}, \mathbf{v}]\)</span>.</li>
+                  <li>Emotion state interpolation between <span>\(\mathbf{e}_1, \mathbf{e}_2\)</span> using: <span>\(c =
+                      [\mathbf{s}, \mathbf{e}_1, \mathbf{a}, \mathbf{v}]\)</span> and <span>\(c_{\varnothing} =
+                      [\mathbf{s}, \mathbf{e}_2, \mathbf{a}, \mathbf{v}]\)</span>.</li>
+                </ul>
+              </li>
+              <li>We use
+                uses Self-Attention: learning the relationship between emotions, seed gestures, and each frame (similar
+                to DALL·E 2’s text-image alignment).</li>
+              <li>We concatenates speech and text (analogous to ControlNet’s pixel-wise condition).</li>
+            </ul>
           </div>
 
         </div>
@@ -446,8 +472,8 @@
   keywords     = {co-speech gesture synthesis, Vietnamese, multi-modality, diffusion models} 
 }
 </code></pre>
-<!-- doi          = {10.1145/XXXXXXX.XXXXXXX}, % Replace with actual DOI when available -->
-   <!-- articleno    = {XXX},  % Replace XXX with the assigned article number -->
+      <!-- doi          = {10.1145/XXXXXXX.XXXXXXX}, % Replace with actual DOI when available -->
+      <!-- articleno    = {XXX},  % Replace XXX with the assigned article number -->
     </div>
   </section>
 
@@ -469,15 +495,15 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            This website using template <a href="https://nerfies.github.io/">Nerfies</a> is licensed under a <a
+              rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
               Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
-          <p>
+          <!-- <p>
             Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you want
             to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them
             appropriately.
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
