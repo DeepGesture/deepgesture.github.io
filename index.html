@@ -160,7 +160,7 @@
               naturally to text or speech inputs.
               In this work, we present DeepGesture, a diffusion-based gesture
               synthesis framework for generating expressive co-speech gestures
-              conditioned on multimodal signals—text, speech, emotion, and seed
+              conditioned on multimodal signals - text, speech, emotion, and seed
               motion. Built upon the DiffuseStyleGesture model, DeepGesture
               introduces novel architectural enhancements that improve semantic alignment and emotional expressiveness
               in generated gestures.
@@ -174,7 +174,7 @@
               and contextual appropriateness, outperforming baselines on Mean Opinion Score and
               Fréchet Gesture Distance metrics. Our system supports interpolation between emotional states and
               demonstrates generalization to
-              out-of-distribution speech, including synthetic voices—marking a
+              out-of-distribution speech, including synthetic voices - marking a
               step forward toward fully multimodal, emotionally aware digital humans.
           </div>
         </div>
@@ -206,24 +206,30 @@
           <!--         <h2 class="title is-3">How does it work?</h2> -->
           <div class="content has-text-justified">
             <p>
-              DeepGesture takes the audio and transcript of a speech as input,
-              synthesizing realistic, stylized full-body gestures that align with
-              the speech content rhythmically and semantically. It allows using
-              a short piece of text, namely a <i>text prompt</i>, a video clip, namely a
-              <i>video prompt</i>, or a motion sequence, namely a <i>motion prompt</i>, to
-              describe a desired style. The gestures are then generated to embody
-              the style as much as possible. And furthermore, our system can be
-              extended to achieve style control of individual body parts through
-              noise combination.
+              Through experimental validation and qualitative analysis, the <strong>DeepGesture</strong> model - extending
+              <em>DiffuseStyleGesture</em> - demonstrates the ability to generate realistic gestures for both
+              in-distribution and out-of-distribution speech, including synthetic voices such as that of Steve Jobs.
+              This highlights the promise of diffusion-based approaches in modeling complex, expressive, and
+              low-frequency gesture behaviors.
             </p>
+
+            <p>
+              Additionally, we contribute open-source code, including rendering pipelines and data processing tools
+              built on Unity, available on <a href="https://github.com/DeepGesture/DeepGesture" target="_blank"
+                rel="noopener noreferrer">GitHub</a>. These resources provide a solid foundation for future development
+              and reproducibility. The integration of text alongside speech and emotion into the gesture generation
+              pipeline marks an important step toward building fully multimodal agents, capable of more intuitive and
+              human-like interactions in diverse application domains.
+            </p>
+
           </div>
-          <div class="content has-text-justified">
+          <!-- <div class="content has-text-justified">
             <p>
               We conduct an extensive set of experiments
               to evaluate our framework. Our system outperforms all baselines
               both qualitatively and quantitatively, as evidenced by FGD, SRGR,
               SC, and SRA metrics, and user study results.
-          </div>
+          </div> -->
         </div>
         <!--/ Abstract. -->
       </div>
@@ -261,8 +267,8 @@
               </li>
               <li>We use
                 uses Self-Attention: learning the relationship between emotions, seed gestures, and each frame (similar
-                to DALL·E 2''s text-image alignment).</li>
-              <li>We concatenates speech and text (analogous to ControlNet''s pixel-wise condition).</li>
+                to DALL·E 2's text-image alignment).</li>
+              <li>We concatenates speech and text (analogous to ControlNet's pixel-wise condition).</li>
             </ul>
           </div>
 
@@ -337,7 +343,7 @@
 
           <div class="column is-centered has-text-centered">
             <img src="static/figures/speechguidance/ListOfEmotion.png" alt="cars peace" width="900" />
-            
+
             <!-- <video poster="" id="tree" muted controls width=250>
               <source src="static/figures/motion_prompt/motion_prompt.mp4" type="video/mp4">
             </video> -->
