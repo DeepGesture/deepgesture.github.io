@@ -25,3 +25,6 @@
     demonstrates generalization to
     out-of-distribution speech, including synthetic voices—marking a
     step forward toward fully multimodal, emotionally aware digital humans.
+
+
+![DeepGesture](/static/figures/DeepGesture.png)
