@@ -55,8 +55,7 @@
         <!-- <div class="columns is-centered"> -->
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">DeepGesture: A conversational gesture synthesis system based on
-            emotions and semantic
-            language</h1>
+            emotions and semantic</h1>
           <!-- <div class="is-size-3 publication-authors">
             ACM ICMI 2024
           </div> -->
@@ -241,11 +240,11 @@
             <ul>
               <li>Uses the Diffusion model on gesture data <span>\(\mathbf{x}^{1:M \times D}\)</span>, with
                 <span>\(M\)</span> temporal frames and <span>\(D = 1141\)</span> representing motion coordinates per
-                frame (analogous to image width and height).</li>
+                frame (analogous to image width and height).
+              </li>
               <li>Uses conditional Diffusion with <span>\(\mathbf{x}_0\)</span> objective.</li>
-              <li>In stages <em>4. Feature Encoding</em> and <em>6. Feature Decoding</em> in <a
-                  hrefWe use uses a latent vector of dimension
-                <span>\(256\)</span>.</li>
+              <li>In stages <em>4. Feature Encoding</em> and <em>6. Feature Decoding</em> in <a hrefWe use uses a latent
+                  vector of dimension <span>\(256\)</span>.</li>
             </ul>
 
             <h3><strong>Differences</strong></h3>
@@ -253,7 +252,8 @@
               <li>Conditional gesture generation:
                 <ul>
                   <li>Emotional condition: <span>\(c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]\)</span> and
-                    <span>\(c_{\varnothing} = [\varnothing, \varnothing, \mathbf{a}, \mathbf{v}]\)</span>.</li>
+                    <span>\(c_{\varnothing} = [\varnothing, \varnothing, \mathbf{a}, \mathbf{v}]\)</span>.
+                  </li>
                   <li>Emotion state interpolation between <span>\(\mathbf{e}_1, \mathbf{e}_2\)</span> using: <span>\(c =
                       [\mathbf{s}, \mathbf{e}_1, \mathbf{a}, \mathbf{v}]\)</span> and <span>\(c_{\varnothing} =
                       [\mathbf{s}, \mathbf{e}_2, \mathbf{a}, \mathbf{v}]\)</span>.</li>
@@ -277,16 +277,16 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="column is-centered has-text-centered">
-        <h3 class="title is-4">Text Prompt</h3>
+        <h3 class="title is-4">Emotion-guidance Gesture Generation</h3>
         <div id="results-carousel" class="carousel results-carousel">
           <div class="column is-centered has-text-centered">
-            <p><b>Text Prompt: “the person is <font color="red">angry</font>.”</b></p>
-
-            <video poster="" id="tree" width=300>
+            <!-- <p><b>Text Prompt: “the person is <font color="red">angry</font>.”</b></p> -->
+            <img src="static/figures/emotion/EmotionAnimation.png" alt="cars peace" width="900" />
+            <!-- <video poster="" id="tree" width=300>
               <source src="static/figures/text_prompt/angry.mp4" type="video/mp4">
-            </video>
+            </video> -->
           </div>
-          <div class="column is-centered has-text-centered">
+          <!-- <div class="column is-centered has-text-centered">
             <p><b> Text Prompt: “the person is <font color="red">happy</font> and <font color="red">excited</font>.”</b>
             </p>
 
@@ -315,9 +315,9 @@
             <video poster="" id="tree" controls width=300>
               <source src="static/figures/text_prompt/guitar.mp4" type="video/mp4">
             </video>
-          </div>
+          </div> -->
           <div class="column is-centered has-text-centered">
-            <p><b> Text Prompt: “standing like a <font color="red">boxer</font>.”</b></p>
+            <!-- <p><b> Text Prompt: “standing like a <font color="red">boxer</font>.”</b></p> -->
 
             <video poster="" id="tree" controls width=300>
               <source src="static/figures/text_prompt/boxer.mp4" type="video/mp4">
@@ -330,32 +330,34 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="column is-centered has-text-centered">
-        <h3 class="title is-4">Motion Prompt</h3>
-        <p><b> (The left video is the motion prompt, and the right video shows the results.)</b></p>
+        <h3 class="title is-4">Speech-guidance Gesture Generation</h3>
+        <!-- <p><b> (The left video is the motion prompt, and the right video shows the results.)</b></p> -->
 
         <div id="results-carousel" class="carousel results-carousel">
 
           <div class="column is-centered has-text-centered">
-            <video poster="" id="tree" muted controls width=250>
+            <img src="static/figures/speechguidance/ListOfEmotion.png" alt="cars peace" width="900" />
+            
+            <!-- <video poster="" id="tree" muted controls width=250>
               <source src="static/figures/motion_prompt/motion_prompt.mp4" type="video/mp4">
-            </video>
-            <video poster="" id="tree" controls width=300>
+            </video> -->
+            <!-- <video poster="" id="tree" controls width=300>
               <source src="static/figures/motion_prompt/neutral.mp4" type="video/mp4">
             </video>
             <p><b>Motion Prompt: “<font color="red">high right hand</font> and <font color="red">low left hand</font>
                 .”</b></p>
-            </br>
+            </br> -->
           </div>
 
           <div class="column is-centered has-text-centered">
             <video poster="" id="tree" muted controls width=250>
               <source src="static/figures/motion_prompt/sit_prompt.mp4" type="video/mp4">
             </video>
-            <video poster="" id="tree" controls width=300>
+            <!-- <video poster="" id="tree" controls width=300>
               <source src="static/figures/motion_prompt/sit.mp4" type="video/mp4">
             </video>
             <p><b>Motion Prompt: “<font color="red">sitting</font>.”</b></p>
-            </br>
+            </br> -->
           </div>
 
         </div>
@@ -368,7 +370,7 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Body Part-Level Style Control</h2>
+          <h2 class="title is-3">Gesture Generation Result Sample</h2>
           <div class="content has-text-justified">
             <p>
               Our system allows fine-grained styles control on individual body parts by using noise
@@ -393,10 +395,10 @@
       <div class="container">
         <div id="results-carousel" class="carousel results-carousel">
           <div class="column is-centered has-text-centered">
-            <img src="static/figures/sub_body/1.png" alt="cars peace" width="250" />
-            <video poster="" id="tree" controls width=500>
+            <img src="static/figures/sample/DifferenceEmotion.png" alt="cars peace" width="1200" />
+            <!-- <video poster="" id="tree" controls width=500>
               <source src="static/figures/sub_body/video_01.mp4" type="video/mp4">
-            </video>
+            </video> -->
           </div>
           <div class="column is-centered has-text-centered">
             <img src="static/figures/sub_body/2.png" alt="cars peace" width="250" />
@@ -404,7 +406,7 @@
               <source src="static/figures/sub_body/video_02.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="column is-centered has-text-centered">
+          <!-- <div class="column is-centered has-text-centered">
             <img src="static/figures/sub_body/3.png" alt="cars peace" width="250" />
             <video poster="" id="tree" controls width=500>
               <source src="static/figures/sub_body/video_03.mp4" type="video/mp4">
@@ -415,7 +417,7 @@
             <video poster="" id="tree" controls width=500>
               <source src="static/figures/sub_body/video_04.mp4" type="video/mp4">
             </video>
-          </div>
+          </div> -->
         </div>
       </div>
   </section>
@@ -433,15 +435,16 @@
           <div id="results-carousel" class="carousel results-carousel">
 
             <div class="column is-centered has-text-centered">
-              <video poster="" id="tree" controls width=800>
+              <img src="static/figures/FinalResult.png" alt="cars peace" width="500" />
+              <!-- <video poster="" id="tree" controls width=800>
                 <source src="static/figures/chatgpt/gpt1.mp4" type="video/mp4">
-              </video>
+              </video> -->
             </div>
-            <div class="column is-centered has-text-centered">
+            <!-- <div class="column is-centered has-text-centered">
               <video poster="" id="tree" controls width=800>
                 <source src="static/figures/chatgpt/gpt2.mp4" type="video/mp4">
               </video>
-            </div>
+            </div> -->
             <div class="column is-centered has-text-centered">
               <video poster="" id="tree" controls width=800>
                 <source src="static/figures/chatgpt/gpt3.mp4" type="video/mp4">
@@ -461,7 +464,7 @@
       <pre><code>
 @article{hoangminh2024deepgesture,
   author       = {Hoang-Minh, Thanh},
-  title        = {DeepGesture: A Conversational Gesture Synthesis System Based on Emotions and Semantic Language},
+  title        = {DeepGesture: A Conversational Gesture Synthesis System Based on Emotions and Semantic},
   journal      = {ACM Transactions on Graphics (TOG)},
   volume       = {43},
   number       = {4},

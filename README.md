@@ -1,6 +1,6 @@
 # DeepGesture - A conversational gesture synthesis system based on emotions and semantic
 
-### Abstract
+## Abstract
 
 > Along with the explosion of large language models, improvements
     in speech synthesis, advancements in hardware, and the evolution
@@ -25,6 +25,5 @@
     demonstrates generalization to
     out-of-distribution speech, including synthetic voices—marking a
     step forward toward fully multimodal, emotionally aware digital humans.
-
 
 ![DeepGesture](/static/figures/DeepGesture.png)
