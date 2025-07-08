@@ -11,11 +11,10 @@
 %	\caption{Illustration of 6 gestures: $\texttt{Happy}$, $\texttt{Sad}$, $\texttt{Neutral}$, $\texttt{Old}$, $\texttt{Relaxed}$, and $\texttt{Angry}$}
 %\end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\linewidth]{figures/DifferenceEmotion}
 	\caption{Gesture samples of difference emotion}
-	\Description{Gesture sample of difference emotion}
 \end{figure}
 
 We uses the ZeroEGGS retarget dataset \cite{ghorbani2022zeroeggs}, \cite{ghorbani2022zeroeggszeroshotexamplebasedgesture}, a motion capture dataset designed for research and development of gesture generation models. It includes 67 monologue clips performed by a female motion capture actor, with a total duration of 135 minutes. The monologues are annotated with 6 different emotions: $\texttt{Happy}$, $\texttt{Sad}$, $\texttt{Neutral}$, $\texttt{Old}$, $\texttt{Relaxed}$, and $\texttt{Angry}$, enabling simulation of various emotional states in gestures and body movements. ZeroEGGS provides a rich platform for studying the integration of speech and dynamic gestures, supporting the development of models capable of adapting gestures according to emotions and text semantics.
@@ -119,7 +118,6 @@ The Unity project source code is available at: \hyperlink{https://github.com/Dee
 %	\centering
 %	\includegraphics[width=0.9\linewidth]{figures/skeleton.pdf}
 %	\caption{The character model used in our system.}
-%	\Description{}
 %	\label{fig:character_model}
 %\end{figure}
 %%
@@ -139,7 +137,6 @@ The Unity project source code is available at: \hyperlink{https://github.com/Dee
 %	\centering
 %	\includegraphics[width=\linewidth]{figures/fig2a.pdf}
 %	\caption{A contrastive learning task is performed to disentangle multi-level audio features. We use the text feature $\vect{t}$ as the anchor of this learning. The highest-level audio feature $\vect{a}^{\eqword{high}}$ is considered as the positive sample, while the features of the lower levels are all treated as negative samples. After training, both $\vect{a}^{\eqword{high}}$ and the feature extracted at the second level, $\vect{a}^{\eqword{low}}$, are used for gesture generation.}
-%	\Description{}
 %	\label{fig:audio_feature_extraction}
 %\end{figure}
 %%
@@ -176,7 +173,6 @@ The Unity project source code is available at: \hyperlink{https://github.com/Dee
 %		\includegraphics[width=\linewidth]{figures/onset_interval_TED.pdf}
 %	\end{subfigure}
 %	\caption{Distribution of time intervals between consecutive audio onsets in two open-source speech-gesture datasets.}
-%	\Description{}
 %	\label{fig:onset_intervals}
 %\end{figure}
 %%

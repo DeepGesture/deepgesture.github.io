@@ -5,7 +5,6 @@
 	\centering
 	\includegraphics[width=\linewidth]{figures/AllStage}
 	\caption{Overview of the DeepGesture model}
-	\Description{Overview of the DeepGesture model}
 	\label{fig:TrainingAndSampling}
 \end{figure}
 
@@ -70,8 +69,6 @@ In the \textit{Stage 3: Feature Extraction} step (\autoref{fig:CommonStage}), th
 	\centering
 	\includegraphics[width=\linewidth]{figures/DeepGesture}
 	\caption{The Model Architecture in DeepGesture}
-	\Description{The Model Architecture in DeepGesture}
-	\Description{}
 	\label{fig:DeepGesture}
 \end{figure*}
 
@@ -152,7 +149,6 @@ The Local-Cross Attention mechanism is controlled to focus only on local motion 
 	\centering
 	\includegraphics[width=1\linewidth]{figures/CrossLocalAttention}
 	\caption{Attention Mechanism in Transformer Encoder and Cross-Local Attention}
-	\Description{Attention Mechanism in Transformer Encoder and Cross-Local Attention}
 	\label{fig:CrossLocalAttention}
 \end{figure}
 
@@ -188,7 +184,7 @@ After Cross-Local Attention, the model is forwarded through a linear layer, as i
 	\begin{subfigure}{0.42\linewidth}
 		\centering
 		\includegraphics[width=0.95\linewidth]{figures/FeatureConcatenate}
-		\caption{Feature concatenation of $\mathbf{z}_{tk}$}
+		\caption{Feature concatenation $\mathbf{z}_{tk}$}
 		\label{fig:FeatureFusion}
 	\end{subfigure}
 	\hfill
@@ -300,9 +296,10 @@ This cycle repeats until the model converges, yielding the optimal parameters $\
 	\centering
 	\includegraphics[width=\linewidth]{figures/OnlineAndOffline}
 	\caption{Offline (Training) and Online (Inference) Phases}
-	\Description{Offline (Training) and Online (Inference) Phases}
 	\label{fig:OnlineAndOffline}
 \end{figure}
+
+\vspace{-5mm}
 
 To generate gestures of arbitrary length, the original sequence is segmented into clips of length $M$.
 During training, the seed gesture can be chosen by randomly selecting a gesture from the dataset or by averaging the clipped segments-here, the mean rotation angles are used.  

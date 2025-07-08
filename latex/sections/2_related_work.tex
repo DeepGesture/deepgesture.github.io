@@ -41,15 +41,14 @@ Representative statistical approaches include \textit{Gesture controllers} \cite
 
 These methods utilize multi-layer perceptrons (MLPs) to automatically extract features from raw data and learn complex data representations through parameter optimization.
 
-\begin{figure}[b]
-	\centering
-	\includegraphics[width=\linewidth]{figures/GeneralOverview}
-	\caption{Overview of different generative models.}
-	\Description{Overview of different generative models.}
-	\label{fig:GeneralOverview}
-\end{figure}
+%\begin{figure}[b]
+%	\centering
+%	\includegraphics[width=\linewidth]{figures/GeneralOverview}
+%	\caption{Overview of different generative models.}
+%	\label{fig:GeneralOverview}
+%\end{figure}
 
-As illustrated in \autoref{fig:GeneralOverview}, deep learning-based gesture generation methods can be divided into two main groups: likelihood-based models and implicit generative models \cite{song2021score}.
+Deep learning-based gesture generation methods can be divided into two main groups: likelihood-based models and implicit generative models \cite{song2021score}.
 
 
 \textbf{Likelihood-Based Models}
@@ -74,6 +73,22 @@ These models work by maximizing the likelihood of observed data given model para
 \end{itemize}
 
 
+%\vfill
+%\begin{figure*}[htbp]
+%	\centering
+%	\includegraphics[width=0.9\linewidth]{figures/CommonStage.png}
+%	\caption{Common stages in gesture generation models.}
+%	\label{fig:CommonStage}
+%\end{figure*}
+\vfill
+\begin{figure*}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{figures/CommonStage.png}
+%	\resizebox{\textwidth}{!}{\input{tikzpicture/CommonStage.tex}}
+	\caption{Common stages in gesture generation models.}
+	\label{fig:CommonStage}
+\end{figure*}
+
 \textbf{Implicit Generative Models}
 \label{sec:ImplicitGenerativeModels}
 
@@ -82,6 +97,7 @@ Implicit generative models learn the data distribution without explicitly modeli
 In gesture generation, to incorporate conditions such as speech or text labels, implicit generative models often introduce a condition $\mathbf{c}$ representing the context of the task, resulting in the conditional generation: $\mathbf{x} = G_\theta(\mathbf{z}, \mathbf{c})$. This context may include speech, text, speaker ID, style, emotion, or initial gestures.
 
 A typical example is the generative adversarial network (GAN) and Diffusion model, where data is synthesized by transforming an initial simple distribution (e.g., Gaussian) into the target data distribution.
+
 
 \textbf{Methods}: Representative implicit generative models include:
 
@@ -99,18 +115,12 @@ A typical example is the generative adversarial network (GAN) and Diffusion mode
 
 
 
+
 \subsection{Common Stages in Deep Learning Approaches for Gesture Generation}
 \label{sec:commonstage}
 
 As presented in \autoref{sec:Data}, gestures consist of sequences of 3D point coordinates. For each dataset, the number of bones per frame may vary.
 
-\begin{figure*}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{figures/CommonStage.png}
-	\caption{Common stages in gesture generation models.}
-	\Description{Common stages in gesture generation models.}
-	\label{fig:CommonStage}
-\end{figure*}
 
 Deep learning approaches to gesture generation are implemented using various techniques. However, we generalize the process into the following main stages, illustrated in \autoref{fig:CommonStage}:
 
@@ -132,8 +142,13 @@ Deep learning approaches to gesture generation are implemented using various tec
 \end{enumerate}
 
 
+
+
+
 \subsection{Diffusion-based Model for Gesture Generation}
 \label{sec:diffusionbase}
+
+
 
 
 \begin{itemize}
@@ -151,6 +166,13 @@ Deep learning approaches to gesture generation are implemented using various tec
 	
 	\item \textit{Freetalker} \cite{yang2024freetalker} trains a Diffusion model on multiple datasets to generate speaker-specific gestures conditioned on speech and text. Unlike Transformer-based methods, Freetalker employs an Attention-based Network to model the correlation between textual, auditory, and gesture features during \textit{Stage 5. Feature Fusion} (\autoref{fig:CommonStage}).
 \end{itemize}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\linewidth]{figures/ScoreMatching.jpg}
+	\caption{Illustrates the diffusion drift term in gesture generation.}
+	\label{fig:ScoreMatching}
+\end{figure}
 
 \vspace{-0.2cm}
 \subsubsection{Selected Diffusion-based Methods}
