@@ -1,3 +1,12 @@
+User-agent: *
+Disallow: /static/figures/chatgpt/
+Disallow: /static/figures/motion_prompt/
+Disallow: /static/figures/sub_body/
+Disallow: /static/figures/video_prompt/
+Disallow: /static/figures/denoising_network.png
+Disallow: /static/figures/small_fig.png
+
+
 User-agent: Googlebot-Image
 Disallow: /static/figures/chatgpt/
 Disallow: /static/figures/motion_prompt/
