@@ -85,7 +85,7 @@
 %
 %\textbf{MOS Evaluation Results}
 %
-%This work reuses the evaluation results of the baseline model \textbf{DiffuseStyleGesture} \cite{yang2023diffusestylegesture} for human perception metrics, as gesture generation remains a nascent field and the cost of evaluating multiple models is high. Therefore, this paper does not include evaluation results for the proposed \textbf{OHGesture} model.
+%This work reuses the evaluation results of the baseline model \textbf{DiffuseStyleGesture} \cite{yang2023diffusestylegesture} for human perception metrics, as gesture generation remains a nascent field and the cost of evaluating multiple models is high. Therefore, this paper does not include evaluation results for the proposed \textbf{DeepGesture} model.
 %
 %%\begin{figure}[htbp]
 %%	\centering
@@ -148,7 +148,7 @@
 %			ZeroEGG & 136.33 & 81.22 & 290.47 & 140.24     & 102.44    & 181.07     \\
 %			\hline
 %			Proposed Model                     &         &         &         &           &          &                 \\
-%			\quad \textbf{OHGesture} & 161.22 & 89.58 & 279.95 & 156.93   & 99.86   & 215.24    \\
+%			\quad \textbf{DeepGesture} & 161.22 & 89.58 & 279.95 & 156.93   & 99.86   & 215.24    \\
 %			\hline
 %		\end{tabular}%
 %	}
@@ -158,7 +158,7 @@
 %
 %\textbf{Evaluation Results using FGD}
 %
-%This work proposes Fréchet Gesture Distance (FGD), a gesture-based variant of FID, and develops the open-source tool \hyperlink{https://github.com/GestureScore/GestureScore}{GestureScore} \footnote{Github/GestureScore: \url{https://github.com/GestureScore/GestureScore}}. In GestureScore, an Inception V3 model is implemented to encode the frame sequence $\bx^{1:M \times D}$ into a latent feature vector of size $32 \times 32$, which is then used as input to \autoref{eq:fidscore}. The following \autoref{table:EvalFGD} shows the FGD evaluation results of the OHGesture model using GestureScore.
+%This work proposes Fréchet Gesture Distance (FGD), a gesture-based variant of FID, and develops the open-source tool \hyperlink{https://github.com/GestureScore/GestureScore}{GestureScore} \footnote{Github/GestureScore: \url{https://github.com/GestureScore/GestureScore}}. In GestureScore, an Inception V3 model is implemented to encode the frame sequence $\bx^{1:M \times D}$ into a latent feature vector of size $32 \times 32$, which is then used as input to \autoref{eq:fidscore}. The following \autoref{table:EvalFGD} shows the FGD evaluation results of the DeepGesture model using GestureScore.
 %
 %%\begin{table}[h]
 %%	\centering
@@ -167,8 +167,8 @@
 %%		\multicolumn{1}{c}{Name} & FGD on Feature Vectors & \begin{tabular}[c]{@{}c@{}} FGD on Raw Data \end{tabular} \\ \hline
 %%		Ground Truth             & -       & -          \\
 %%		Ours                     &       & \\
-%%		\quad OHGesture (Feature D=1141) & 2.058      & 9465.546 \\
-%%		\quad OHGesture (Rotations) & 3.513       & 9519.129 \\
+%%		\quad DeepGesture (Feature D=1141) & 2.058      & 9465.546 \\
+%%		\quad DeepGesture (Rotations) & 3.513       & 9519.129 \\
 %%		\hline
 %%	\end{tabular}
 %%	\caption{Evaluation results of Fréchet Gesture Distance (FGD) on $\bx^{1:M \times D}$ (from frame 1 to frame M, with D features per frame)}
@@ -183,8 +183,8 @@
 %			\multicolumn{1}{c}{Name} & FGD on Feature Vectors & FGD on Raw Data \\ \hline
 %			Ground Truth             & -             & -            \\
 %			Ours                     &               &              \\
-%			\quad OHGesture (Feature D=1141) & 2.058  & 9465.546     \\
-%			\quad OHGesture (Rotations)      & 3.513  & 9519.129     \\
+%			\quad DeepGesture (Feature D=1141) & 2.058  & 9465.546     \\
+%			\quad DeepGesture (Rotations)      & 3.513  & 9519.129     \\
 %			\hline
 %		\end{tabular}
 %	}
@@ -195,7 +195,7 @@
 %\begin{itemize}
 %	\item \textbf{Feature Vectors:} The BVH files are used to convert the entire skeleton of each frame into a feature vector of size $D = 1141$, as described in \autoref{eq:gesturevector}.
 %	
-%	\item \textbf{Rotations:} From the resulting BVH file, this paper extracts the rotation angles, $D = 225$ ($225 = 75 \times 3$), from the gesture sequence of length $M$ frames for evaluation in the OHGesture row below.
+%	\item \textbf{Rotations:} From the resulting BVH file, this paper extracts the rotation angles, $D = 225$ ($225 = 75 \times 3$), from the gesture sequence of length $M$ frames for evaluation in the DeepGesture row below.
 %\end{itemize}
 %
 %\subsection{Building and Standardizing a Gesture Generation Evaluation System}
@@ -204,7 +204,7 @@
 %
 %To address this, we proposes building an online leaderboard system \cite{nagy2024towards} \hyperlink{https://genea-workshop.github.io/leaderboard/}{GENEA Leaderboard} \footnote{GENEA Leaderboard: \url{https://genea-workshop.github.io/leaderboard/}}, which ranks gesture generation models. The paper collects and processes gesture data from multiple languages and datasets, standardizes them into a unified dataset, and invites authors of various models to train and infer on this standardized set. The resulting generated gestures are then evaluated by hired participants through Prolific. 
 %
-%The paper is also building an online system \hyperlink{https://github.com/hemvip/hemvip.github.io}{hemvip/hemvip.github.io} \footnote{HEMVIP2 \url{https://github.com/hemvip/hemvip.github.io}} to support the evaluation process via Prolific-based crowd-sourcing. Evaluation results for the OHGesture model will be added based on this system.
+%The paper is also building an online system \hyperlink{https://github.com/hemvip/hemvip.github.io}{hemvip/hemvip.github.io} \footnote{HEMVIP2 \url{https://github.com/hemvip/hemvip.github.io}} to support the evaluation process via Prolific-based crowd-sourcing. Evaluation results for the DeepGesture model will be added based on this system.
 %
 %Through this evaluation system, the research aims to establish a common benchmark, thereby fostering advancement in gesture generation.
 %
@@ -292,7 +292,7 @@ Lower FGD indicates higher distributional similarity, thus better quality. Evalu
 
 \textbf{MOS Evaluation}
 
-Due to the high cost and resource requirements of human evaluations, this work reuses the subjective evaluation results from \textbf{DiffuseStyleGesture}~\cite{yang2023diffusestylegesture} as a baseline. The proposed \textbf{OHGesture} model is not included in the subjective study.
+Due to the high cost and resource requirements of human evaluations, this work reuses the subjective evaluation results from \textbf{DiffuseStyleGesture}~\cite{yang2023diffusestylegesture} as a baseline. The proposed \textbf{DeepGesture} model is not included in the subjective study.
 
 To assess visual quality, a separate user study is conducted comparing the proposed method with real motion capture data. Each evaluated clip is 11–51 seconds long (mean: 31.6s), exceeding the typical GENEA clip duration of 8–10s~\cite{yoon2022genea}. Longer clips offer clearer insight into gesture consistency~\cite{yang2022reprgesture}. Ratings range from 5 (\texttt{excellent}) to 1 (\texttt{bad}).
 
@@ -326,7 +326,7 @@ MSE is computed on gesture sequences across $M$ frames and reported across six e
 			\multicolumn{1}{c}{Emotion} & Neutral & Sad & Happy & Relaxed & Elderly & Angry \\ \hline
 			DiffuseStyleGesture  & 75.04 & 51.40 & 110.18 & 130.83     & 116.03    & 78.53     \\
 			ZeroEGG              & 136.33 & 81.22 & 290.47 & 140.24     & 102.44    & 181.07     \\
-			\textbf{OHGesture}   & 161.22 & 89.58 & 279.95 & 156.93     & 99.86     & 215.24     \\
+			\textbf{DeepGesture}   & 161.22 & 89.58 & 279.95 & 156.93     & 99.86     & 215.24     \\
 			\hline
 		\end{tabular}%
 	}
@@ -345,12 +345,12 @@ This work introduces FGD and implements the open-source tool \hyperlink{https://
 			\hline
 			\multicolumn{1}{c}{Model Variant} & FGD on Feature Vectors & FGD on Raw Data \\ \hline
 			Ground Truth             & -             & -            \\
-			OHGesture (Feature D=1141) & 2.058  & 9465.546     \\
-			OHGesture (Rotations)      & 3.513  & 9519.129     \\
+			DeepGesture (Feature D=1141) & 2.058  & 9465.546     \\
+			DeepGesture (Rotations)      & 3.513  & 9519.129     \\
 			\hline
 		\end{tabular}
 	}
-	\caption{FGD results for OHGesture on $\bx^{1:M \times D}$}
+	\caption{FGD results for DeepGesture on $\bx^{1:M \times D}$}
 	\label{table:EvalFGD}
 \end{table}
 
@@ -365,7 +365,7 @@ This work introduces FGD and implements the open-source tool \hyperlink{https://
 %
 %To address this, we propose a shared benchmark platform: the \hyperlink{https://genea-workshop.github.io/leaderboard/}{GENEA Leaderboard}~\cite{nagy2024towards}. This leaderboard curates and standardizes data across multiple languages, then invites authors to evaluate their models on the same dataset. Human evaluations are performed via Prolific.
 %
-%We also develop the open-source system \hyperlink{https://github.com/hemvip/hemvip.github.io}{hemvip.github.io}\footnote{HEMVIP2: \url{https://github.com/hemvip/hemvip.github.io}} to streamline Prolific-based evaluations. OHGesture model evaluations will be added to the leaderboard via this system.
+%We also develop the open-source system \hyperlink{https://github.com/hemvip/hemvip.github.io}{hemvip.github.io}\footnote{HEMVIP2: \url{https://github.com/hemvip/hemvip.github.io}} to streamline Prolific-based evaluations. DeepGesture model evaluations will be added to the leaderboard via this system.
 %
 %This initiative aims to establish a unified evaluation protocol, promoting reproducibility, comparability, and progress in gesture generation research.
 
