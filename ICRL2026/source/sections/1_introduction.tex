@@ -1,7 +1,7 @@
 \section{INTRODUCTION}
 \label{sec:introduction}
 
-Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the result of any software systems. Artificial intelligence (AI) has shown remarkable results in recent years, not only in research but also in practical applications, such as ChatGPT and Midjourney, showcasing vertical and horizontal growth in various fields. Although computer graphics can construct highly realistic human faces, gesture generation has traditionally relied on Motion Capture from sensors, posing significant challenges in building an AI system that learns from data. Generating realistic beat gestures is challenging because gestural beats and verbal stresses are not strictly synchronized, and it is complicated for end-to-end learning models to capture the complex relationship between speech and gestures.
+Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the result of any software systems. Therefore, . Artificial intelligence (AI) has shown remarkable results in recent years, not only in research but also in practical applications, such as ChatGPT and Midjourney, showcasing vertical and horizontal growth in various fields. Although computer graphics can construct highly realistic human faces, gesture generation has traditionally relied on Motion Capture from sensors, posing significant challenges in building an AI system that learns from data. Generating realistic beat gestures is challenging because gestural beats and verbal stresses are not strictly synchronized, and it is complicated for end-to-end learning models to capture the complex relationship between speech and gestures.
 
 With the success of large language models in text processing and the advancement of Computer-generated imagery (CGI) in producing nearly indistinguishable human faces, combined with the increasing ease and accuracy of human speech synthesis, gesture generation through AI has become one of the main bottlenecks in developing interactive digital human.
 
@@ -71,11 +71,31 @@ The ultimate goal is to produce a sequence of gestures that reflect the motion o
 
 Each gesture sequence is labeled with an emotion. A key novelty of our approach is pairing the gesture sequence with both the original speech and the corresponding text (transcribed from the speech).
 
-The objective is to build a model that predicts $M$ future frames from the given inputs: seed gesture $\mathbf{s} \in \mathbb{R}^{1:N \times D}$, speech $\mathbf{a}$, text $\mathbf{v}$, and emotion $\mathbf{e}$.
+The objective is to build a model that predicts $M$ future frames from the given inputs: seed gesture $\mathbf{s} \in \mathbb{R}^{1:N \times D}$, speech $\mathbf{a}$, text $\mathbf{v}$, and emotion $\mathbf{e}$. The model prediction is $\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$, which is compared against ground-truth gesture $\mathbf{x} \in \mathbb{R}^{1:M \times D}$.
 
-The model prediction is $\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$, which is compared against ground-truth gesture $\mathbf{x} \in \mathbb{R}^{1:M \times D}$.
 
-%% Input section
+% Input section
+%\textbf{Input}
+%\begin{itemize}
+%	\item {Seed gesture sequence:} $\mathbf{s} \in \mathbb{R}^{N \times D}$
+%	\item {Speech signal:} $\mathbf{a}$
+%	\item {Text:} $\mathbf{v}$
+%	\item {Emotion:} $\mathbf{e}$ (\texttt{Happy}, \texttt{Sad}, \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
+%\end{itemize}
+%
+%% Predicted Output section
+%\textbf{Predicted Output}
+%\begin{itemize}
+%	\item {Predicted gesture sequence:} $\hat{\mathbf{x}} \in \mathbb{R}^{M \times D}$
+%\end{itemize}
+%
+%% Ground Truth section
+%\textbf{Ground Truth}
+%\begin{itemize}
+%	\item {Ground truth gesture:} $\mathbf{x} \in \mathbb{R}^{M \times D}$
+%\end{itemize}
+
+% Input section
 %\textbf{Input}
 %\begin{itemize}
 %	\item {Seed gesture sequence:} $\mathbf{s} \in \mathbb{R}^{N \times D}$
@@ -97,33 +117,33 @@ The model prediction is $\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$, which 
 %\end{itemize}
 
 
-\begin{multicols}{2}
-	\textbf{Input}
-	
-	\begin{itemize}
-		\item Seed gesture sequence: $\mathbf{s} \in \mathbb{R}^{1:N \times D}$
-		\item Speech signal: $\mathbf{a}$
-		\item Text: $\mathbf{v}$
-		\item Emotion: $\mathbf{e}$ 
-		
-		{\small
-			(\texttt{Happy},  \texttt{Sad},  \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
-		}
-	\end{itemize}
-	
-	\columnbreak
-	
-	\textbf{Predicted Output}
-	\begin{itemize}
-		\item Predicted gesture sequence:
-		$\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$
-	\end{itemize}
-	
-	\textbf{Ground Truth}
-	\begin{itemize}
-		\item Ground truth gesture: $ \mathbf{x}  \in \mathbb{R}^{1:M \times D}$
-	\end{itemize}
-\end{multicols}
+%\begin{multicols}{2}
+%	\textbf{Input}
+%	
+%	\begin{itemize}
+%		\item Seed gesture sequence: $\mathbf{s} \in \mathbb{R}^{1:N \times D}$
+%		\item Speech signal: $\mathbf{a}$
+%		\item Text: $\mathbf{v}$
+%		\item Emotion: $\mathbf{e}$ 
+%		
+%		{\small
+%			(\texttt{Happy},  \texttt{Sad},  \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
+%		}
+%	\end{itemize}
+%	
+%	\columnbreak
+%	
+%	\textbf{Predicted Output}
+%	\begin{itemize}
+%		\item Predicted gesture sequence:
+%		$\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$
+%	\end{itemize}
+%	
+%	\textbf{Ground Truth}
+%	\begin{itemize}
+%		\item Ground truth gesture: $ \mathbf{x}  \in \mathbb{R}^{1:M \times D}$
+%	\end{itemize}
+%\end{multicols}
 
 
 \subsection{Challenges}

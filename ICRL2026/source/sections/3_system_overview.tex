@@ -67,7 +67,7 @@ In the \textit{Stage 3: Feature Extraction} step (\autoref{fig:CommonStage}), th
 
 \begin{figure*}[t]
 	\centering
-	\includegraphics[width=\linewidth]{figures/DeepGesture}
+	\includegraphics[width=0.9\linewidth]{figures/DeepGesture}
 	\caption{The Model Architecture in DeepGesture}
 	\label{fig:DeepGesture}
 \end{figure*}
@@ -147,7 +147,7 @@ The Local-Cross Attention mechanism is controlled to focus only on local motion 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\linewidth]{figures/CrossLocalAttention}
+	\includegraphics[width=0.8\linewidth]{figures/CrossLocalAttention}
 	\caption{Attention Mechanism in Transformer Encoder and Cross-Local Attention}
 	\label{fig:CrossLocalAttention}
 \end{figure}
@@ -247,89 +247,3 @@ $c_{\varnothing} = [\mathbf{s}, \mathbf{e}_{2}, \mathbf{a}, \mathbf{v}]$:
 \hat{x}_{0\,\gamma, c_{1}, c_{2}}
 = \gamma\, G(x_{t}, t, c_{1}) + (1-\gamma)\, G(x_{t}, t, c_{2}).
 \]
-
-\subsection{Training Procedure}
-
-\begin{algorithm}[h]
-	\caption{Training in DeepGesture}
-	\label{alg:trainingDeepGesture}
-	\setlength{\baselineskip}{10pt}
-	\begin{enumerate}
-		\item Pre-compute $\gamma$, $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, $\sqrt{\bar{\alpha}_t}$, and random noise $\boldsymbol{\epsilon}_t$ for each timestep $t: 1 \rightarrow T$. Define the noise schedule $\{\alpha_t \in (0,1)\}_{t=1}^T$.
-		\item Sample the initial label $\mathbf{x}_0$ from the normalized data distribution.
-		\item Randomly generate Bernoulli masks
-		$c_{1} = [ \mathbf{s}, \mathbf{e_1}, \mathbf{a}, \mathbf{v} ]$,
-		$c_{2} = [ \mathbf{s}, \mathbf{e_2}, \mathbf{a}, \mathbf{v} ]$, or
-		$c_{2} = [ \varnothing, \varnothing, \mathbf{a}, \mathbf{v} ]$.
-		\item Add noise to obtain the noisy gesture $\mathbf{x}_t$:
-		\[
-		\mathbf{x}_t = \sqrt{\bar{\alpha}_t}\,\mathbf{x}_0 + \sqrt{1-\bar{\alpha}_t}\,\boldsymbol{\epsilon}_t.
-		\]
-		\item Sample $t$ \textbf{uniformly} from $[1, T]$.
-		\item Given $\mathbf{x}_t$, $t$, and masks $c_1$, $c_2$, predict the gesture sequence:
-		\[
-		\hat{\mathbf{x}}_{0\,\gamma,c_{1},c_{2}}
-		= \gamma\, G_{\theta}(\mathbf{x}_{t}, t, c_{1})
-		+ (1-\gamma)\, G_{\theta}(\mathbf{x}_{t}, t, c_{2}).
-		\]
-		\item Compute the loss and gradient to update $\theta$:
-		\[
-		\mathcal{L}^t
-		= \mathbb{E}_{t, \mathbf{x}_0, \boldsymbol{\epsilon}_t}
-		\bigl[\operatorname{HuberLoss}(\mathbf{x}_0, \hat{\mathbf{x}}_0)\bigr].
-		\]
-		\item Repeat from step 6 until convergence, obtaining the optimal parameters $\theta'$.
-	\end{enumerate}
-\end{algorithm}
-
-\autoref{alg:trainingDeepGesture} trains the DeepGesture model by first computing the required values and hyper-parameters -- 	$\gamma$, $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, $\sqrt{\bar{\alpha}_t}$, and $\boldsymbol{\epsilon}_t$ -- for every timestep $t$ (1 … $T$).  
-The initial label $\mathbf{x}_0$, representing the ground-truth gesture, is drawn from the normalized data distribution.  
-Random Bernoulli masks $c_1$ and $c_2$ emulate different conditions (gesture, emotion, speech, or text), with one mask possibly lacking emotion information.  
-Noise is then added to create the noisy gesture $\mathbf{x}_t$.  
-A timestep $t$ is sampled uniformly, and $\mathbf{x}_t$ with the masks is fed into the model to predict the original gesture sequence as a weighted combination of conditional outputs.  
-The Huber loss between ground-truth and prediction is used to update $\theta$.  
-This cycle repeats until the model converges, yielding the optimal parameters $\theta'$.
-
-\subsection{Sampling Process}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{figures/OnlineAndOffline}
-	\caption{Offline (Training) and Online (Inference) Phases}
-	\label{fig:OnlineAndOffline}
-\end{figure}
-
-\vspace{-5mm}
-
-To generate gestures of arbitrary length, the original sequence is segmented into clips of length $M$.
-During training, the seed gesture can be chosen by randomly selecting a gesture from the dataset or by averaging the clipped segments-here, the mean rotation angles are used.  
-Generated frames are processed sequentially, with the last $N=8$ frames taken as the seed for the next iteration.  
-For each clip, the gesture $\bx_{t}$ is denoised via $\hat{\bx}_{0} = G_{\theta'}(\bx_{t}, t, c)$; noise is re-added to obtain $\bx_{t-1}$, and the procedure repeats until $t=1$, yielding $\bx_{0}$.
-
-\begin{algorithm}[h]
-	\caption{Sampling in DeepGesture}
-	\label{alg:sampling}
-	\setlength{\baselineskip}{10pt}
-	\begin{enumerate}
-		\item Initialize with noise: $\mathbf{x}_T \sim \mathcal{N}(0, \mathbf{I})$.
-		\item Retrieve $\sqrt{\alpha_t}$, $\sqrt{1 - \alpha_t}$, and $\sqrt{\bar{\alpha}_t}$ from training; precompute $\sigma_t$ from $\alpha_t$ for each timestep $t: 1 \rightarrow T$.
-		\item Split each 4-second speech segment into $\mathbf{a} \in \mathbb{R}^{64000}$.  
-		The initial seed gesture $\mathbf{s}$ is the data mean and later updated from the inferred gesture segment.  
-		Select the desired emotion, obtain the transcript $\mathbf{v}$ from speech $\mathbf{a}$, and form the condition $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$.
-		\item For each timestep, take $t$ \textbf{sequentially} from $[T, \dots, 1]$.
-		\item Sample random noise $\mathbf{z} \sim \mathcal{N}(0, \mathbf{I})$.
-		\item Infer $\hat{\mathbf{x}}_0^{(t)} = G_{\theta'}(\mathbf{x}_t, t, c)$.
-		\item Diffuse $\hat{\mathbf{x}}_0^{(t)}$ from step $0 \rightarrow t$ to obtain $\hat{\mathbf{x}}_{t-1}^{(t)}$.
-		\item Add noise: $\hat{\mathbf{x}}_{t-1} = \hat{\mathbf{x}}_{t-1}^{(t)} + \sigma_t \mathbf{z}$.
-		\item Return to step 4.  
-		When $t = 1$, output the denoised gesture $\hat{\mathbf{x}}_0$.
-	\end{enumerate}
-\end{algorithm}
-
-
-\autoref{alg:sampling} starts by initializing the noisy gesture $\mathbf{x}_T$ from $\mathcal{N}(0, \mathbf{I})$.  
-The values $\sqrt{\alpha_t}$, $\sqrt{1-\alpha_t}$, and $\sqrt{\bar{\alpha}_t}$ obtained during training, together with $\sigma_t$, are employed at each timestep (1 … $T$).  
-Each 4-second speech segment is represented by $\mathbf{a}$, and the seed gesture $\mathbf{s}$ is taken as the data mean or from the previously inferred segment.  
-The desired emotion and the transcript form the condition $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$.  
-The algorithm proceeds sequentially from $T$ to 1: random noise $\mathbf{z}$ is generated, the model predicts $\hat{\mathbf{x}}_0^{(t)}$ from $\mathbf{x}_t$, $t$, and $c$, then $\hat{\mathbf{x}}_{t-1}^{(t)}$ is computed and perturbed with noise.  
-This loop continues until $t=1$, after which the algorithm outputs the final denoised gesture $\hat{\mathbf{x}}_0$.
