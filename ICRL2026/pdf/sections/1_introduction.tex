@@ -1,0 +1,160 @@
+\section{INTRODUCTION}
+\label{sec:introduction}
+
+Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the result of any software systems. Artificial intelligence (AI) has shown remarkable results in recent years, not only in research but also in practical applications, such as ChatGPT and Midjourney, showcasing vertical and horizontal growth in various fields. Although computer graphics can construct highly realistic human faces, gesture generation has traditionally relied on Motion Capture from sensors, posing significant challenges in building an AI system that learns from data. Generating realistic beat gestures is challenging because gestural beats and verbal stresses are not strictly synchronized, and it is complicated for end-to-end learning models to capture the complex relationship between speech and gestures.
+
+With the success of large language models in text processing and the advancement of Computer-generated imagery (CGI) in producing nearly indistinguishable human faces, combined with the increasing ease and accuracy of human speech synthesis, gesture generation through AI has become one of the main bottlenecks in developing interactive digital human.
+
+%Therefore, the rendering of each pixel on the screen and the realistic simulation of images have been a focus of computer graphics scientists since the 1960s, particularly in the simulation of human figures or digital human.
+
+%Today, computer graphics technology can realistically simulate many complex objects such as water, roads, bread, and even human bodies and faces with incredible detail, down to individual hair strands, pimples, and eye textures. In 2015, using 3D scanning techniques \cite{metallo2015scanning} to capture all angles of the face and light reflection, researchers were able to recreate President Obama's face on a computer with high precision, making it almost indistinguishable from the real thing.
+
+
+
+
+
+
+\subsection{Problem Data}
+\label{sec:Data}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.2\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/Skeleton.png}
+		\caption{\small Skeleton and joint names of single frame}
+		\label{fig:Skeleton}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.75\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/FeatureProcessing}
+			\caption{A gesture sequence: the first $N$ frames are used as seed gesture $\mathbf{s}$, and the remaining $M$ frames are to be predicted}
+			\label{fig:GestureSeries}
+	\end{subfigure}
+\end{figure}
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[height=8cm]{figures/Skeleton.png}
+%	\caption{\small Skeleton and joint names of single frame}
+%	\label{fig:Skeleton}
+%\end{figure}
+
+\subsubsection{Skeleton Structure of Gestures}
+
+A gesture is defined as the movement of a character's entire body over time, as shown in \autoref{fig:Skeleton}, captured frame by frame. In computer graphics, character motion is represented as bone-specific movements, including hands, legs, head, spine, etc. The full character skeleton structure is presented in Appendix \autoref{appendix:BVHSkeleton}.
+
+Motion data is captured using motion capture systems using cameras and specialized sensors. The output is typically stored in BVH (Biovision Hierarchy) files.
+
+A BVH file consists of two main parts: \texttt{HIERARCHY} and \texttt{MOTION}. The \texttt{HIERARCHY} section is structured as a tree containing the skeleton’s initial positions and names. The \texttt{MOTION} section contains the movement data for the entire skeleton frame-by-frame. Each BVH file includes frame rate (fps) and total frame count. Details are presented in Appendix \autoref{appendix:BVHStructure}.
+
+\subsubsection{Motion Structure of Gestures}
+
+Gesture motion data, as illustrated in \autoref{fig:Skeleton}, or the \texttt{MOTION} section of a BVH file, contains position and rotation information per frame. Each frame is a skeleton of 75 bones: $\{ \mathbf{b}_{1}, \mathbf{b}_{2}, \cdots , \mathbf{b}_{75} \}$, where each bone has position $\{ p_{x}, p_{y}, p_{z} \}$ and rotation $\{ r_{x}, r_{y}, r_{z} \}$.
+
+The output of gesture generation is a sequence of bone rotations per frame. The generated gestures are evaluated based on naturalness, human-likeness, and contextual appropriateness.
+
+The skeleton's position and rotation data are preprocessed into a feature vector $\mathbf{g} \in \mathbb{R}^{D}$ with $D = 1141$. The learning data becomes $\bx \in \mathbb{R}^{M \times D}$. The preprocessing pipeline is detailed in \autoref{appendix:BVHData}.
+
+\subsection{Problem Statement}
+\label{sec:ProblemStatement}
+
+The ultimate goal is to produce a sequence of gestures that reflect the motion of the skeleton frame by frame. This can be approached via classification, clustering, or regression. Gesture generation is approached in this work as a regression-based prediction problem, wherein the next sequence is generated conditioned on the current gesture input.
+
+%\begin{figure}[t]
+%	\centering
+% 	\includegraphics[width=\linewidth]{figures/FeatureProcessing}
+%	\caption{A gesture sequence: the first $N$ frames are used as seed gesture $\mathbf{s}$, and the remaining $M$ frames are to be predicted}
+%	\label{fig:GestureSeries}
+%\end{figure}
+
+Each gesture sequence is labeled with an emotion. A key novelty of our approach is pairing the gesture sequence with both the original speech and the corresponding text (transcribed from the speech).
+
+The objective is to build a model that predicts $M$ future frames from the given inputs: seed gesture $\mathbf{s} \in \mathbb{R}^{1:N \times D}$, speech $\mathbf{a}$, text $\mathbf{v}$, and emotion $\mathbf{e}$.
+
+The model prediction is $\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$, which is compared against ground-truth gesture $\mathbf{x} \in \mathbb{R}^{1:M \times D}$.
+
+%% Input section
+%\textbf{Input}
+%\begin{itemize}
+%	\item {Seed gesture sequence:} $\mathbf{s} \in \mathbb{R}^{N \times D}$
+%	\item {Speech signal:} $\mathbf{a}$
+%	\item {Text:} $\mathbf{v}$
+%	\item {Emotion:} $\mathbf{e}$ (\texttt{Happy}, \texttt{Sad}, \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
+%\end{itemize}
+%
+%% Predicted Output section
+%\textbf{Predicted Output}
+%\begin{itemize}
+%	\item {Predicted gesture sequence:} $\hat{\mathbf{x}} \in \mathbb{R}^{M \times D}$
+%\end{itemize}
+%
+%% Ground Truth section
+%\textbf{Ground Truth}
+%\begin{itemize}
+%	\item {Ground truth gesture:} $\mathbf{x} \in \mathbb{R}^{M \times D}$
+%\end{itemize}
+
+
+\begin{multicols}{2}
+	\textbf{Input}
+	
+	\begin{itemize}
+		\item Seed gesture sequence: $\mathbf{s} \in \mathbb{R}^{1:N \times D}$
+		\item Speech signal: $\mathbf{a}$
+		\item Text: $\mathbf{v}$
+		\item Emotion: $\mathbf{e}$ 
+		
+		{\small
+			(\texttt{Happy},  \texttt{Sad},  \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
+		}
+	\end{itemize}
+	
+	\columnbreak
+	
+	\textbf{Predicted Output}
+	\begin{itemize}
+		\item Predicted gesture sequence:
+		$\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$
+	\end{itemize}
+	
+	\textbf{Ground Truth}
+	\begin{itemize}
+		\item Ground truth gesture: $ \mathbf{x}  \in \mathbb{R}^{1:M \times D}$
+	\end{itemize}
+\end{multicols}
+
+
+\subsection{Challenges}
+\label{sec:difficult}
+
+There are several challenges in building a model that can learn human-like conversational gesture patterns:
+
+\begin{enumerate}
+	\item \textit{Limited and low-quality data:} Creating large-scale, high-quality datasets for motion capture is extremely costly in the industry.
+	
+	\item \textit{Inconsistent context between modalities:} Text datasets are more abundant than speech, and speaker attribution is often missing. Synchronization between speech and emotional tone is also lacking. Additionally, training texts span many unrelated topics.
+	
+	\item \textit{Imbalanced feature distributions:} Current datasets are biased toward English-speaking gestures, with imbalanced gesture distributions between speaking, questioning, and silent states.
+	
+	\item \textit{High computational cost due to multimodal input:} The model must encode text, speech, and 3D pose data, increasing the computational load during both training and inference. Reducing input information also degrades performance.
+	
+	\item \textit{Sequential preprocessing steps:} Although human-computer interaction is most effective through speech and keyboard input, processing the text and speech input for gesture generation must be done sequentially. In real-world applications, inference latency is critical, and users cannot wait long. Rendering the gestures on screen must also be optimized for speed.
+\end{enumerate}
+
+%\subsection{}
+\large \textbf{Contributions}
+
+ In summary, our main contributions in this paper are:
+ 
+\begin{itemize}
+	\item From existing datasets, speech is transcribed into text and used as additional semantic features for training.
+	
+	\item Based on the DiffuseStyleGesture model, we extend the conditional denoising process to include text features.
+	
+	\item In this work, we use Unity for rendering, data extraction, and visualization of gesture generation results.
+	
+	\item A rendering pipeline is designed and implemented in this paper, with the system demonstrated using Unity.
+\end{itemize}
+
