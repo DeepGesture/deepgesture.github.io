@@ -1,3 +1,44 @@
+
+%\section{Preparing PostScript or PDF files}
+%
+%Please prepare PostScript or PDF files with paper size ``US Letter'', and
+%not, for example, ``A4''. The -t
+%letter option on dvips will produce US Letter files.
+%
+%Consider directly generating PDF files using \verb+pdflatex+
+%(especially if you are a MiKTeX user).
+%PDF figures must be substituted for EPS figures, however.
+%
+%Otherwise, please generate your PostScript and PDF files with the following commands:
+%\begin{verbatim}
+%	dvips mypaper.dvi -t letter -Ppdf -G0 -o mypaper.ps
+%	ps2pdf mypaper.ps mypaper.pdf
+%\end{verbatim}
+%
+%\subsection{Margins in LaTeX}
+%
+%Most of the margin problems come from figures positioned by hand using
+%\verb+\special+ or other commands. We suggest using the command
+%\verb+\includegraphics+
+%from the graphicx package. Always specify the figure width as a multiple of
+%the line width as in the example below using .eps graphics
+%\begin{verbatim}
+%	\usepackage[dvips]{graphicx} ...
+%	\includegraphics[width=0.8\linewidth]{myfile.eps}
+%\end{verbatim}
+%or % Apr 2009 addition
+%\begin{verbatim}
+%	\usepackage[pdftex]{graphicx} ...
+%	\includegraphics[width=0.8\linewidth]{myfile.pdf}
+%\end{verbatim}
+%for .pdf graphics.
+%See section~4.4 in the graphics bundle documentation (\url{http://www.ctan.org/tex-archive/macros/latex/required/graphics/grfguide.ps})
+%
+%A number of width problems arise when LaTeX cannot properly hyphenate a
+%line. Please give LaTeX hyphenation hints using the \verb+\-+ command.
+%
+
+
 \section{STRENGTHS AND LIMITATIONS}
 
 The proposed DeepGesture model introduces several key advantages that advance the development of more natural and expressive human-machine interaction systems. Nevertheless, certain limitations remain and represent important directions for future work.
@@ -57,6 +98,14 @@ Several promising directions can further improve DeepGesture and expand its appl
 Through experimental validation and qualitative analysis, the DeepGesture model -- extending DiffuseStyleGesture-demonstrates the ability to generate realistic gestures for both in -- distribution and out-of-distribution speech, including synthetic voices such as that of Steve Jobs (see \autoref{appendix3}). This highlights the promise of diffusion-based approaches in modeling complex, expressive, and low-frequency gesture behaviors.
 
 Additionally, we contribute open-source code, including rendering pipelines and data processing tools built on Unity, available on GitHub. These resources provide a solid foundation for future development and reproducibility. The integration of text alongside speech and emotion into the gesture generation pipeline marks an important step toward building fully multimodal agents, capable of more intuitive and human-like interactions in diverse application domains.
+
+%\subsubsection*{Author Contributions}
+%If you'd like to, you may include  a section for author contributions as is done
+%in many journals. This is optional and at the discretion of the authors.
+%
+%\subsubsection*{Acknowledgments}
+%Use unnumbered third level headings for the acknowledgments. All
+%acknowledgments, including those to funding agencies, go at the end of the paper.
 
 
 %\subsection{Thesis Contributions}

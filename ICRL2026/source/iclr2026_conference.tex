@@ -1,0 +1,129 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2026_conference,times}
+
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{math_commands.tex}
+\usepackage{orcidlink}
+
+%\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
+\usepackage{xcolor} 
+\newcommand{\orcidnolink}[1]{%
+	\href{https://orcid.org/#1}{\textcolor{black}{\orcidicon}}%
+}
+\usepackage{hyperref}
+\usepackage{url}
+
+
+\title{DeepGesture: Multimodal Co-Speech Gesture Synthesis with Integrated Audio and Text Conditioning}
+
+% Authors must not appear in the submitted version. They should be hidden
+% as long as the \iclrfinalcopy macro remains commented out below.
+% Non-anonymous submissions will be rejected without review.
+
+%\iclrfinalcopy
+
+\input{sections/_command.tex}
+\input{sections/_preamble.tex}
+\input{sections/_package.tex}
+
+
+\input{sections/author.tex}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+%\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
+\begin{document}
+
+
+\maketitle
+
+\input{sections/0_abstract.tex}
+%\begin{abstract}
+%The abstract paragraph should be indented 1/2~inch (3~picas) on both left and
+%right-hand margins. Use 10~point type, with a vertical spacing of 11~points.
+%The word \textsc{Abstract} must be centered, in small caps, and in point size 12. Two
+%line spaces precede the abstract. The abstract must be limited to one
+%paragraph.
+%\end{abstract}
+
+\input{sections/1_introduction.tex}
+
+%\section{INTRODUCTION}
+%
+%ICLR requires electronic submissions, processed by
+%\url{https://openreview.net/}. See ICLR's website for more instructions.
+%
+%If your paper is ultimately accepted, the statement {\tt
+%  {\textbackslash}iclrfinalcopy} should be inserted to adjust the
+%format to the camera ready requirements.
+%
+%The format for the submissions is a variant of the NeurIPS format.
+%Please read carefully the instructions below, and follow them
+%faithfully.
+%
+%\subsection{Style}
+%
+%Papers to be submitted to ICLR 2025 must be prepared according to the
+%instructions presented here.
+%
+%%% Please note that we have introduced automatic line number generation
+%%% into the style file for \LaTeXe. This is to help reviewers
+%%% refer to specific lines of the paper when they make their comments. Please do
+%%% NOT refer to these line numbers in your paper as they will be removed from the
+%%% style file for the final version of accepted papers.
+%
+%Authors are required to use the ICLR \LaTeX{} style files obtainable at the
+%ICLR website. Please make sure you use the current files and
+%not previous versions. Tweaking the style files may be grounds for rejection.
+%
+%\subsection{Retrieval of style files}
+%
+%The style files for ICLR and other conference information are available online at:
+%\begin{center}
+%   \url{http://www.iclr.cc/}
+%\end{center}
+%The file \verb+iclr2025_conference.pdf+ contains these
+%instructions and illustrates the
+%various formatting requirements your ICLR paper must satisfy.
+%Submissions must be made using \LaTeX{} and the style files
+%\verb+iclr2025_conference.sty+ and \verb+iclr2025_conference.bst+ (to be used with \LaTeX{}2e). The file
+%\verb+iclr2025_conference.tex+ may be used as a ``shell'' for writing your paper. All you
+%have to do is replace the author, title, abstract, and text of the paper with
+%your own.
+%
+%The formatting instructions contained in these style files are summarized in
+%sections \ref{gen_inst}, \ref{headings}, and \ref{others} below.
+
+\input{sections/2_related_work.tex}
+
+\input{sections/3_system_overview.tex}
+
+\input{sections/4_data_preparation.tex}
+
+%\input{sections/5_gesture_generation.tex}
+
+%\input{sections/6_co-speech_gesture_inference.tex}
+
+
+\input{sections/7_results.tex}
+
+\input{sections/8_conclusion.tex}
+
+\bibliography{iclr2026_conference}
+\bibliographystyle{iclr2026_conference}
+
+\appendix
+\section{Appendix}
+You may include other additional sections here.
+
+
+\end{document}

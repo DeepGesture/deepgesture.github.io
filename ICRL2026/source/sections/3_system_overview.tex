@@ -23,7 +23,7 @@ The similarities and differences of applying the diffusion model to the gesture 
 \begin{itemize}
 	\item Conditional gesture generation:
 	\begin{itemize}
-		\item Emotional condition: $c = \big[ \mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v} \big]$ and $c_{\varnothing} = \big[ \varnothing, \varnothing, \mathbf{a}, \mathbf{v}\big]$.
+		\item Emotional condition: $c = \big[ \mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v} \big]$ and $c_{ \varnothing } = \big[ \varnothing, \varnothing, \mathbf{a}, \mathbf{v}\big]$.
 		\item Emotion state interpolation between $\mathbf{e}_1, \mathbf{e}_2$ using: $c = \big[ \mathbf{s}, \mathbf{e}_1, \mathbf{a}, \mathbf{v} \big]$ and $c_{\varnothing} = \big[ \mathbf{s}, \mathbf{e}_2, \mathbf{a}, \mathbf{v} \big]$.
 	\end{itemize}
 	\item In stage \textit{5. Feature Fusion} \autoref{fig:CommonStage}, the model uses Self-Attention: learning the relationship between emotions, seed gestures, and each frame (similar to DALL-E 2's text-image alignment).
