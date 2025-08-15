@@ -1,42 +1,45 @@
 \section{INTRODUCTION}
 \label{sec:introduction}
 
-Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the result of various software systems. Therefore, the rendering of each pixel on the screen and the realistic simulation of images have been a focus of computer graphics scientists since the 1960s, particularly in the simulation of human figures or digital human.
-
-Today, computer graphics technology can realistically simulate many complex objects such as water, roads, bread, and even human bodies and faces with incredible detail, down to individual hair strands, pimples, and eye textures. In 2015, using 3D scanning techniques \cite{metallo2015scanning} to capture all angles of the face and light reflection, researchers were able to recreate President Obama's face on a computer with high precision, making it almost indistinguishable from the real thing.
-
-Artificial intelligence (AI) has shown remarkable results in recent years, not only in research but also in practical applications, such as ChatGPT and Midjourney, showcasing vertical and horizontal growth in various fields. Although computer graphics can construct highly realistic human faces, gesture generation has traditionally relied on Motion Capture from sensors, posing significant challenges in building an AI system that learns from data. Generating realistic beat gestures is challenging because gestural beats and verbal stresses are not strictly synchronized, and it is complicated for end-to-end learning models to capture the complex relationship between speech and gestures.
-
+Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the result of any software systems. Artificial intelligence (AI) has shown remarkable results in recent years, not only in research but also in practical applications, such as ChatGPT and Midjourney, showcasing vertical and horizontal growth in various fields. Although computer graphics can construct highly realistic human faces, gesture generation has traditionally relied on Motion Capture from sensors, posing significant challenges in building an AI system that learns from data. Generating realistic beat gestures is challenging because gestural beats and verbal stresses are not strictly synchronized, and it is complicated for end-to-end learning models to capture the complex relationship between speech and gestures.
 
 With the success of large language models in text processing and the advancement of Computer-generated imagery (CGI) in producing nearly indistinguishable human faces, combined with the increasing ease and accuracy of human speech synthesis, gesture generation through AI has become one of the main bottlenecks in developing interactive digital human.
+
+%Therefore, the rendering of each pixel on the screen and the realistic simulation of images have been a focus of computer graphics scientists since the 1960s, particularly in the simulation of human figures or digital human.
+
+%Today, computer graphics technology can realistically simulate many complex objects such as water, roads, bread, and even human bodies and faces with incredible detail, down to individual hair strands, pimples, and eye textures. In 2015, using 3D scanning techniques \cite{metallo2015scanning} to capture all angles of the face and light reflection, researchers were able to recreate President Obama's face on a computer with high precision, making it almost indistinguishable from the real thing.
+
+
+
+
 
 
 \subsection{Problem Data}
 \label{sec:Data}
 
-%\begin{figure}[h]
-%	\centering
-%	\begin{subfigure}{0.48\linewidth}
-%		\centering
-%		\includegraphics[height=10cm]{figures/Skeleton.png}
-%		\caption{\small Skeleton and joint names of a frame}
-%		\label{fig:Skeleton}
-%	\end{subfigure}
-%	\hfill
-%	\begin{subfigure}{0.48\linewidth}
-%		\centering
-%		\includegraphics[height=10cm]{figures/MotionPastAndFuture.png}
-%		\caption{\small Motion sequence consisting of 6 past and 6 future gestures}
-%		\label{fig:MotionPastAndFuture}
-%	\end{subfigure}
-%\end{figure}
-
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=8cm]{figures/Skeleton.png}
-	\caption{\small Skeleton and joint names of single frame}
-	\label{fig:Skeleton}
+	\begin{subfigure}{0.2\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/Skeleton.png}
+		\caption{\small Skeleton and joint names of single frame}
+		\label{fig:Skeleton}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.75\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/FeatureProcessing}
+			\caption{A gesture sequence: the first $N$ frames are used as seed gesture $\mathbf{s}$, and the remaining $M$ frames are to be predicted}
+			\label{fig:GestureSeries}
+	\end{subfigure}
 \end{figure}
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[height=8cm]{figures/Skeleton.png}
+%	\caption{\small Skeleton and joint names of single frame}
+%	\label{fig:Skeleton}
+%\end{figure}
 
 \subsubsection{Skeleton Structure of Gestures}
 
@@ -59,12 +62,12 @@ The skeleton's position and rotation data are preprocessed into a feature vector
 
 The ultimate goal is to produce a sequence of gestures that reflect the motion of the skeleton frame by frame. This can be approached via classification, clustering, or regression. Gesture generation is approached in this work as a regression-based prediction problem, wherein the next sequence is generated conditioned on the current gesture input.
 
-\begin{figure}[h]
-	\centering
- 	\includegraphics[width=\linewidth]{figures/FeatureProcessing}
-	\caption{A gesture sequence: the first $N$ frames are used as seed gesture $\mathbf{s}$, and the remaining $M$ frames are to be predicted}
-	\label{fig:GestureSeries}
-\end{figure}
+%\begin{figure}[t]
+%	\centering
+% 	\includegraphics[width=\linewidth]{figures/FeatureProcessing}
+%	\caption{A gesture sequence: the first $N$ frames are used as seed gesture $\mathbf{s}$, and the remaining $M$ frames are to be predicted}
+%	\label{fig:GestureSeries}
+%\end{figure}
 
 Each gesture sequence is labeled with an emotion. A key novelty of our approach is pairing the gesture sequence with both the original speech and the corresponding text (transcribed from the speech).
 
