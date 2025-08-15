@@ -1,0 +1,32 @@
+# Build files
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.out
+*.pdf
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+
+# Editor files
+*.swp
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Other files
+*.pdfsync
+*.log
+*.eps

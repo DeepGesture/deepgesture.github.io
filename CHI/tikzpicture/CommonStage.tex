@@ -1,0 +1,63 @@
+%\begin{tikzpicture}[
+%	box/.style={rounded corners, draw, fill=#1, minimum width=2cm, minimum height=1cm, align=center},
+%	arrow/.style={->, >=stealth},
+%	cylinder/.style={shape=cylinder, draw, minimum height=1.5cm, minimum width=0.8cm, shape aspect=2, align=center}
+%	]
+%	
+%	% Boxes
+%	\node[box=#e1d5e7, fill=#e1d5e7, draw=#9673a6] (preprocess) at (2,-3) {\textbf{1. Pre-processing}};
+%	\node[box=#ffe6cc, fill=#ffe6cc, draw=#d79b00, right=1cm of preprocess] (featureproc) {2. Feature Processing};
+%	\node[box=#dae8fc, fill=#dae8fc, draw=#6c8ebf, right=1cm of featureproc] (featureext) {\textbf{3. Feature Extraction}};
+%	\node[box=#d5e8d4, fill=#d5e8d4, draw=#82b366, right=1cm of featureext] (featureenc) {\textbf{4. Feature Encoding}};
+%	\node[box=#f8cecc, fill=#f8cecc, draw=#b85450, right=1cm of featureenc] (featurefus) {5. Feature Fusion};
+%	\node[box=#d5e8d4, fill=#d5e8d4, draw=#82b366, right=1cm of featurefus] (featuredec) {\textbf{6. Feature Decoding}};
+%	\node[box=#fff2cc, fill=#fff2cc, draw=#d6b656, right=1cm of featuredec] (render) {\textbf{7. Render}};
+%	
+%	% Cylinder
+%	\node[cylinder, below left=0.5cm and 1cm of preprocess] (motiondata) {Motion\\Data};
+%	
+%	% Model box
+%	\node[rounded corners, draw, fill=#f5f5f5, minimum width=6cm, minimum height=0.7cm, above=0.5cm of featureext] (model) {$\text{Model}_\theta$};
+%	
+%	% Arrows
+%	\draw[arrow] (motiondata.east) -- (preprocess.west);
+%	\draw[arrow] (preprocess) -- (featureproc);
+%	\draw[arrow] (featureproc) -- (featureext);
+%	\draw[arrow] (featureext) -- (featureenc);
+%	\draw[arrow] (featureenc) -- (featurefus);
+%	\draw[arrow] (featurefus) -- (featuredec);
+%	\draw[arrow] (featuredec) -- (render);
+%	
+%\end{tikzpicture}
+
+\begin{tikzpicture}[
+	box/.style={rounded corners, draw, fill=#1, minimum width=2cm, minimum height=1cm, text width = 30mm,align=center},
+	arrow/.style={->, >=stealth},
+	cylinder/.style={shape=cylinder, draw, minimum height=1.5cm, minimum width=0.8cm, shape aspect=2, align=center}
+	]
+	
+	% Boxes
+	\node[draw=preprocessdraw, fill=preprocessfill, box=preprocessfill] (preprocess) at (2,-3) {\textbf{1. Pre-processing}};
+	\node[draw=featureprocdraw, fill=featureprocfill, box=featureprocfill, right=0.5cm of preprocess] (featureproc) {2. Feature Processing};
+	\node[draw=featureextdraw, fill=featureextfill, box=featureextfill, right=0.5cm of featureproc] (featureext) {\textbf{3. Feature Extraction}};
+	\node[draw=featureencdraw, fill=featureencfill, box=featureencfill, right=0.5cm of featureext] (featureenc) {\textbf{4. Feature Encoding}};
+	\node[draw=featurefusdraw, fill=featurefusfill, box=featurefusfill, right=0.5cm of featureenc] (featurefus) {5. Feature Fusion};
+	\node[draw=featuredecdraw, fill=featuredecfill, box=featuredecfill, right=0.5cm of featurefus] (featuredec) {\textbf{6. Feature Decoding}};
+	\node[draw=renderdraw, fill=renderfill, box=renderfill, right=0.5cm of featuredec] (render) {\textbf{7. Render}};
+	
+	% Cylinder
+	\node[cylinder, left=0.5cm and 0.5cm of preprocess] (motiondata) {\text{Motion Data}};
+	
+	% Model box
+	\node[rounded corners, draw, fill=modelfill, minimum width=6cm, minimum height=0.7cm, above=0.5cm of featureext] (model) {$\text{Model}_\theta$};
+	
+	% Arrows
+	\draw[arrow] (motiondata.east) -- (preprocess.west);
+	\draw[arrow] (preprocess) -- (featureproc);
+	\draw[arrow] (featureproc) -- (featureext);
+	\draw[arrow] (featureext) -- (featureenc);
+	\draw[arrow] (featureenc) -- (featurefus);
+	\draw[arrow] (featurefus) -- (featuredec);
+	\draw[arrow] (featuredec) -- (render);
+	
+\end{tikzpicture}
