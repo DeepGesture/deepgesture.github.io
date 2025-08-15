@@ -72,55 +72,55 @@ The objective is to build a model that predicts $M$ future frames from the given
 
 The model prediction is $\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$, which is compared against ground-truth gesture $\mathbf{x} \in \mathbb{R}^{1:M \times D}$.
 
-% Input section
-\textbf{Input}
-\begin{itemize}
-	\item {Seed gesture sequence:} $\mathbf{s} \in \mathbb{R}^{N \times D}$
-	\item {Speech signal:} $\mathbf{a}$
-	\item {Text:} $\mathbf{v}$
-	\item {Emotion:} $\mathbf{e}$ (\texttt{Happy}, \texttt{Sad}, \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
-\end{itemize}
+%% Input section
+%\textbf{Input}
+%\begin{itemize}
+%	\item {Seed gesture sequence:} $\mathbf{s} \in \mathbb{R}^{N \times D}$
+%	\item {Speech signal:} $\mathbf{a}$
+%	\item {Text:} $\mathbf{v}$
+%	\item {Emotion:} $\mathbf{e}$ (\texttt{Happy}, \texttt{Sad}, \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
+%\end{itemize}
+%
+%% Predicted Output section
+%\textbf{Predicted Output}
+%\begin{itemize}
+%	\item {Predicted gesture sequence:} $\hat{\mathbf{x}} \in \mathbb{R}^{M \times D}$
+%\end{itemize}
+%
+%% Ground Truth section
+%\textbf{Ground Truth}
+%\begin{itemize}
+%	\item {Ground truth gesture:} $\mathbf{x} \in \mathbb{R}^{M \times D}$
+%\end{itemize}
 
-% Predicted Output section
-\textbf{Predicted Output}
-\begin{itemize}
-	\item {Predicted gesture sequence:} $\hat{\mathbf{x}} \in \mathbb{R}^{M \times D}$
-\end{itemize}
 
-% Ground Truth section
-\textbf{Ground Truth}
-\begin{itemize}
-	\item {Ground truth gesture:} $\mathbf{x} \in \mathbb{R}^{M \times D}$
-\end{itemize}
-
-
-%\begin{multicols}{2}
-%	\textbf{Input}
-%	
-%	\begin{itemize}
-%		\item Seed gesture sequence: $\mathbf{s} \in \mathbb{R}^{1:N \times D}$
-%		\item Speech signal: $\mathbf{a}$
-%		\item Text: $\mathbf{v}$
-%		\item Emotion: $\mathbf{e}$ 
-%		
-%		{\small
-%			(\texttt{Happy},  \texttt{Sad},  \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
-%		}
-%	\end{itemize}
-%	
-%	\columnbreak
-%	
-%	\textbf{Predicted Output}
-%	\begin{itemize}
-%		\item Predicted gesture sequence:
-%		$\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$
-%	\end{itemize}
-%	
-%	\textbf{Ground Truth}
-%	\begin{itemize}
-%		\item Ground truth gesture: $ \mathbf{x}  \in \mathbb{R}^{1:M \times D}$
-%	\end{itemize}
-%\end{multicols}
+\begin{multicols}{2}
+	\textbf{Input}
+	
+	\begin{itemize}
+		\item Seed gesture sequence: $\mathbf{s} \in \mathbb{R}^{1:N \times D}$
+		\item Speech signal: $\mathbf{a}$
+		\item Text: $\mathbf{v}$
+		\item Emotion: $\mathbf{e}$ 
+		
+		{\small
+			(\texttt{Happy},  \texttt{Sad},  \texttt{Neutral}, \texttt{Angry}, \texttt{Old}, \texttt{Funny})
+		}
+	\end{itemize}
+	
+	\columnbreak
+	
+	\textbf{Predicted Output}
+	\begin{itemize}
+		\item Predicted gesture sequence:
+		$\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$
+	\end{itemize}
+	
+	\textbf{Ground Truth}
+	\begin{itemize}
+		\item Ground truth gesture: $ \mathbf{x}  \in \mathbb{R}^{1:M \times D}$
+	\end{itemize}
+\end{multicols}
 
 
 \subsection{Challenges}
