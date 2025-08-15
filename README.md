@@ -1,4 +1,4 @@
-# DeepGesture - A conversational gesture synthesis system based on emotions and semantic
+# DeepGesture: Speech-Driven Co-Speech Gesture Synthesis with Transcribed Text Semantic Guidance
 
 ## Abstract
 
