@@ -8,7 +8,7 @@
 	\label{fig:TrainingAndSampling}
 \end{figure}
 
-%The proposed \textbf{DeepGesture} model is based on the \textbf{DiffuseStyleGesture} model \cite{yang2023diffusestylegesture}, which applies the Diffusion model \cite{ho2020denoising} with conditional guidance \cite{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
+%The proposed \textbf{DeepGesture} model is based on the \textbf{DiffuseStyleGesture} model \citep{yang2023diffusestylegesture}, which applies the Diffusion model \citep{ho2020denoising} with conditional guidance \citep{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
 %
 %The similarities and differences of applying the diffusion model to the gesture generation task compared to image generation are as follows:
 %
@@ -41,12 +41,12 @@ In the \textit{Stage 2: Feature Processing} step (\autoref{fig:CommonStage}), th
 
 \begin{itemize}
 	\item \textbf{Text} $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$:  
-	As discussed in \autoref{sec:diffusionbase}, methods such as \textit{MDM} \cite{tevet2022human} and \textit{DiffuseStyleGesture+} \cite{yang2022DiffuseStyleGestureplus} use gesture-descriptive prompts, similar to those used in Midjourney, as input for the model. However, such prompts are mainly used to cluster gestures rather than align them semantically. 
+	As discussed in \autoref{sec:diffusionbase}, methods such as \textit{MDM} \citep{tevet2022human} and \textit{DiffuseStyleGesture+} \citep{yang2022DiffuseStyleGestureplus} use gesture-descriptive prompts, similar to those used in Midjourney, as input for the model. However, such prompts are mainly used to cluster gestures rather than align them semantically. 
 	
-	In contrast, we treat text as a semantic feature that aligns specific segments of text with corresponding gesture segments for digital human generation. Therefore, the contribution in this stage is to use speech data that has already been preprocessed (see \autoref{sec:Preprocessing}) to obtain transcribed text. We use the FastText model \cite{bojanowski2017enriching} to embed this text into vectors, which are then temporally aligned with the number of gesture frames, resulting in a text matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. For segments without text, zero vectors are used; for segments with vocabulary, the corresponding embedding is assigned for each gesture frame.
+	In contrast, we treat text as a semantic feature that aligns specific segments of text with corresponding gesture segments for digital human generation. Therefore, the contribution in this stage is to use speech data that has already been preprocessed (see \autoref{sec:Preprocessing}) to obtain transcribed text. We use the FastText model \citep{bojanowski2017enriching} to embed this text into vectors, which are then temporally aligned with the number of gesture frames, resulting in a text matrix $\mathbf{v} \in \mathbb{R}^{1:M \times 300}$. For segments without text, zero vectors are used; for segments with vocabulary, the corresponding embedding is assigned for each gesture frame.
 	
 	\item \textbf{Speech} $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$:  
-	All speech data in `.wav` format is downsampled to $16~\mathrm{kHz}$. The speech corresponding to the gesture segment (4 seconds) is extracted as a waveform vector $\mathbf{a} \in \mathbb{R}^{64000}$. Following DiffuseStyleGesture, this work uses the pre-trained WavLM Large model \cite{Chen_2022} to embed the raw waveform into a high-dimensional vector representing acoustic features. Linear interpolation is then applied to temporally align the latent features from WavLM at $20~\text{fps}$, resulting in the speech matrix $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$.
+	All speech data in `.wav` format is downsampled to $16~\mathrm{kHz}$. The speech corresponding to the gesture segment (4 seconds) is extracted as a waveform vector $\mathbf{a} \in \mathbb{R}^{64000}$. Following DiffuseStyleGesture, this work uses the pre-trained WavLM Large model \citep{Chen_2022} to embed the raw waveform into a high-dimensional vector representing acoustic features. Linear interpolation is then applied to temporally align the latent features from WavLM at $20~\text{fps}$, resulting in the speech matrix $\mathbf{a} \in \mathbb{R}^{1:M \times 1024}$.
 	
 	\item \textbf{Emotion} $\mathbf{e} \in \mathbb{R}^{6}$:  
 	Emotion is represented by one of six classes: $\texttt{Happy}$, $\texttt{Sad}$, $\texttt{Neutral}$, $\texttt{Old}$, $\texttt{Relaxed}$, and $\texttt{Angry}$.  
@@ -112,7 +112,7 @@ First, the seed gesture vector $\mathbf{S} \in \mathbb{R}^{192}$ and the emotion
 
 \subsubsection{Frame-wise Feature Integration}
 
-Next, $\mathbf{z}_{tk} \xrightarrow{\operatorname{replicate}} \mathbf{Z}$ is replicated $M$ times to match the dimensionality of $M$ frames, resulting in the matrix $\mathbf{Z} \in \mathbb{R}^{1:M \times 256}$, as shown in \autoref{fig:DeepGesture}.
+$\mathbf{z}_{tk} \xrightarrow{\operatorname{replicate}} \mathbf{Z}$ is replicated $M$ times to match the dimensionality of $M$ frames, resulting in the matrix $\mathbf{Z} \in \mathbb{R}^{1:M \times 256}$, as shown in \autoref{fig:DeepGesture}.
 
 The speech feature matrix $\mathbf{A}$ and the text feature matrix $\mathbf{V}$ are then added together to produce a matrix that combines both modalities. This combined matrix is then concatenated with the gesture feature matrix $\mathbf{X}$. Finally, the result is concatenated with matrix $\mathbf{Z}$ to obtain the full feature matrix $\mathbf{M}$.
 
@@ -133,7 +133,7 @@ Subsequently, the matrix $\mathbf{m}$ is passed through a linear transformation 
 
 \subsubsection{Attention Mechanism in the Feature Integration Process}
 
-In the proposed model, the attention mechanism \cite{vaswani2017attention} is employed to integrate features. The objective of applying attention is to capture the correlation between individual frames in the sequence. The attention mechanism is utilized in both the Cross-Local Attention and the Self-Attention layers within the Transformer Encoder.
+In the proposed model, the attention mechanism \citep{vaswani2017attention} is employed to integrate features. The objective of applying attention is to capture the correlation between individual frames in the sequence. The attention mechanism is utilized in both the Cross-Local Attention and the Self-Attention layers within the Transformer Encoder.
 
 The attention mechanism is formulated as follows:
 
@@ -172,7 +172,7 @@ The matrix $\mathbf{m}_{t} \in \mathbb{R}^{1:M \times 256}$ is then passed throu
 
 % (\operatorname{Query}) (\operatorname{Key}) (\operatorname{Value})
 Cross-local Attention is performed with $\mathbf{Q} = \mathbf{K} = \mathbf{V} = \mathbf{m}_{t}$.
-Following the idea of the Routing Transformer method \cite{roy2021efficient}, Cross-local Attention highlights the importance of constructing intermediate feature-vector representations before passing them through the Transformer Encoder layer, as shown in \autoref{fig:DeepGesture}.
+Following the idea of the Routing Transformer method \citep{roy2021efficient}, Cross-local Attention highlights the importance of constructing intermediate feature-vector representations before passing them through the Transformer Encoder layer, as shown in \autoref{fig:DeepGesture}.
 The feature vectors are augmented with a relative position-encoding vector \textbf{RPE} (\textbf{R}elative \textbf{P}osition \textbf{E}ncoding) to preserve temporal ordering before entering the Cross-Local Attention layer.
 
 After Cross-Local Attention, the model is forwarded through a linear layer, as in \autoref{eq:CrossLocalAttention}, to align with the $M$ frames and obtain the matrix $\mathbf{h}_t \in \mathbb{R}^{1:M \times D}$.
@@ -196,7 +196,7 @@ After Cross-Local Attention, the model is forwarded through a linear layer, as i
 %	\end{subfigure}
 %\end{figure}
 
-Following MDM \cite{tevet2022human}, the vector $\mathbf{z}_{tk}$ is the first token that encodes information for the entire frame sequence, analogous to the $\texttt{CLS}$ token in BERT \cite{devlin2019bertpretrainingdeepbidirectional}, which summarizes an entire text segment.
+Following MDM \citep{tevet2022human}, the vector $\mathbf{z}_{tk}$ is the first token that encodes information for the entire frame sequence, analogous to the $\texttt{CLS}$ token in BERT \citep{devlin2019bertpretrainingdeepbidirectional}, which summarizes an entire text segment.
 Here, we use $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\autoref{eq:ConditionConcat}), as the first token representing global features for the whole sequence of $M$ frames.
 
 \begin{equation}
@@ -204,8 +204,8 @@ Here, we use $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\au
 	\label{eq:TransformerEncoder}
 \end{equation}
 
-The vectors $\mathbf{h}_t$ represent the sequence of $M$ frames. Similar to Reformer \cite{kitaev2020reformer}, before entering the Self-Attention layer of the Transformer Encoder, the model employs Relative Position Encoding (RPE) instead of absolute position encoding, improving efficiency on long sequences.
-Within the Transformer Encoder layer \cite{vaswani2017attention}, relationships among the data sequences are computed.
+The vectors $\mathbf{h}_t$ represent the sequence of $M$ frames. Similar to Reformer \citep{kitaev2020reformer}, before entering the Self-Attention layer of the Transformer Encoder, the model employs Relative Position Encoding (RPE) instead of absolute position encoding, improving efficiency on long sequences.
+Within the Transformer Encoder layer \citep{vaswani2017attention}, relationships among the data sequences are computed.
 The Transformer Encoder applies the same self-attention mechanism as in \autoref{eq:attention} but without the $\mathbf{Mask}$, enabling correlations across the entire sequence to be captured.
 
 
@@ -226,7 +226,7 @@ The final rendering step is presented in \autoref{sec:Render}.
 
 The preceding steps enable the model to learn gesture generation. To incorporate emotions across different contexts, each emotion is parameterized and varied so that the predictions faithfully express the designated affect.
 
-Analogous to conditional denoising models \cite{ho2022classifier, tevet2022human}, we use the condition vector
+Analogous to conditional denoising models \citep{ho2022classifier, tevet2022human}, we use the condition vector
 $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$,  
 where $\mathbf{s}$ is the seed gesture, $\mathbf{e}$ the emotion, $\mathbf{a}$ the associated speech, and $\mathbf{v}$ the text.
 The conditional diffusion model injects $c$ at every timestep $t$ in the denoising network $\text{G}_\theta(\bx_{t}, t, c)$, with
@@ -239,7 +239,7 @@ A random mask applied to the seed-gesture and emotion vectors conveniently switc
 	= \gamma\, G(\bx_{t}, t, c) + (1-\gamma)\, G(\bx_{t}, t, c_{\varnothing})
 \end{equation}
 
-Classifier-free guidance \cite{ho2022classifier} further enables interpolation between two emotions
+Classifier-free guidance \citep{ho2022classifier} further enables interpolation between two emotions
 $\mathbf{e}_1$ and $\mathbf{e}_2$ by setting
 $c = [\mathbf{s}, \mathbf{e}_{1}, \mathbf{a}, \mathbf{v}]$ and
 $c_{\varnothing} = [\mathbf{s}, \mathbf{e}_{2}, \mathbf{a}, \mathbf{v}]$:

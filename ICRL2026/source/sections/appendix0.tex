@@ -5,7 +5,7 @@ In stage {1. Data Preprocessing} (\autoref{fig:CommonStage}), gesture, speech, a
 
 For \textbf{text data}: we use the $\texttt{nltk}$ library for tokenization and $\texttt{contractions}$ to normalize contracted words.
 
-One of our contributions is converting the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \cite{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, we use $\texttt{gensim}$ to generate word2vec embeddings.
+One of our contributions is converting the speech data available in ZeroEGGS using Adobe Speech To Text, then align the phonetic timestamps using the Montreal Forced Aligner \citep{saxon2020robust} with an English phoneme dictionary to match the gesture frame rate, generating TextGrid files. From these TextGrids containing word-level timing information, we use $\texttt{gensim}$ to generate word2vec embeddings.
 
 \textbf{Gesture data} consists of BVH (BioVision Motion Capture) files captured via motion capture systems. BVH files include two components: Hierarchy and Motion. Specifically:
 

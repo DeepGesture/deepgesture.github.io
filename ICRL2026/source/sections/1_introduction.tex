@@ -1,7 +1,7 @@
 \section{INTRODUCTION}
 \label{sec:introduction}
 
-Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the result of any software systems. Therefore, the visual representation of interactive digital humans can significantly enhance user experience. The proposed \textbf{DeepGesture} model builds on the DiffuseStyleGesture model \cite{yang2023diffusestylegesture}, leveraging a diffusion model \cite{ho2020denoising} with classifier-free guidance \cite{ho2022classifier} to control features during denoising. Applying diffusion to gesture generation shares similarities with image generation, such as using conditional diffusion on gesture data (analogous to image dimensions) and employing latent vectors in feature encoding/decoding stages. Key differences include conditional generation with emotional states (e.g., emotion vectors and interpolations) and feature fusion via self-attention to relate emotions, seed gestures, and frames (similar to text-image alignment in DALL-E 2), plus concatenating speech and text inputs (analogous to pixel-wise conditions in ControlNet).
+Every day, billions of people around the world look at RGB screens, and the output displayed on these screens is the output of any software systems. Therefore, the visual representation of interactive digital humans can significantly enhance user experience. The proposed \textbf{DeepGesture} model builds on the DiffuseStyleGesture model \citep{yang2023diffusestylegesture}, leveraging a diffusion model \citep{ho2020denoising} with classifier-free guidance \citep{ho2022classifier} to control features during denoising. Applying diffusion to gesture generation shares similarities with image generation, such as using conditional diffusion on gesture data (analogous to image dimensions) and employing latent vectors in feature encoding/decoding stages. Key differences include conditional generation with emotional states (e.g., emotion vectors and interpolations) and feature fusion via self-attention to relate emotions, seed gestures, and frames (similar to text-image alignment in DALL-E 2), plus concatenating speech and text inputs (analogous to pixel-wise conditions in ControlNet).
 
 
 
@@ -11,7 +11,7 @@ Every day, billions of people around the world look at RGB screens, and the outp
 
 %Therefore, the rendering of each pixel on the screen and the realistic simulation of images have been a focus of computer graphics scientists since the 1960s, particularly in the simulation of human figures or digital human.
 
-%Today, computer graphics technology can realistically simulate many complex objects such as water, roads, bread, and even human bodies and faces with incredible detail, down to individual hair strands, pimples, and eye textures. In 2015, using 3D scanning techniques \cite{metallo2015scanning} to capture all angles of the face and light reflection, researchers were able to recreate President Obama's face on a computer with high precision, making it almost indistinguishable from the real thing.
+%Today, computer graphics technology can realistically simulate many complex objects such as water, roads, bread, and even human bodies and faces with incredible detail, down to individual hair strands, pimples, and eye textures. In 2015, using 3D scanning techniques \citep{metallo2015scanning} to capture all angles of the face and light reflection, researchers were able to recreate President Obama's face on a computer with high precision, making it almost indistinguishable from the real thing.
 
 
 \subsection{Gesture Generation Problem Statement}
@@ -50,13 +50,14 @@ Each frame is a skeleton (\autoref{fig:Skeleton}) of 75 bones: $\{ \mathbf{b}_{1
 
 %A BVH file consists of two main parts: \texttt{HIERARCHY} and \texttt{MOTION}. The \texttt{HIERARCHY} section is structured as a tree containing the skeleton’s initial positions and names. The \texttt{MOTION} section contains the movement data for the entire skeleton frame-by-frame. Each BVH file includes frame rate (fps) and total frame count. Details are presented in Appendix \autoref{appendix:BVHStructure}.
 
-\textbf{Motion Structure of Gestures}: Gesture motion data is convert from position and rotation into quaternion space to get raw motion waves. Then we apply MFCC to get cofficient to get 
+\textbf{Motion Structure of Gestures}: Gesture motion data is convert from position and rotation into quaternion space to get raw motion waves. Then we apply MFCC to extract cofficient \citep{suwajanakorn2017synthesizing} to get feature matrix $\mathbf{x}^{T \times D}$.
+The skeleton's position and rotation data are preprocessed into a feature vector $\mathbf{g} \in \mathbb{R}^{D}$ with $D = 1141$. The learning data becomes $\bx \in \mathbb{R}^{M \times D}$.
 
 % as illustrated in \autoref{fig:Skeleton}, or the \texttt{MOTION} section of a BVH file, contains position and rotation information per frame. 
 
-The output of gesture generation is a sequence of bone rotations per frame. The generated gestures are evaluated based on naturalness, human-likeness, and contextual appropriateness.
+%The output of gesture generation is a sequence of bone rotations per frame. The generated gestures are evaluated based on naturalness, human-likeness, and contextual appropriateness.
 
-The skeleton's position and rotation data are preprocessed into a feature vector $\mathbf{g} \in \mathbb{R}^{D}$ with $D = 1141$. The learning data becomes $\bx \in \mathbb{R}^{M \times D}$. 
+
 %The preprocessing pipeline is detailed in \autoref{appendix:BVHData}.
 
 \textbf{Problem Statement}
@@ -91,15 +92,15 @@ There are several challenges in building a model that can learn human-like conve
 %	\item \textit{Sequential preprocessing steps:} Although human-computer interaction is most effective through speech and keyboard input, processing the text and speech input for gesture generation must be done sequentially. In real-world applications, inference latency is critical, and users cannot wait long. Rendering the gestures on screen must also be optimized for speed.
 %\end{enumerate}
 
-\textbf{Contributions}
+\textbf{Contributions}: This work advances gesture generation by enhancing existing datasets through transcribing speech into text, which is incorporated as semantic features during training, and extending the conditional denoising process to include these text features. Additionally, we leverage Unity for rendering, data extraction, and visualization of gesture generation outcomes, while designing and implementing a novel rendering pipeline demonstrated within the Unity environment.
 
-\begin{itemize}
-	\item From existing datasets, speech is transcribed into text and used as additional semantic features for training. We extend the conditional denoising process to include text features.
-	
-%	\item Based on the DiffuseStyleGesture model, 
-	
-	\item In this work, we use Unity for rendering, data extraction, and visualization of gesture generation results.
-	
-	\item A rendering pipeline is designed and implemented in this paper, with the system demonstrated using Unity.
-\end{itemize}
-
+%\begin{itemize}
+%	\item From existing datasets, speech is transcribed into text and used as additional semantic features for training. We extend the conditional denoising process to include text features.
+%	
+%%	\item Based on the DiffuseStyleGesture model, 
+%	
+%	\item In this work, we use Unity for rendering, data extraction, and visualization of gesture generation results.
+%	
+%	\item A rendering pipeline is designed and implemented in this paper, with the system demonstrated using Unity.
+%\end{itemize}
+%

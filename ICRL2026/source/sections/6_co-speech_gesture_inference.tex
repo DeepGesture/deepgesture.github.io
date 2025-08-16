@@ -3,7 +3,7 @@
 
 % In an attempt to encourage standardized notation, we have included the
 % notation file from the textbook, \textit{Deep Learning}
-% \cite{goodfellow2016deep} available at
+% \citep{goodfellow2016deep} available at
 % \url{https://github.com/goodfeli/dlbook_notation/}.  Use of this style
 % is not required and can be disabled by commenting out
 % \texttt{math\_commands.tex}.
@@ -192,7 +192,7 @@ In practice, these audio-only interpreters allow cross-language gesture generati
 During the training of the generator, we have computed the gesture lexeme $\vect{s}_i$ and the style code $\vect{z}_i$ of every motion block in the training dataset. We then train the two interpreters using these results as the ground truth. We minimize the standard categorical cross-entropy loss to train the lexeme interpreter, while the MSE loss is used for the style interpreter.
 
 \subsubsection{Silent Period Hint}
-A speaker typically stops gesticulating during a silent pause \cite{graziano2018silence}. Such behaviors are often crucial to the naturalness of a co-speech gesture animation. However, we find that it is often difficult for a gesture generator to deal with silent periods well, even in recent successful systems such as \cite{alexanderson2020style,kucherenko2020gesticulator}. The speech-gesture datasets may lack necessary motion, and some specific generator models, such as LSTM, may exhibit generative inertia that makes it difficult to become stationary in time.
+A speaker typically stops gesticulating during a silent pause \citep{graziano2018silence}. Such behaviors are often crucial to the naturalness of a co-speech gesture animation. However, we find that it is often difficult for a gesture generator to deal with silent periods well, even in recent successful systems such as \citep{alexanderson2020style,kucherenko2020gesticulator}. The speech-gesture datasets may lack necessary motion, and some specific generator models, such as LSTM, may exhibit generative inertia that makes it difficult to become stationary in time.
 
 To solve this problem, we develop a new approach, which we refer to as the \emph{silent period hint}, to encourage the lexeme interpreter to compute a specific \emph{silent lexeme} that corresponds to a silent gesture when encountering a silent period. 
 We check all the lexemes in the lexicon and label a number of stationary ones as the silent lexemes. Notably, the silent lexemes can be automatically labeled by finding such a lexeme corresponding to an empty text word. Then, when a training audio block is in a silent period, which can be detected by the data module of our system, we will force the lexeme interpreter to output the silent lexeme that is the nearest to the current lexeme in the latent space.
