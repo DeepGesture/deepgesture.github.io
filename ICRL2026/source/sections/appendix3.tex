@@ -31,12 +31,12 @@ Some skeleton joint names from the $75$ motion skeletons include:
 	...
 }
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=10.5cm]{figures/Bone}
-	\caption{Character skeleton}
-	\label{fig:Bone}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.2\linewidth]{figures/Bone}
+%	\caption{Character skeleton}
+%	\label{fig:Bone}
+%\end{figure}
 
 \subsection{Structure of a BVH File}
 \label{appendix:BVHStructure}
@@ -55,22 +55,22 @@ A BVH (Biovision Hierarchy) file is a data format that contains information abou
 	\item \textbf{MOTION}: A sequence of movements frame by frame, where each frame contains bone movement data as defined in the HIERARCHY section (e.g., rotation angles or positions).
 \end{itemize}
 
-\begin{figure}[htbp]
-	\centering
-	\begin{subfigure}{0.49\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figures/BVH1}
-		\caption{HIERARCHY in BVH file}
-		\label{fig:BVH1}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.49\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{figures/BVH2}
-		\caption{MOTION in BVH file}
-		\label{fig:BVH2}
-	\end{subfigure}
-\end{figure}
+%\begin{figure}[htbp]
+%	\centering
+%	\begin{subfigure}{0.49\linewidth}
+%		\centering
+%		\includegraphics[height=2cm]{figures/BVH1}
+%		\caption{HIERARCHY in BVH file}
+%		\label{fig:BVH1}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}{0.49\linewidth}
+%		\centering
+%		\includegraphics[height=2cm]{figures/BVH2}
+%		\caption{MOTION in BVH file}
+%		\label{fig:BVH2}
+%	\end{subfigure}
+%\end{figure}
 
 $\mathbf{rotation}_i^{\operatorname{local}} = \{ \alpha ,\beta , \gamma \}$ represents the rotation angles around the $Z$, $Y$, and $X$ axes, respectively. The combined rotation in Euler space is:
 
