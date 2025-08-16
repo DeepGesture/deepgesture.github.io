@@ -14,8 +14,8 @@
 \usepackage{url}
 
 
-\title{DeepGesture: Multimodal Co-Speech Gesture Synthesis with Integrated Audio and Text Conditioning}
-
+\title{DeepGesture: Multimodal Co-Speech Gesture Synthesis with Integrated Audio and Text}
+%Conditioning
 % Authors must not appear in the submitted version. They should be hidden
 % as long as the \iclrfinalcopy macro remains commented out below.
 % Non-anonymous submissions will be rejected without review.
@@ -48,59 +48,8 @@
 \maketitle
 
 \input{sections/0_abstract.tex}
-%\begin{abstract}
-%Along with the explosion of large language models, improvements in speech synthesis, advancements in hardware, and the evolution of computer graphics, the current bottleneck in creating digital humans lies in generating character movements that correspond naturally to text or speech inputs.
-%In this work, we present \textbf{DeepGesture}, a diffusion-based gesture synthesis framework for generating expressive co-speech gestures conditioned on multimodal signals - text, speech, emotion, and seed motion. Built upon the DiffuseStyleGesture model, DeepGesture introduces novel architectural enhancements that improve semantic alignment and emotional expressiveness in generated gestures. Specifically, we integrate fast text transcriptions as semantic conditioning and implement emotion-guided classifier-free diffusion to support controllable gesture generation across affective states. To visualize results, we implement a full rendering pipeline in Unity based on BVH output from the model. Evaluation on the ZeroEGGS dataset shows that DeepGesture produces gestures with improved human-likeness and contextual appropriateness. Our system supports interpolation between emotional states and demonstrates generalization to out-of-distribution speech, including synthetic voices - marking a step forward toward fully multimodal, emotionally aware digital humans.
-%Our paper is featured on the \footnote{Anonymous homepage https://deepgesture.github.io}{homepage}
-%\end{abstract}
 
 \input{sections/1_introduction.tex}
-
-%\section{INTRODUCTION}
-%
-%ICLR requires electronic submissions, processed by
-%\url{https://openreview.net/}. See ICLR's website for more instructions.
-%
-%If your paper is ultimately accepted, the statement {\tt
-%  {\textbackslash}iclrfinalcopy} should be inserted to adjust the
-%format to the camera ready requirements.
-%
-%The format for the submissions is a variant of the NeurIPS format.
-%Please read carefully the instructions below, and follow them
-%faithfully.
-%
-%\subsection{Style}
-%
-%Papers to be submitted to ICLR 2025 must be prepared according to the
-%instructions presented here.
-%
-%%% Please note that we have introduced automatic line number generation
-%%% into the style file for \LaTeXe. This is to help reviewers
-%%% refer to specific lines of the paper when they make their comments. Please do
-%%% NOT refer to these line numbers in your paper as they will be removed from the
-%%% style file for the final version of accepted papers.
-%
-%Authors are required to use the ICLR \LaTeX{} style files obtainable at the
-%ICLR website. Please make sure you use the current files and
-%not previous versions. Tweaking the style files may be grounds for rejection.
-%
-%\subsection{Retrieval of style files}
-%
-%The style files for ICLR and other conference information are available online at:
-%\begin{center}
-%   \url{http://www.iclr.cc/}
-%\end{center}
-%The file \verb+iclr2025_conference.pdf+ contains these
-%instructions and illustrates the
-%various formatting requirements your ICLR paper must satisfy.
-%Submissions must be made using \LaTeX{} and the style files
-%\verb+iclr2025_conference.sty+ and \verb+iclr2025_conference.bst+ (to be used with \LaTeX{}2e). The file
-%\verb+iclr2025_conference.tex+ may be used as a ``shell'' for writing your paper. All you
-%have to do is replace the author, title, abstract, and text of the paper with
-%your own.
-%
-%The formatting instructions contained in these style files are summarized in
-%sections \ref{gen_inst}, \ref{headings}, and \ref{others} below.
 
 \input{sections/2_related_work.tex}
 
@@ -120,10 +69,12 @@
 \bibliography{iclr2026_conference}
 \bibliographystyle{iclr2026_conference}
 
-
 \appendix
+\input{sections/appendix0.tex}
 \input{sections/appendix1.tex}
 \input{sections/appendix2.tex}
 \input{sections/appendix3.tex}
 \input{sections/appendix4.tex}
+\input{sections/appendix5.tex}
+
 \end{document}

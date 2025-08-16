@@ -8,27 +8,27 @@
 	\label{fig:TrainingAndSampling}
 \end{figure}
 
-The proposed \textbf{DeepGesture} model is based on the \textbf{DiffuseStyleGesture} model \cite{yang2023diffusestylegesture}, which applies the Diffusion model \cite{ho2020denoising} with conditional guidance \cite{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
-
-The similarities and differences of applying the diffusion model to the gesture generation task compared to image generation are as follows:
-
-\textbf{Similarities}
-\begin{itemize}
-	\item Uses the Diffusion model on gesture data $\bx^{1:M \times D}$, with $M$ temporal frames and $D=1141$ representing motion coordinates per frame (analogous to image width and height).
-	\item Uses conditional Diffusion with $\bx_0$ objective.
-	\item In stages \textit{4. Feature Encoding} and \textit{6. Feature Decoding} in \autoref{fig:CommonStage}, the model uses a latent vector of dimension $256$.
-\end{itemize}
-
-\textbf{Differences}
-\begin{itemize}
-	\item Conditional gesture generation:
-	\begin{itemize}
-		\item Emotional condition: $c = \big[ \mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v} \big]$ and $c_{ \varnothing } = \big[ \varnothing, \varnothing, \mathbf{a}, \mathbf{v}\big]$.
-		\item Emotion state interpolation between $\mathbf{e}_1, \mathbf{e}_2$ using: $c = \big[ \mathbf{s}, \mathbf{e}_1, \mathbf{a}, \mathbf{v} \big]$ and $c_{\varnothing} = \big[ \mathbf{s}, \mathbf{e}_2, \mathbf{a}, \mathbf{v} \big]$.
-	\end{itemize}
-	\item In stage \textit{5. Feature Fusion} \autoref{fig:CommonStage}, the model uses Self-Attention: learning the relationship between emotions, seed gestures, and each frame (similar to DALL-E 2's text-image alignment).
-	\item In stage \textit{5. Feature Fusion} \autoref{fig:CommonStage}, the model concatenates speech and text (analogous to ControlNet's pixel-wise condition).
-\end{itemize}
+%The proposed \textbf{DeepGesture} model is based on the \textbf{DiffuseStyleGesture} model \cite{yang2023diffusestylegesture}, which applies the Diffusion model \cite{ho2020denoising} with conditional guidance \cite{ho2022classifier} (Classifier-Free Diffusion Guidance) to control features during the denoising process.
+%
+%The similarities and differences of applying the diffusion model to the gesture generation task compared to image generation are as follows:
+%
+%\textbf{Similarities}
+%\begin{itemize}
+%	\item Uses the Diffusion model on gesture data $\bx^{1:M \times D}$, with $M$ temporal frames and $D=1141$ representing motion coordinates per frame (analogous to image width and height).
+%	\item Uses conditional Diffusion with $\bx_0$ objective.
+%	\item In stages \textit{4. Feature Encoding} and \textit{6. Feature Decoding} in \autoref{fig:CommonStage}, the model uses a latent vector of dimension $256$.
+%\end{itemize}
+%
+%\textbf{Differences}
+%\begin{itemize}
+%	\item Conditional gesture generation:
+%	\begin{itemize}
+%		\item Emotional condition: $c = \big[ \mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v} \big]$ and $c_{ \varnothing } = \big[ \varnothing, \varnothing, \mathbf{a}, \mathbf{v}\big]$.
+%		\item Emotion state interpolation between $\mathbf{e}_1, \mathbf{e}_2$ using: $c = \big[ \mathbf{s}, \mathbf{e}_1, \mathbf{a}, \mathbf{v} \big]$ and $c_{\varnothing} = \big[ \mathbf{s}, \mathbf{e}_2, \mathbf{a}, \mathbf{v} \big]$.
+%	\end{itemize}
+%	\item In stage \textit{5. Feature Fusion} \autoref{fig:CommonStage}, the model uses Self-Attention: learning the relationship between emotions, seed gestures, and each frame (similar to DALL-E 2's text-image alignment).
+%	\item In stage \textit{5. Feature Fusion} \autoref{fig:CommonStage}, the model concatenates speech and text (analogous to ControlNet's pixel-wise condition).
+%\end{itemize}
 
 Here, $\bx_0$ is a sequence of $M$ gesture frames $\mathbf{x} \in \mathbb{R}^{1:M \times D}$ ($D = 1141$), with condition $c = [\mathbf{s}, \mathbf{e}, \mathbf{a}, \mathbf{v}]$ including seed gesture $\mathbf{s}$, emotion $\mathbf{e}$, speech $\mathbf{a}$ corresponding to the gesture, and text $\mathbf{v}$.
 
@@ -67,7 +67,7 @@ In the \textit{Stage 3: Feature Extraction} step (\autoref{fig:CommonStage}), th
 
 \begin{figure*}[t]
 	\centering
-	\includegraphics[width=0.9\linewidth]{figures/DeepGesture}
+	\includegraphics[width=0.8\linewidth]{figures/DeepGesture}
 	\caption{The Model Architecture in DeepGesture}
 	\label{fig:DeepGesture}
 \end{figure*}
@@ -108,7 +108,7 @@ First, the seed gesture vector $\mathbf{S} \in \mathbb{R}^{192}$ and the emotion
 	\mathbf{z}_{tk} = \operatorname{concat }(\mathbf{E}\ || \  \mathbf{S}) + \mathbf{T}
 \end{equation}
 
-The feature fusion process of $\mathbf{z}_{tk}$ is illustrated in \autoref{fig:FeatureFusion}.
+%The feature fusion process of $\mathbf{z}_{tk}$ is illustrated in \autoref{fig:FeatureFusion}.
 
 \subsubsection{Frame-wise Feature Integration}
 
@@ -147,7 +147,7 @@ The Local-Cross Attention mechanism is controlled to focus only on local motion 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\linewidth]{figures/CrossLocalAttention}
+	\includegraphics[width=0.7\linewidth]{figures/CrossLocalAttention}
 	\caption{Attention Mechanism in Transformer Encoder and Cross-Local Attention}
 	\label{fig:CrossLocalAttention}
 \end{figure}
@@ -178,23 +178,23 @@ The feature vectors are augmented with a relative position-encoding vector \text
 After Cross-Local Attention, the model is forwarded through a linear layer, as in \autoref{eq:CrossLocalAttention}, to align with the $M$ frames and obtain the matrix $\mathbf{h}_t \in \mathbb{R}^{1:M \times D}$.
 
 \subsubsection{Global Feature Fusion with the Transformer Encoder}
-
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.42\linewidth}
-		\centering
-		\includegraphics[width=0.95\linewidth]{figures/FeatureConcatenate}
-		\caption{Feature concatenation $\mathbf{z}_{tk}$}
-		\label{fig:FeatureFusion}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.55\linewidth}
-		\centering
-		\includegraphics[width=0.85\textwidth]{figures/FeatureFusion}
-		\caption{Frame-wise feature-fusion process}
-		\label{fig:ZToken}
-	\end{subfigure}
-\end{figure}
+%
+%\begin{figure}[h]
+%	\centering
+%	\begin{subfigure}{0.42\linewidth}
+%		\centering
+%		\includegraphics[width=0.95\linewidth]{figures/FeatureConcatenate}
+%		\caption{Feature concatenation $\mathbf{z}_{tk}$}
+%		\label{fig:FeatureFusion}
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}{0.55\linewidth}
+%		\centering
+%		\includegraphics[width=0.85\textwidth]{figures/FeatureFusion}
+%		\caption{Frame-wise feature-fusion process}
+%		\label{fig:ZToken}
+%	\end{subfigure}
+%\end{figure}
 
 Following MDM \cite{tevet2022human}, the vector $\mathbf{z}_{tk}$ is the first token that encodes information for the entire frame sequence, analogous to the $\texttt{CLS}$ token in BERT \cite{devlin2019bertpretrainingdeepbidirectional}, which summarizes an entire text segment.
 Here, we use $\mathbf{z}_{tk}$, with $\mathbf{z}_{tk} \in \mathbb{R}^{256}$ (\autoref{eq:ConditionConcat}), as the first token representing global features for the whole sequence of $M$ frames.

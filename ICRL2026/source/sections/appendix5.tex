@@ -1,0 +1,39 @@
+
+\subsubsection{Objective Metric Evaluation}
+
+\textbf{Mean Square Error (MSE)}
+
+We compute the mean square error between the predicted gesture sequence $\hat{\mathbf{y}}_i^{1:M \times D}$ and the corresponding ground-truth sequence $\mathbf{y}_i^{1:M \times D}$ as:
+
+\begin{equation}
+	\text{MSE} = \frac{1}{n} \sum_{i=1}^n \left\| \mathbf{y}_i^{1:M \times D} - \hat{\mathbf{y}}_i^{1:M \times D} \right\|^2
+\end{equation}
+
+Where:
+\begin{itemize}
+	\item $n$ is the number of data samples,
+	\item $M$ is the number of frames per sample,
+	\item $D$ is the number of dimensions per frame,
+	\item $\|\cdot\|^2$ is the squared Frobenius norm.
+\end{itemize}
+
+A lower MSE indicates a smaller difference between predicted and ground-truth gestures. Evaluation results are provided in \autoref{subsec:MSEResult}.
+
+\textbf{Fréchet Gesture Distance (FGD)}
+
+Inspired by the Fréchet Inception Distance (FID) used in image generation, the Fréchet Gesture Distance (FGD) measures the similarity in distribution between predicted gestures $\hat{\mathbf{y}}$ and real gestures $\mathbf{y}$:
+
+\begin{equation}
+	\text{FGD} = \left\| \hat{\mu} - \mu \right\|^2 + \operatorname{Tr}\left( \Sigma + \hat{\Sigma} - 2 \sqrt{\Sigma \hat{\Sigma}} \right)
+	\label{eq:fidscore}
+\end{equation}
+
+Where:
+\begin{itemize}
+	\item $\mu$ and $\hat{\mu}$ are the empirical means of real and generated data,
+	\item $\Sigma$ and $\hat{\Sigma}$ are the corresponding covariance matrices,
+	\item $\operatorname{Tr}(\cdot)$ denotes the trace operator,
+	\item $\sqrt{\Sigma \hat{\Sigma}}$ is the matrix square root of the product.
+\end{itemize}
+
+Lower FGD indicates higher distributional similarity, thus better quality. Evaluations are conducted on $\hat{\mathbf{x}}^{0}, \mathbf{x}_0 \in \mathbb{R}^{1:M \times D}$.

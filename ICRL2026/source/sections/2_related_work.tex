@@ -1,3 +1,52 @@
+
+%\section{INTRODUCTION}
+%
+%ICLR requires electronic submissions, processed by
+%\url{https://openreview.net/}. See ICLR's website for more instructions.
+%
+%If your paper is ultimately accepted, the statement {\tt
+	%  {\textbackslash}iclrfinalcopy} should be inserted to adjust the
+%format to the camera ready requirements.
+%
+%The format for the submissions is a variant of the NeurIPS format.
+%Please read carefully the instructions below, and follow them
+%faithfully.
+%
+%\subsection{Style}
+%
+%Papers to be submitted to ICLR 2025 must be prepared according to the
+%instructions presented here.
+%
+%%% Please note that we have introduced automatic line number generation
+%%% into the style file for \LaTeXe. This is to help reviewers
+%%% refer to specific lines of the paper when they make their comments. Please do
+%%% NOT refer to these line numbers in your paper as they will be removed from the
+%%% style file for the final version of accepted papers.
+%
+%Authors are required to use the ICLR \LaTeX{} style files obtainable at the
+%ICLR website. Please make sure you use the current files and
+%not previous versions. Tweaking the style files may be grounds for rejection.
+%
+%\subsection{Retrieval of style files}
+%
+%The style files for ICLR and other conference information are available online at:
+%\begin{center}
+%   \url{http://www.iclr.cc/}
+%\end{center}
+%The file \verb+iclr2025_conference.pdf+ contains these
+%instructions and illustrates the
+%various formatting requirements your ICLR paper must satisfy.
+%Submissions must be made using \LaTeX{} and the style files
+%\verb+iclr2025_conference.sty+ and \verb+iclr2025_conference.bst+ (to be used with \LaTeX{}2e). The file
+%\verb+iclr2025_conference.tex+ may be used as a ``shell'' for writing your paper. All you
+%have to do is replace the author, title, abstract, and text of the paper with
+%your own.
+%
+%The formatting instructions contained in these style files are summarized in
+%sections \ref{gen_inst}, \ref{headings}, and \ref{others} below.
+
+
+
 %\section{General formatting instructions}
 %\label{gen_inst}
 %
@@ -139,31 +188,31 @@ A typical example is the generative adversarial network (GAN) and Diffusion mode
 
 
 
-
-\subsection{Common Stages in Deep Learning Approaches for Gesture Generation}
-\label{sec:commonstage}
-
-As presented in \autoref{sec:Data}, gestures consist of sequences of 3D point coordinates. For each dataset, the number of bones per frame may vary.
-
-
-Deep learning approaches to gesture generation are implemented using various techniques. However, we generalize the process into the following main stages, illustrated in \autoref{fig:CommonStage}:
-
-
-\begin{enumerate}
-	\item \textbf{Preprocessing}: In the preprocessing stage, data such as speech segments, gesture sequences, and text are read and digitized into vectors or matrices that represent raw data information. Depending on the specific learning method, the selected initial data features may vary.
-	
-	\item \textbf{Feature Processing}: In this stage, raw data such as speech and text are embedded into feature vectors. Different methods use different embedding models. The way gesture sequences are represented as feature vectors also varies across methods.
-	
-	\item \textbf{Feature Extraction}: This stage uses linear transformation layers or CNN layers to extract features from the data. Text and speech features, after being processed, may be further passed through feature extraction layers to generate representation vectors corresponding to the input modalities.
-	
-	\item \textbf{Feature Encoding}: In this stage, gesture, emotion, and speech vectors are encoded into a lower-dimensional latent space to facilitate learning the correlations among modalities in the feature fusion stage.
-	
-	\item \textbf{Feature Fusion}: In this stage, features from speech, text, gestures, and other information are combined, typically using concatenation, fully connected layers, or operations such as vector addition or subtraction in the latent space.
-	
-	\item \textbf{Feature Decoding}: In this stage, latent vectors are decoded or upsampled back to their original dimensionality.
-	
-	\item \textbf{Rendering}: Once the output vectors are restored to their original size, they are converted back into BVH files and rendered using software such as Blender or Unity to visualize character motion.
-\end{enumerate}
+%
+%\subsection{Common Stages in Deep Learning Approaches for Gesture Generation}
+%\label{sec:commonstage}
+%
+%As presented in \autoref{sec:Data}, gestures consist of sequences of 3D point coordinates. For each dataset, the number of bones per frame may vary.
+%
+%
+%Deep learning approaches to gesture generation are implemented using various techniques. However, we generalize the process into the following main stages, illustrated in \autoref{fig:CommonStage}:
+%
+%
+%\begin{enumerate}
+%	\item \textbf{Preprocessing}: In the preprocessing stage, data such as speech segments, gesture sequences, and text are read and digitized into vectors or matrices that represent raw data information. Depending on the specific learning method, the selected initial data features may vary.
+%	
+%	\item \textbf{Feature Processing}: In this stage, raw data such as speech and text are embedded into feature vectors. Different methods use different embedding models. The way gesture sequences are represented as feature vectors also varies across methods.
+%	
+%	\item \textbf{Feature Extraction}: This stage uses linear transformation layers or CNN layers to extract features from the data. Text and speech features, after being processed, may be further passed through feature extraction layers to generate representation vectors corresponding to the input modalities.
+%	
+%	\item \textbf{Feature Encoding}: In this stage, gesture, emotion, and speech vectors are encoded into a lower-dimensional latent space to facilitate learning the correlations among modalities in the feature fusion stage.
+%	
+%	\item \textbf{Feature Fusion}: In this stage, features from speech, text, gestures, and other information are combined, typically using concatenation, fully connected layers, or operations such as vector addition or subtraction in the latent space.
+%	
+%	\item \textbf{Feature Decoding}: In this stage, latent vectors are decoded or upsampled back to their original dimensionality.
+%	
+%	\item \textbf{Rendering}: Once the output vectors are restored to their original size, they are converted back into BVH files and rendered using software such as Blender or Unity to visualize character motion.
+%\end{enumerate}
 
 
 

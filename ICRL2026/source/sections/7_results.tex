@@ -249,50 +249,12 @@ MOS is assessed based on the following three criteria:
 	\item Gesture-Style Appropriateness
 \end{itemize}
 
-A notable contribution of this work is the development of the \hyperlink{https://genea-workshop.github.io/leaderboard/}{GENEA Leaderboard}~\cite{nagy2024towards}, which includes HEMVIP (\textbf{H}uman \textbf{E}valuation of \textbf{M}ultiple \textbf{V}ideos in \textbf{P}arallel). HEMVIP is designed to compare gesture generation quality between different models using rendered videos.
-
-Within the GENEA consortium (\textbf{G}eneration and \textbf{E}valuation of \textbf{N}on-verbal Behaviour for \textbf{E}mbodied \textbf{A}gents), evaluators are recruited via Prolific. Participants watch videos rendered by different models and assign ratings of \textit{Left Better}, \textit{Equal}, or \textit{Right Better}. These responses are converted into numerical scores of $-1$, $0$, and $1$, respectively, and updated via the Elo rating system.
+%A notable contribution of this work is the development of the \hyperlink{https://genea-workshop.github.io/leaderboard/}{GENEA Leaderboard}~\cite{nagy2024towards}, which includes HEMVIP (\textbf{H}uman \textbf{E}valuation of \textbf{M}ultiple \textbf{V}ideos in \textbf{P}arallel). HEMVIP is designed to compare gesture generation quality between different models using rendered videos.
+%
+%Within the GENEA consortium (\textbf{G}eneration and \textbf{E}valuation of \textbf{N}on-verbal Behaviour for \textbf{E}mbodied \textbf{A}gents), evaluators are recruited via Prolific. Participants watch videos rendered by different models and assign ratings of \textit{Left Better}, \textit{Equal}, or \textit{Right Better}. These responses are converted into numerical scores of $-1$, $0$, and $1$, respectively, and updated via the Elo rating system.
 
 %The evaluation platform and source code are available at \hyperlink{https://github.com/hemvip/hemvip.github.io/}{github.com/hemvip/hemvip.github.io}\footnote{HEMVIP 2: \url{https://github.com/hemvip/hemvip.github.io}}.
 
-\subsubsection{Objective Metric Evaluation}
-
-\textbf{Mean Square Error (MSE)}
-
-We compute the mean square error between the predicted gesture sequence $\hat{\mathbf{y}}_i^{1:M \times D}$ and the corresponding ground-truth sequence $\mathbf{y}_i^{1:M \times D}$ as:
-
-\begin{equation}
-	\text{MSE} = \frac{1}{n} \sum_{i=1}^n \left\| \mathbf{y}_i^{1:M \times D} - \hat{\mathbf{y}}_i^{1:M \times D} \right\|^2
-\end{equation}
-
-Where:
-\begin{itemize}
-	\item $n$ is the number of data samples,
-	\item $M$ is the number of frames per sample,
-	\item $D$ is the number of dimensions per frame,
-	\item $\|\cdot\|^2$ is the squared Frobenius norm.
-\end{itemize}
-
-A lower MSE indicates a smaller difference between predicted and ground-truth gestures. Evaluation results are provided in \autoref{subsec:MSEResult}.
-
-\textbf{Fréchet Gesture Distance (FGD)}
-
-Inspired by the Fréchet Inception Distance (FID) used in image generation, the Fréchet Gesture Distance (FGD) measures the similarity in distribution between predicted gestures $\hat{\mathbf{y}}$ and real gestures $\mathbf{y}$:
-
-\begin{equation}
-	\text{FGD} = \left\| \hat{\mu} - \mu \right\|^2 + \operatorname{Tr}\left( \Sigma + \hat{\Sigma} - 2 \sqrt{\Sigma \hat{\Sigma}} \right)
-	\label{eq:fidscore}
-\end{equation}
-
-Where:
-\begin{itemize}
-	\item $\mu$ and $\hat{\mu}$ are the empirical means of real and generated data,
-	\item $\Sigma$ and $\hat{\Sigma}$ are the corresponding covariance matrices,
-	\item $\operatorname{Tr}(\cdot)$ denotes the trace operator,
-	\item $\sqrt{\Sigma \hat{\Sigma}}$ is the matrix square root of the product.
-\end{itemize}
-
-Lower FGD indicates higher distributional similarity, thus better quality. Evaluations are conducted on $\hat{\mathbf{x}}^{0}, \mathbf{x}_0 \in \mathbb{R}^{1:M \times D}$.
 
 \subsection{Evaluation Results}
 \label{sec:result}
@@ -329,7 +291,7 @@ MSE is computed on gesture sequences across $M$ frames and reported across six e
 
 \begin{table}[h]
 	\centering
-	\resizebox{\linewidth}{!}{%
+%	\resizebox{\linewidth}{!}{%
 		\begin{tabular}{lcccccc}
 			\hline
 			\multicolumn{1}{c}{Emotion} & Neutral & Sad & Happy & Relaxed & Elderly & Angry \\ \hline
@@ -338,18 +300,19 @@ MSE is computed on gesture sequences across $M$ frames and reported across six e
 			\textbf{DeepGesture}   & 161.22 & 89.58 & 279.95 & 156.93     & 99.86     & 215.24     \\
 			\hline
 		\end{tabular}%
-	}
+%	}
 	\caption{MSE results across six emotion categories}
 	\label{table:EvaluationMSE}
 \end{table}
 
 \textbf{FGD Evaluation}
 
-This work introduces FGD and implements the open-source tool \hyperlink{https://github.com/GestureScore/GestureScore}{GestureScore}\footnote{\url{https://github.com/GestureScore/GestureScore}}. GestureScore encodes gesture frames via an Inception V3-based model into a $32 \times 32$ latent representation. FGD is then computed via \autoref{eq:fidscore}.
+%This work introduces FGD and implements the open-source tool \hyperlink{https://github.com/GestureScore/GestureScore}{GestureScore}\footnote{\url{https://github.com/GestureScore/GestureScore}}
+GestureScore encodes gesture frames via an Inception V3-based model into a $32 \times 32$ latent representation. FGD is then computed via \autoref{eq:fidscore}.
 
 \begin{table}[h]
 	\centering
-	\resizebox{\linewidth}{!}{
+%	\resizebox{\linewidth}{!}{
 		\begin{tabular}{lcc}
 			\hline
 			\multicolumn{1}{c}{Model Variant} & FGD on Feature Vectors & FGD on Raw Data \\ \hline
@@ -358,7 +321,7 @@ This work introduces FGD and implements the open-source tool \hyperlink{https://
 			DeepGesture (Rotations)      & 3.513  & 9519.129     \\
 			\hline
 		\end{tabular}
-	}
+%	}
 	\caption{FGD results for DeepGesture on $\bx^{1:M \times D}$}
 	\label{table:EvalFGD}
 \end{table}
