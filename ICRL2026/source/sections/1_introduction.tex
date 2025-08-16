@@ -53,15 +53,7 @@ Each frame is a skeleton (\autoref{fig:Skeleton}) of 75 bones: $\{ \mathbf{b}_{1
 \textbf{Motion Structure of Gestures}: Gesture motion data is convert from position and rotation into quaternion space to get raw motion waves. Then we apply MFCC to extract cofficient \citep{suwajanakorn2017synthesizing} to get feature matrix $\mathbf{x}^{T \times D}$.
 The skeleton's position and rotation data are preprocessed into a feature vector $\mathbf{g} \in \mathbb{R}^{D}$ with $D = 1141$. The learning data becomes $\bx \in \mathbb{R}^{M \times D}$.
 
-% as illustrated in \autoref{fig:Skeleton}, or the \texttt{MOTION} section of a BVH file, contains position and rotation information per frame. 
 
-%The output of gesture generation is a sequence of bone rotations per frame. The generated gestures are evaluated based on naturalness, human-likeness, and contextual appropriateness.
-
-
-%The preprocessing pipeline is detailed in \autoref{appendix:BVHData}.
-
-\textbf{Problem Statement}
-%\label{sec:ProblemStatement}
 
 The ultimate goal is to produce a sequence of gestures that reflect the motion of the skeleton frame by frame. This can be approached via classification, clustering, or regression. Gesture generation is approached in this work as a regression-based prediction problem, wherein the next sequence is generated conditioned on the current gesture input.
 
@@ -69,6 +61,17 @@ The ultimate goal is to produce a sequence of gestures that reflect the motion o
 Each gesture sequence is labeled with an emotion. A key novelty of our approach is pairing the gesture sequence with both the original speech and the corresponding text (transcribed from the speech).
 
 The objective is to build a model that predicts $M$ future frames from the given inputs: seed gesture $\mathbf{s} \in \mathbb{R}^{1:N \times D}$, speech $\mathbf{a}$, text $\mathbf{v}$, and emotion $\mathbf{e}$. The model prediction is $\hat{\mathbf{x}} \in \mathbb{R}^{1:M \times D}$, which is compared against ground-truth gesture $\mathbf{x} \in \mathbb{R}^{1:M \times D}$.
+
+% as illustrated in \autoref{fig:Skeleton}, or the \texttt{MOTION} section of a BVH file, contains position and rotation information per frame. 
+
+%The output of gesture generation is a sequence of bone rotations per frame. The generated gestures are evaluated based on naturalness, human-likeness, and contextual appropriateness.
+
+
+%The preprocessing pipeline is detailed in \autoref{appendix:BVHData}.
+
+%\textbf{Problem Statement}
+%\label{sec:ProblemStatement}
+
 
 
 \subsection{Challenges}
