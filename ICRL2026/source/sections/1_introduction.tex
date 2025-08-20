@@ -50,13 +50,7 @@ Each frame is a skeleton (\autoref{fig:Skeleton}) of 75 bones: $\{ \mathbf{b}_{1
 
 %A BVH file consists of two main parts: \texttt{HIERARCHY} and \texttt{MOTION}. The \texttt{HIERARCHY} section is structured as a tree containing the skeleton’s initial positions and names. The \texttt{MOTION} section contains the movement data for the entire skeleton frame-by-frame. Each BVH file includes frame rate (fps) and total frame count. Details are presented in Appendix \autoref{appendix:BVHStructure}.
 
-\textbf{Motion Structure of Gestures}: Gesture motion data is convert from position and rotation into quaternion space to get raw motion waves. Then we apply MFCC to extract cofficient \citep{suwajanakorn2017synthesizing} to get feature matrix $\mathbf{x}^{T \times D}$.
-The skeleton's position and rotation data are preprocessed into a feature vector $\mathbf{g} \in \mathbb{R}^{D}$ with $D = 1141$. The learning data becomes $\bx \in \mathbb{R}^{M \times D}$.
-
-
-
-The ultimate goal is to produce a sequence of gestures that reflect the motion of the skeleton frame by frame. This can be approached via classification, clustering, or regression. Gesture generation is approached in this work as a regression-based prediction problem, wherein the next sequence is generated conditioned on the current gesture input.
-
+\textbf{Motion Structure of Gestures}: Gesture motion data is convert from position and rotation into quaternion space to get raw motion waves. Then we apply DFT to extract cofficient \citep{suwajanakorn2017synthesizing} to get feature vector of single frame $g^{(1)} \in \mathbb{R}^{D}$ with $D = 1141$. With arbitrary length, we get matrix $\bx \in \mathbb{R}^{\text{length} \times D}$. The ultimate goal is to produce a sequence of gestures that reflect the motion of the skeleton frame by frame. This can be approached via classification, clustering, or regression. Gesture generation is approached in this work as a regression-based prediction problem, wherein the next sequence ($\mathbf{x} \in \mathbf{x}^{1:M}$) is generated conditioned on the current gesture input.
 
 Each gesture sequence is labeled with an emotion. A key novelty of our approach is pairing the gesture sequence with both the original speech and the corresponding text (transcribed from the speech).
 
